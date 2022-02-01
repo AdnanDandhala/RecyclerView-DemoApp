@@ -1,0 +1,3 @@
+package com.example.test_kotlin
+
+data class LayoutHolder(val viewType: Int, val image: Int, val text1: String, val text2: String)
