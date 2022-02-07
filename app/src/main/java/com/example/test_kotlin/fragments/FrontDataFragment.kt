@@ -1,6 +1,7 @@
-package com.example.test_kotlin
+package com.example.test_kotlin.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.test_kotlin.MainViewModel
+import com.example.test_kotlin.R
+import com.example.test_kotlin.adapters.LayoutHolderAdapter
 import com.example.test_kotlin.databinding.FragmentRecyclerviewDataBinding
 
 
@@ -30,7 +34,7 @@ class FrontDataFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        findNavController().popBackStack(R.id.dataShow2, true)
+        findNavController().popBackStack(R.id.RecyclerView_dataShow, true)
         (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false)
         (activity as AppCompatActivity).supportActionBar?.title = "Constraint-Task"
         if ((activity as AppCompatActivity).supportActionBar?.isShowing != true) {
@@ -39,6 +43,7 @@ class FrontDataFragment : Fragment() {
     }
 
     private fun setData() {
+        Log.i("TAG", "SetData Called")
         val viewModel = ViewModelProvider(this)[MainViewModel::class.java]
         viewModel.add().observe(viewLifecycleOwner) {
             if (it != null) {
@@ -50,8 +55,6 @@ class FrontDataFragment : Fragment() {
                 Toast.makeText(requireContext(), "Some Error Occurred", Toast.LENGTH_SHORT).show()
             }
         }
-        repeat(10) {
-            viewModel.setDataUsingViewModel()
-        }
+        viewModel.setDataUsingViewModel()
     }
 }

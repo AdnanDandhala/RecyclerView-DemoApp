@@ -1,43 +1,20 @@
-package com.example.test_kotlin
+package com.example.test_kotlin.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.example.test_kotlin.R
 import com.example.test_kotlin.databinding.FragmentDataShowBinding
 
 
 class DataShowFragment : Fragment() {
     private lateinit var binding: FragmentDataShowBinding
-    private val listOfDummyText = mutableListOf(
-        "C ",
-        "C++",
-        "Java",
-        ".Net",
-        "Kotlin",
-        "Ruby",
-        "Rails",
-        "Python",
-        "Java Script",
-        "Php",
-        "Ajax",
-        "Perl",
-        "Hadoop",
-        ".Net",
-        "Kotlin",
-        "Ruby",
-        "Rails",
-        "Python",
-        "Java Script",
-        "Android"
-    )
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,7 +30,6 @@ class DataShowFragment : Fragment() {
         return true
     }
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -68,21 +44,12 @@ class DataShowFragment : Fragment() {
         val bundle = arguments
         val finalResult = bundle?.getString("KEY_1")
         (activity as AppCompatActivity).supportActionBar?.title = finalResult
-        Log.i("TAG", bundle.toString())
         setAdapter()
-        binding.ListViewDataShow.setOnItemClickListener { _, _, i, _ ->
-            Toast.makeText(context, "$i", Toast.LENGTH_SHORT).show()
-        }
     }
 
     private fun setAdapter() {
-        val arrayAdapter =
-            ArrayAdapter(
-                this.requireContext(),
-                android.R.layout.simple_list_item_1,
-                listOfDummyText
-            )
-        binding.ListViewDataShow.adapter = arrayAdapter
+
     }
+
 
 }

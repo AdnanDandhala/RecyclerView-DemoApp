@@ -6,7 +6,7 @@
     app:startDestination="@id/recyclerviewData2">
     <fragment
         android:id="@+id/recyclerviewData2"
-        android:name="com.example.test_kotlin.FrontDataFragment"
+        android:name="com.example.test_kotlin.fragments.FrontDataFragment"
         android:label="RecyclerviewData">
         <action
             android:id="@+id/action_recyclerviewData2_to_dataShow2"
@@ -14,7 +14,7 @@
     </fragment>
     <fragment
         android:id="@+id/dataShow2"
-        android:name="com.example.test_kotlin.DataShowFragment"
+        android:name="com.example.test_kotlin.fragments.DataShowFragment"
         android:label="fragment_data_show"
         tools:layout="@layout/fragment_data_show">
         <action

@@ -6,7 +6,7 @@
 
         <variable
             name="postBottom"
-            type="com.example.test_kotlin.ModelLayoutHolder" />
+            type="com.example.test_kotlin.models.ModelLayoutHolder" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

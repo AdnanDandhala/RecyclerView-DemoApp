@@ -1,4 +1,4 @@
-package com.example.test_kotlin
+package com.example.test_kotlin.adapters
 
 import android.app.Activity
 import android.content.Context
@@ -10,9 +10,11 @@ import android.view.ViewGroup
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
+import com.example.test_kotlin.R
 import com.example.test_kotlin.databinding.RecyclerviewLayoutBottomBinding
 import com.example.test_kotlin.databinding.RecyclerviewLayoutMiddleBinding
 import com.example.test_kotlin.databinding.RecyclerviewLayoutTopBinding
+import com.example.test_kotlin.models.ModelLayoutHolder
 
 
 class LayoutHolderAdapter(
