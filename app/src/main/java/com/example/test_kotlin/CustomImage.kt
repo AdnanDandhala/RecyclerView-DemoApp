@@ -12,4 +12,3 @@ fun ImageView.setImageId(id: Int) {
 fun setImageUrl(imageView: ImageView, id: Int) {
     imageView.setImageResource(id)
 }
-// Ok I Have To Pass Both Image View And Id

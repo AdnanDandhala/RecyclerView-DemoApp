@@ -40,12 +40,16 @@ class DataShow : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentDataShowBinding.inflate(layoutInflater)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         val bundle = arguments
         val resultText = bundle?.getString("KEY_1")
         Log.i("TAG", bundle.toString())
         binding.tvDataShow.text = resultText
         setAdapter()
-        return binding.root
     }
 
     private fun setAdapter() {
