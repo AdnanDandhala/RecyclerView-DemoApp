@@ -16,71 +16,71 @@ class MainViewModel : ViewModel() {
             LayoutHolder(
                 LayoutHolderAdapter.THE_FIRST_VIEW,
                 R.drawable.businessman1,
-                "Text-1",
-                "Text-1"
+                "Jimmy",
+                "Chow"
             )
         )
         dataList.add(
             LayoutHolder(
                 LayoutHolderAdapter.THE_SECOND_VIEW,
                 R.drawable.bussinessman2,
-                "Text-1",
-                "Text-2"
+                "Raj",
+                "Jain"
             )
         )
         dataList.add(
             LayoutHolder(
                 LayoutHolderAdapter.THE_THIRD_VIEW,
                 R.drawable.businessman1,
-                "Text-1",
-                "Text-2"
+                "John",
+                "Dao"
             )
         )
         dataList.add(
             LayoutHolder(
                 LayoutHolderAdapter.THE_FIRST_VIEW,
                 R.drawable.bussinessman2,
-                "Text-1",
-                "Text-2"
+                "Men",
+                "Sent"
             )
         )
         dataList.add(
             LayoutHolder(
                 LayoutHolderAdapter.THE_SECOND_VIEW,
                 R.drawable.bussinessman2,
-                "Text-1",
-                "Text-2"
+                "Sample",
+                "Text"
             )
         )
         dataList.add(
             LayoutHolder(
                 LayoutHolderAdapter.THE_THIRD_VIEW,
                 R.drawable.bussinessman2,
-                "Text-1",
-                "Text-2"
+                "Johny",
+                "Deep"
             )
         )
         dataList.add(
             LayoutHolder(
                 LayoutHolderAdapter.THE_FIRST_VIEW,
                 R.drawable.man,
-                "Text-1",
-                "Text-2"
+                "Rahul",
+                "Kumar"
             )
         )
         dataList.add(
             LayoutHolder(
                 LayoutHolderAdapter.THE_SECOND_VIEW,
                 R.drawable.bussinessman2,
-                "Text-1",
-                "Text-2"
+                "Nikhil",
+                "Sharma"
             )
         )
         dataList.add(
             LayoutHolder(
                 LayoutHolderAdapter.THE_THIRD_VIEW,
                 R.drawable.man,
-                "Text-1",
+                "Sample",
                 "Text-2"
             )
         )

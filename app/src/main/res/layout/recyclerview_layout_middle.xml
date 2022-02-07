@@ -16,22 +16,20 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_text1"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginStart="35dp"
-            android:layout_marginEnd="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="@{postMiddle.text1}"
             android:textColor="@color/black"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/tv_text2"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_bias="0.51"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_text2"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="@{postMiddle.text2}"
             android:textColor="@color/black"

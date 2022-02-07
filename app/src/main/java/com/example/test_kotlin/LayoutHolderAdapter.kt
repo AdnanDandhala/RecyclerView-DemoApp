@@ -1,15 +1,24 @@
 package com.example.test_kotlin
 
+import android.app.Activity
 import android.content.Context
+import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
-
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.test_kotlin.databinding.RecyclerviewLayoutBottomBinding
 import com.example.test_kotlin.databinding.RecyclerviewLayoutMiddleBinding
 import com.example.test_kotlin.databinding.RecyclerviewLayoutTopBinding
 
-class LayoutHolderAdapter(private val context: Context, var list: ArrayList<LayoutHolder>) :
+
+class LayoutHolderAdapter(
+    private val context: Context,
+    var list: ArrayList<LayoutHolder>,
+) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     companion object {
@@ -18,7 +27,7 @@ class LayoutHolderAdapter(private val context: Context, var list: ArrayList<Layo
         const val THE_THIRD_VIEW = 3
     }
 
-    private inner class LayoutHold1(val binding: RecyclerviewLayoutTopBinding) :
+    private inner class LayoutHold1ViewHolder(val binding: RecyclerviewLayoutTopBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(position: Int) {
             val layoutHolder = list[position]
@@ -27,19 +36,41 @@ class LayoutHolderAdapter(private val context: Context, var list: ArrayList<Layo
             binding.postTop = layoutHolder
             binding.postTop = layoutHolder
         }
-
     }
 
-    private inner class LayoutHold2(val binding: RecyclerviewLayoutMiddleBinding) :
-        RecyclerView.ViewHolder(binding.root) {
+
+    inner class LayoutHold2ViewHolder(private val binding: RecyclerviewLayoutMiddleBinding) :
+        RecyclerView.ViewHolder(binding.root), View.OnClickListener {
         fun bind(position: Int) {
             val layoutHolder = list[position]
             binding.postMiddle = layoutHolder
             binding.postMiddle = layoutHolder
+            binding.tvText1.setOnClickListener(this)
+            binding.tvText2.setOnClickListener(this)
+        }
+
+        override fun onClick(p0: View?) {
+            if (p0?.id == binding.tvText1.id) {
+                val navController: NavController =
+                    Navigation.findNavController(context as Activity, R.id.fragment_host)
+                val text1 = binding.tvText1.text.toString()
+                val arguments = Bundle()
+                arguments.putString("KEY_1", text1)
+                Log.i("TAG", arguments.toString())
+                navController.navigate(R.id.dataShow2, arguments)
+            } else if (p0?.id == binding.tvText2.id) {
+                val navController: NavController =
+                    Navigation.findNavController(context as Activity, R.id.fragment_host)
+                val text1 = binding.tvText2.text.toString()
+                val arguments = Bundle()
+                arguments.putString("KEY_1", text1)
+                Log.i("TAG", arguments.toString())
+                navController.navigate(R.id.dataShow2, arguments)
+            }
         }
     }
 
-    private inner class LayoutHold3(val binding: RecyclerviewLayoutBottomBinding) :
+    private inner class LayoutHold3ViewHolder(val binding: RecyclerviewLayoutBottomBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(position: Int) {
             val layoutHolder = list[position]
@@ -52,14 +83,14 @@ class LayoutHolderAdapter(private val context: Context, var list: ArrayList<Layo
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         when (viewType) {
             THE_FIRST_VIEW -> {
-                return LayoutHold1(
+                return LayoutHold1ViewHolder(
                     RecyclerviewLayoutTopBinding.inflate(
                         LayoutInflater.from(context), parent, false
                     )
                 )
             }
             THE_SECOND_VIEW -> {
-                return LayoutHold2(
+                return LayoutHold2ViewHolder(
                     RecyclerviewLayoutMiddleBinding.inflate(
                         LayoutInflater.from(
                             context
@@ -70,7 +101,7 @@ class LayoutHolderAdapter(private val context: Context, var list: ArrayList<Layo
                 )
             }
             else -> {
-                return LayoutHold3(
+                return LayoutHold3ViewHolder(
                     RecyclerviewLayoutBottomBinding.inflate(
                         LayoutInflater.from(context), parent, false
                     )
@@ -82,13 +113,13 @@ class LayoutHolderAdapter(private val context: Context, var list: ArrayList<Layo
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (list[position].viewType) {
             THE_FIRST_VIEW -> {
-                (holder as LayoutHold1).bind(position)
+                (holder as LayoutHold1ViewHolder).bind(position)
             }
             THE_SECOND_VIEW -> {
-                (holder as LayoutHold2).bind(position)
+                (holder as LayoutHold2ViewHolder).bind(position)
             }
             else -> {
-                (holder as LayoutHold3).bind(position)
+                (holder as LayoutHold3ViewHolder).bind(position)
             }
         }
     }

@@ -7,6 +7,7 @@
         <variable
             name="post_top"
             type="com.example.test_kotlin.LayoutHolder" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -16,9 +17,9 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/img_fourth"
-            app:imageUrl="@{post_top.image}"
             android:layout_width="50dp"
             android:layout_height="50dp"
+            app:imageUrl="@{post_top.image}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/img_third"

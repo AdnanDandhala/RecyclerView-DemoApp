@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/recyclerviewData2">
+    <fragment
+        android:id="@+id/recyclerviewData2"
+        android:name="com.example.test_kotlin.RecyclerviewData"
+        android:label="RecyclerviewData">
+        <action
+            android:id="@+id/action_recyclerviewData2_to_dataShow2"
+            app:destination="@id/dataShow2" />
+    </fragment>
+    <fragment
+        android:id="@+id/dataShow2"
+        android:name="com.example.test_kotlin.DataShow"
+        android:label="fragment_data_show"
+        tools:layout="@layout/fragment_data_show">
+        <action
+            android:id="@+id/action_dataShow2_to_recyclerviewData2"
+            app:destination="@id/recyclerviewData2" />
+    </fragment>
+</navigation>
