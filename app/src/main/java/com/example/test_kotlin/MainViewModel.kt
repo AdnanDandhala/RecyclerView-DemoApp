@@ -12,6 +12,7 @@ class MainViewModel : ViewModel() {
     }
 
     fun setDataUsingViewModel() {
+
         dataList.add(
             ModelLayoutHolder(
                 LayoutHolderAdapter.THE_FIRST_VIEW,
