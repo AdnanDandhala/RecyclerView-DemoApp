@@ -48,8 +48,8 @@ class MainViewModel : ViewModel() {
             LayoutHolder(
                 LayoutHolderAdapter.THE_SECOND_VIEW,
                 R.drawable.bussinessman2,
-                "Sample",
-                "Text"
+                "Rahul",
+                "Kumar"
             )
         )
         dataList.add(
@@ -81,79 +81,7 @@ class MainViewModel : ViewModel() {
                 LayoutHolderAdapter.THE_THIRD_VIEW,
                 R.drawable.man,
                 "Sample",
-                "Text-2"
-            )
-        )
-        dataList.add(
-            LayoutHolder(
-                LayoutHolderAdapter.THE_FIRST_VIEW,
-                R.drawable.person,
-                "Text-1",
-                "Text-2"
-            )
-        )
-        dataList.add(
-            LayoutHolder(
-                LayoutHolderAdapter.THE_SECOND_VIEW,
-                R.drawable.person,
-                "Text-1",
-                "Text-2"
-            )
-        )
-        dataList.add(
-            LayoutHolder(
-                LayoutHolderAdapter.THE_THIRD_VIEW,
-                R.drawable.person,
-                "Text-1",
-                "Text-2"
-            )
-        )
-        dataList.add(
-            LayoutHolder(
-                LayoutHolderAdapter.THE_FIRST_VIEW,
-                R.drawable.woman,
-                "Text-1",
-                "Text-2"
-            )
-        )
-        dataList.add(
-            LayoutHolder(
-                LayoutHolderAdapter.THE_SECOND_VIEW,
-                R.drawable.woman,
-                "Text-1",
-                "Text-2"
-            )
-        )
-        dataList.add(
-            LayoutHolder(
-                LayoutHolderAdapter.THE_THIRD_VIEW,
-                R.drawable.woman,
-                "Text-1",
-                "Text-2"
-            )
-        )
-        dataList.add(
-            LayoutHolder(
-                LayoutHolderAdapter.THE_FIRST_VIEW,
-                R.drawable.man1,
-                "Text-1",
-                "Text-2"
-            )
-        )
-        dataList.add(
-            LayoutHolder(
-                LayoutHolderAdapter.THE_SECOND_VIEW,
-                R.drawable.man1,
-                "Text-1",
-                "Text-2"
-            )
-        )
-        dataList.add(
-            LayoutHolder(
-                LayoutHolderAdapter.THE_THIRD_VIEW,
-                R.drawable.man1,
-                "Text-1",
-                "Text-2"
+                "Pro"
             )
         )
         liveData.value = dataList

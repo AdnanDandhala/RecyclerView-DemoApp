@@ -24,9 +24,7 @@ class RecyclerviewData : Fragment() {
         // Inflate the layout for this fragment
         lifecycleScope.launch(Dispatchers.IO) {
             withContext(Dispatchers.Main) {
-                repeat(1) {
-                    setData()
-                }
+                setData()
             }
         }
         return binding.root
