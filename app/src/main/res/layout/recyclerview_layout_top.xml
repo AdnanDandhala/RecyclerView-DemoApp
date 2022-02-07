@@ -6,7 +6,7 @@
 
         <variable
             name="post_top"
-            type="com.example.test_kotlin.LayoutHolder" />
+            type="com.example.test_kotlin.ModelLayoutHolder" />
 
     </data>
 

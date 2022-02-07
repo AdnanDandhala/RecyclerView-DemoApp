@@ -6,7 +6,7 @@
 
         <variable
             name="postMiddle"
-            type="com.example.test_kotlin.LayoutHolder" />
+            type="com.example.test_kotlin.ModelLayoutHolder" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

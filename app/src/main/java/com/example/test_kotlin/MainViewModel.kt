@@ -4,16 +4,16 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class MainViewModel : ViewModel() {
-    private var liveData: MutableLiveData<ArrayList<LayoutHolder>> = MutableLiveData()
-    private var dataList = ArrayList<LayoutHolder>()
+    private var liveData: MutableLiveData<ArrayList<ModelLayoutHolder>> = MutableLiveData()
+    private var dataList = ArrayList<ModelLayoutHolder>()
 
-    fun add(): MutableLiveData<ArrayList<LayoutHolder>> {
+    fun add(): MutableLiveData<ArrayList<ModelLayoutHolder>> {
         return liveData
     }
 
     fun setDataUsingViewModel() {
         dataList.add(
-            LayoutHolder(
+            ModelLayoutHolder(
                 LayoutHolderAdapter.THE_FIRST_VIEW,
                 R.drawable.businessman1,
                 "Jimmy",
@@ -21,7 +21,7 @@ class MainViewModel : ViewModel() {
             )
         )
         dataList.add(
-            LayoutHolder(
+            ModelLayoutHolder(
                 LayoutHolderAdapter.THE_SECOND_VIEW,
                 R.drawable.bussinessman2,
                 "Raj",
@@ -29,7 +29,7 @@ class MainViewModel : ViewModel() {
             )
         )
         dataList.add(
-            LayoutHolder(
+            ModelLayoutHolder(
                 LayoutHolderAdapter.THE_THIRD_VIEW,
                 R.drawable.businessman1,
                 "John",
@@ -37,7 +37,7 @@ class MainViewModel : ViewModel() {
             )
         )
         dataList.add(
-            LayoutHolder(
+            ModelLayoutHolder(
                 LayoutHolderAdapter.THE_FIRST_VIEW,
                 R.drawable.bussinessman2,
                 "Men",
@@ -45,7 +45,7 @@ class MainViewModel : ViewModel() {
             )
         )
         dataList.add(
-            LayoutHolder(
+            ModelLayoutHolder(
                 LayoutHolderAdapter.THE_SECOND_VIEW,
                 R.drawable.bussinessman2,
                 "Rahul",
@@ -53,7 +53,7 @@ class MainViewModel : ViewModel() {
             )
         )
         dataList.add(
-            LayoutHolder(
+            ModelLayoutHolder(
                 LayoutHolderAdapter.THE_THIRD_VIEW,
                 R.drawable.bussinessman2,
                 "Johny",
@@ -61,7 +61,7 @@ class MainViewModel : ViewModel() {
             )
         )
         dataList.add(
-            LayoutHolder(
+            ModelLayoutHolder(
                 LayoutHolderAdapter.THE_FIRST_VIEW,
                 R.drawable.man,
                 "Rahul",
@@ -69,7 +69,7 @@ class MainViewModel : ViewModel() {
             )
         )
         dataList.add(
-            LayoutHolder(
+            ModelLayoutHolder(
                 LayoutHolderAdapter.THE_SECOND_VIEW,
                 R.drawable.bussinessman2,
                 "Nikhil",
@@ -77,7 +77,7 @@ class MainViewModel : ViewModel() {
             )
         )
         dataList.add(
-            LayoutHolder(
+            ModelLayoutHolder(
                 LayoutHolderAdapter.THE_THIRD_VIEW,
                 R.drawable.man,
                 "Sample",

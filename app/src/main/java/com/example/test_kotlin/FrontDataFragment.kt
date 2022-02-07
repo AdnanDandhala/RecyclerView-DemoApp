@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.test_kotlin.databinding.FragmentRecyclerviewDataBinding
 
 
-class RecyclerviewData : Fragment() {
+class FrontDataFragment : Fragment() {
     private lateinit var binding: FragmentRecyclerviewDataBinding
 
     override fun onCreateView(
@@ -21,6 +21,11 @@ class RecyclerviewData : Fragment() {
     ): View {
         binding = FragmentRecyclerviewDataBinding.inflate(layoutInflater)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setData()
     }
 
     override fun onStart() {
@@ -31,11 +36,6 @@ class RecyclerviewData : Fragment() {
         if ((activity as AppCompatActivity).supportActionBar?.isShowing != true) {
             (activity as AppCompatActivity).supportActionBar?.show()
         }
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        setData()
     }
 
     private fun setData() {

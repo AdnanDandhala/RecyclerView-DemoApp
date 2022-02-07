@@ -17,7 +17,7 @@ import com.example.test_kotlin.databinding.RecyclerviewLayoutTopBinding
 
 class LayoutHolderAdapter(
     private val context: Context,
-    var list: ArrayList<LayoutHolder>,
+    var list: ArrayList<ModelLayoutHolder>,
 ) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -50,22 +50,25 @@ class LayoutHolderAdapter(
         }
 
         override fun onClick(p0: View?) {
-            if (p0?.id == binding.tvText1.id) {
-                val navController: NavController =
-                    Navigation.findNavController(context as Activity, R.id.fragment_host)
-                val text1 = binding.tvText1.text.toString()
-                val arguments = Bundle()
-                arguments.putString("KEY_1", text1)
-                Log.i("TAG", arguments.toString())
-                navController.navigate(R.id.dataShow2, arguments)
-            } else if (p0?.id == binding.tvText2.id) {
-                val navController: NavController =
-                    Navigation.findNavController(context as Activity, R.id.fragment_host)
-                val text1 = binding.tvText2.text.toString()
-                val arguments = Bundle()
-                arguments.putString("KEY_1", text1)
-                Log.i("TAG", arguments.toString())
-                navController.navigate(R.id.dataShow2, arguments)
+            when (p0?.id) {
+                binding.tvText1.id -> {
+                    val navController: NavController =
+                        Navigation.findNavController(context as Activity, R.id.fragment_host)
+                    val text1 = binding.tvText1.text.toString()
+                    val arguments = Bundle()
+                    arguments.putString("KEY_1", text1)
+                    Log.i("TAG", arguments.toString())
+                    navController.navigate(R.id.dataShow2, arguments)
+                }
+                binding.tvText2.id -> {
+                    val navController: NavController =
+                        Navigation.findNavController(context as Activity, R.id.fragment_host)
+                    val text1 = binding.tvText2.text.toString()
+                    val arguments = Bundle()
+                    arguments.putString("KEY_1", text1)
+                    Log.i("TAG", arguments.toString())
+                    navController.navigate(R.id.dataShow2, arguments)
+                }
             }
         }
     }

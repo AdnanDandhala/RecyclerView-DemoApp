@@ -14,7 +14,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.test_kotlin.databinding.FragmentDataShowBinding
 
 
-class DataShow : Fragment() {
+class DataShowFragment : Fragment() {
     private lateinit var binding: FragmentDataShowBinding
     private val listOfDummyText = mutableListOf(
         "C ",
