@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.text.HtmlCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -56,11 +55,7 @@ class DataShowFragment : Fragment() {
         }
         val bundle = arguments
         val finalResult = bundle?.getString("KEY_1")
-        binding.tvTittleToolbar.text =
-            HtmlCompat.fromHtml(
-                "<font color=\"black\">$finalResult</font>",
-                HtmlCompat.FROM_HTML_MODE_LEGACY
-            )
+        binding.tvTittleToolbar.text = finalResult
         setAdapter()
         binding.imgBackDataShow.setOnClickListener {
             findNavController().navigate(R.id.action_dataShow2_to_recyclerviewData2)
