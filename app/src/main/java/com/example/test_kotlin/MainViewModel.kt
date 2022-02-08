@@ -7,13 +7,9 @@ import com.example.test_kotlin.models.ModelLayoutHolder
 
 class MainViewModel : ViewModel() {
     private var liveData: MutableLiveData<ArrayList<ModelLayoutHolder>> = MutableLiveData()
-    private var dataList = ArrayList<ModelLayoutHolder>()
 
-    fun add(): MutableLiveData<ArrayList<ModelLayoutHolder>> {
-        return liveData
-    }
-
-    fun setDataUsingViewModel() {
+    fun setDataUsingViewModel(): MutableLiveData<ArrayList<ModelLayoutHolder>> {
+        val dataList = ArrayList<ModelLayoutHolder>()
         dataList.add(
             ModelLayoutHolder(
                 LayoutHolderAdapter.THE_FIRST_VIEW,
@@ -39,5 +35,6 @@ class MainViewModel : ViewModel() {
             )
         )
         liveData.value = dataList
+        return liveData
     }
 }

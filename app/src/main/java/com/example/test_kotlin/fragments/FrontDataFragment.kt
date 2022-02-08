@@ -34,7 +34,7 @@ class FrontDataFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        findNavController().popBackStack(R.id.RecyclerView_dataShow, true)
+        findNavController().popBackStack(R.id.dataShow2, true)
         (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false)
         (activity as AppCompatActivity).supportActionBar?.title = "Constraint-Task"
         if ((activity as AppCompatActivity).supportActionBar?.isShowing != true) {
@@ -45,7 +45,7 @@ class FrontDataFragment : Fragment() {
     private fun setData() {
         Log.i("TAG", "SetData Called")
         val viewModel = ViewModelProvider(this)[MainViewModel::class.java]
-        viewModel.add().observe(viewLifecycleOwner) {
+        viewModel.setDataUsingViewModel().observe(viewLifecycleOwner) {
             if (it != null) {
                 val adapter = LayoutHolderAdapter(requireContext(), it)
                 binding.mainRecyclerView.layoutManager = LinearLayoutManager(requireContext())
