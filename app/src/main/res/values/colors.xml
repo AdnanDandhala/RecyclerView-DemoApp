@@ -11,6 +11,7 @@
     //My Custom Colours
     <color name="toolbar_color">#00203F</color>
     <color name="recyclerview_background">#ABF0D1</color>
+    <color name="text_background">#22012B</color>
 
 
 </resources>

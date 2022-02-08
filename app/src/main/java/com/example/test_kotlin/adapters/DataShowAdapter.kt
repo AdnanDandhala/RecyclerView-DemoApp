@@ -4,15 +4,22 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.test_kotlin.databinding.RecyclerviewDataShowBinding
+import com.example.test_kotlin.models.ModelDataShow
 
 
-class DataShowAdapter(private val list: ArrayList<String>) :
-    RecyclerView.Adapter<DataShowAdapter.DataShowViewHolder>() {
+class DataShowAdapter(
+    list: ArrayList<ModelDataShow>
+) : RecyclerView.Adapter<DataShowAdapter.DataShowViewHolder>() {
+
+    val dataList = list
 
     inner class DataShowViewHolder(private val binding: RecyclerviewDataShowBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(position: Int) {
-            binding.tvRecyclerviewData.text = list[position]
+            val modelDataShow = dataList[position]
+            binding.tvDataShowUsername.text = modelDataShow.username
+            binding.tvDataShowMessage.text = modelDataShow.message
+            binding.tvDataShowTime.text = modelDataShow.time.toString()
         }
     }
 
@@ -29,6 +36,6 @@ class DataShowAdapter(private val list: ArrayList<String>) :
     }
 
     override fun getItemCount(): Int {
-        return list.size
+        return dataList.size
     }
 }

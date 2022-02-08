@@ -20,7 +20,9 @@ class FrontDataFragment : Fragment() {
     private lateinit var binding: FragmentRecyclerviewDataBinding
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View {
         binding = FragmentRecyclerviewDataBinding.inflate(layoutInflater)
         return binding.root
@@ -46,7 +48,11 @@ class FrontDataFragment : Fragment() {
                 binding.mainRecyclerView.visibility = View.VISIBLE
                 binding.mainRecyclerView.adapter = adapter
             } else {
-                Toast.makeText(requireContext(), "Some Error Occurred", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    requireContext(),
+                    "Some Error Occurred In Front Fragment",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
         viewModel.setDataUsingViewModel()

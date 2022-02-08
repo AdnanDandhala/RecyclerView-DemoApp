@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/recyclerview_background"
     tools:context=".fragments.DataShowFragment">
 
     <androidx.appcompat.widget.Toolbar
@@ -37,10 +38,30 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@color/recyclerview_background"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/et_send_message"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar_dataShow"
         tools:listitem="@layout/recyclerview_data_show" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/et_send_message"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/recyclerview_background"
+        android:hint="@string/et_text_message"
+        android:textColor="@color/toolbar_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_send_message"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btn_send_message" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_send_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
