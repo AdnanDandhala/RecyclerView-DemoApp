@@ -1,7 +1,6 @@
 package com.example.test_kotlin.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,10 +10,10 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.test_kotlin.MainViewModel
 import com.example.test_kotlin.R
 import com.example.test_kotlin.adapters.LayoutHolderAdapter
 import com.example.test_kotlin.databinding.FragmentRecyclerviewDataBinding
+import com.example.test_kotlin.viewmodel.MainViewModel
 
 
 class FrontDataFragment : Fragment() {
@@ -29,21 +28,16 @@ class FrontDataFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (activity as AppCompatActivity).setSupportActionBar(binding.fontDataToolbar)
         setData()
     }
 
     override fun onStart() {
         super.onStart()
         findNavController().popBackStack(R.id.dataShow2, true)
-        (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false)
-        (activity as AppCompatActivity).supportActionBar?.title = "Constraint-Task"
-        if ((activity as AppCompatActivity).supportActionBar?.isShowing != true) {
-            (activity as AppCompatActivity).supportActionBar?.show()
-        }
     }
 
     private fun setData() {
-        Log.i("TAG", "SetData Called")
         val viewModel = ViewModelProvider(this)[MainViewModel::class.java]
         viewModel.setDataUsingViewModel().observe(viewLifecycleOwner) {
             if (it != null) {
@@ -57,4 +51,5 @@ class FrontDataFragment : Fragment() {
         }
         viewModel.setDataUsingViewModel()
     }
+
 }

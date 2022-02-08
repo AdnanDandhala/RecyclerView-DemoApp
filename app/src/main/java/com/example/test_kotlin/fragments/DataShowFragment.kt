@@ -2,10 +2,10 @@ package com.example.test_kotlin.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.text.HtmlCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -39,19 +39,6 @@ class DataShowFragment : Fragment() {
         "Android"
     )
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setHasOptionsMenu(true)
-        (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            android.R.id.home ->
-                findNavController().navigate(R.id.action_dataShow2_to_recyclerviewData2)
-        }
-        return true
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -64,10 +51,20 @@ class DataShowFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        if ((activity as AppCompatActivity).supportActionBar?.isShowing != true) {
+            (activity as AppCompatActivity).setSupportActionBar(binding.toolbarDataShow)
+        }
         val bundle = arguments
         val finalResult = bundle?.getString("KEY_1")
-        (activity as AppCompatActivity).supportActionBar?.title = finalResult
+        binding.tvTittleToolbar.text =
+            HtmlCompat.fromHtml(
+                "<font color=\"black\">$finalResult</font>",
+                HtmlCompat.FROM_HTML_MODE_LEGACY
+            )
         setAdapter()
+        binding.imgBackDataShow.setOnClickListener {
+            findNavController().navigate(R.id.action_dataShow2_to_recyclerviewData2)
+        }
     }
 
     private fun setAdapter() {

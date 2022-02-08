@@ -1,7 +1,8 @@
-package com.example.test_kotlin
+package com.example.test_kotlin.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.test_kotlin.R
 import com.example.test_kotlin.adapters.LayoutHolderAdapter
 import com.example.test_kotlin.models.ModelLayoutHolder
 
