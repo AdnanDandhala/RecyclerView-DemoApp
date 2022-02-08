@@ -8,13 +8,36 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.test_kotlin.R
+import com.example.test_kotlin.adapters.DataShowAdapter
 import com.example.test_kotlin.databinding.FragmentDataShowBinding
 
 
 class DataShowFragment : Fragment() {
     private lateinit var binding: FragmentDataShowBinding
-
+    private val list = arrayListOf(
+        "C",
+        "C++",
+        "Java",
+        ".Net",
+        "Kotlin",
+        "Ruby",
+        "Rails",
+        "Python",
+        "Java Script",
+        "Php",
+        "Ajax",
+        "Perl",
+        "Hadoop",
+        ".Net",
+        "Kotlin",
+        "Ruby",
+        "Rails",
+        "Python",
+        "Java Script",
+        "Android"
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,7 +71,9 @@ class DataShowFragment : Fragment() {
     }
 
     private fun setAdapter() {
-
+        val adapter = DataShowAdapter(list)
+        binding.RecyclerViewDataShow.layoutManager = LinearLayoutManager(requireContext())
+        binding.RecyclerViewDataShow.adapter = adapter
     }
 
 

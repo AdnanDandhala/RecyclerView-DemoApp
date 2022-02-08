@@ -1,29 +1,31 @@
 package com.example.test_kotlin.adapters
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.test_kotlin.R
-import com.example.test_kotlin.models.DataShowModel
+import com.example.test_kotlin.databinding.RecyclerviewDataShowBinding
 
 
-class DataShowAdapter(private var list: ArrayList<DataShowModel>) :
+class DataShowAdapter(private val list: ArrayList<String>) :
     RecyclerView.Adapter<DataShowAdapter.DataShowViewHolder>() {
 
-    inner class DataShowViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var tvShow: TextView = itemView.findViewById(R.id.tv_recyclerview_data)
+    inner class DataShowViewHolder(private val binding: RecyclerviewDataShowBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(position: Int) {
+            binding.tvRecyclerviewData.text = list[position]
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DataShowViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.recyclerview_data_show, parent, true)
-        return DataShowViewHolder(view)
+        return DataShowViewHolder(
+            RecyclerviewDataShowBinding.inflate(
+                LayoutInflater.from(parent.context), parent, false
+            )
+        )
     }
 
     override fun onBindViewHolder(holder: DataShowViewHolder, position: Int) {
-        holder.tvShow.text = list[position].listOfDummyText.toString()
+        holder.bind(position)
     }
 
     override fun getItemCount(): Int {
