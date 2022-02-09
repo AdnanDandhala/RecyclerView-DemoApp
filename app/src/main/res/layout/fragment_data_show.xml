@@ -35,7 +35,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/RecyclerView_dataShow"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@color/recyclerview_background"
         app:layout_constraintBottom_toTopOf="@+id/et_send_message"
@@ -43,6 +43,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar_dataShow"
+        app:layout_constraintVertical_bias="0.0"
         tools:listitem="@layout/recyclerview_data_show" />
 
     <androidx.appcompat.widget.AppCompatEditText
@@ -70,10 +71,12 @@
 
     <View
         android:id="@+id/view_layout_dataShow_down"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="1dp"
         android:layout_margin="4dp"
         android:background="@color/toolbar_color"
-        app:layout_constraintBottom_toBottomOf="@id/btn_send_message" />
+        app:layout_constraintBottom_toBottomOf="@id/btn_send_message"
+        app:layout_constraintEnd_toEndOf="@+id/et_send_message"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

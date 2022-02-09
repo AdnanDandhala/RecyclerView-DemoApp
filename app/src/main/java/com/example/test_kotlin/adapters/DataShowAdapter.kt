@@ -11,7 +11,7 @@ class DataShowAdapter(
     list: ArrayList<ModelDataShow>
 ) : RecyclerView.Adapter<DataShowAdapter.DataShowViewHolder>() {
 
-    val dataList = list
+    var dataList = list
 
     inner class DataShowViewHolder(private val binding: RecyclerviewDataShowBinding) :
         RecyclerView.ViewHolder(binding.root) {
