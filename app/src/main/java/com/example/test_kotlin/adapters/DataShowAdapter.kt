@@ -17,9 +17,12 @@ class DataShowAdapter(
         RecyclerView.ViewHolder(binding.root) {
         fun bind(position: Int) {
             val modelDataShow = dataList[position]
-            binding.tvDataShowUsername.text = modelDataShow.username
-            binding.tvDataShowMessage.text = modelDataShow.message
+            binding.tvDataShowUsername.text = modelDataShow.username_sender
+            binding.tvDataShowMessage.text = modelDataShow.message_sender
             binding.tvDataShowTime.text = modelDataShow.time
+            binding.tvUsernameReceiver.text = modelDataShow.username_receiver
+            binding.tvMessageReceiver.text = modelDataShow.message_receiver
+
         }
     }
 
