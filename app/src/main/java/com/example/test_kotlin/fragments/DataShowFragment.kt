@@ -65,7 +65,7 @@ class DataShowFragment : Fragment() {
                     message,
                     time,
                     "Adnan",
-                    "Hello "
+                    "Hello From Adnan\n Its Me Adnan Here "
                 )
             )
             adapter = DataShowAdapter(finalList)
