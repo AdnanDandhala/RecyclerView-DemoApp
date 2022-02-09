@@ -65,9 +65,10 @@ class DataShowFragment : Fragment() {
                     message,
                     time,
                     "Adnan",
-                    "Hello From Adnan\n Its Me Adnan Here "
+                    message
                 )
             )
+            binding.etSendMessage.text?.clear()
             adapter = DataShowAdapter(finalList)
             adapter.notifyItemInserted(finalList.size - 1)
             binding.RecyclerViewDataShow.layoutManager = LinearLayoutManager(requireContext())
