@@ -23,7 +23,6 @@
         android:id="@+id/tv_dataShow_username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
         android:layout_marginTop="25dp"
         android:text="@string/tv_username"
         android:textColor="@color/text_background"
@@ -35,12 +34,12 @@
         android:id="@+id/tv_dataShow_message"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="44dp"
         android:includeFontPadding="false"
         android:text="@string/tv_message"
         android:textColor="@color/text_background"
-        android:textSize="18sp"
+        android:textSize="15sp"
         android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.518"
@@ -52,7 +51,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="205dp" />
+        app:layout_constraintGuide_begin="143dp" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_username_receiver"
@@ -70,15 +69,22 @@
         android:id="@+id/tv_message_receiver"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="35dp"
         android:includeFontPadding="false"
         android:text="@string/tv_message"
         android:textColor="@color/text_background"
-        android:textSize="18sp"
+        android:textSize="15sp"
         android:textStyle="italic"
-        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintEnd_toStartOf="@+id/guideline5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_dataShow_message" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="262dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

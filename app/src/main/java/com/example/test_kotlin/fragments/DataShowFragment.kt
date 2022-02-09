@@ -59,7 +59,15 @@ class DataShowFragment : Fragment() {
         val message: String
         if (!TextUtils.isEmpty(binding.etSendMessage.text)) {
             message = binding.etSendMessage.text.toString()
-            finalList.add(ModelDataShow(name, message, time, "Adnan", "Hello From Adnan"))
+            finalList.add(
+                ModelDataShow(
+                    name,
+                    message,
+                    time,
+                    "Adnan",
+                    "Hello "
+                )
+            )
             adapter = DataShowAdapter(finalList)
             adapter.notifyItemInserted(finalList.size - 1)
             binding.RecyclerViewDataShow.layoutManager = LinearLayoutManager(requireContext())
