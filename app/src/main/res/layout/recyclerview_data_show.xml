@@ -36,7 +36,7 @@
         android:id="@+id/tv_dataShow_message"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="44dp"
         android:fontFamily="@font/asul"
         android:includeFontPadding="false"
