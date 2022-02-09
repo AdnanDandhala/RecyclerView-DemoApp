@@ -19,7 +19,7 @@ class DataShowAdapter(
             val modelDataShow = dataList[position]
             binding.tvDataShowUsername.text = modelDataShow.username
             binding.tvDataShowMessage.text = modelDataShow.message
-            binding.tvDataShowTime.text = modelDataShow.time.toString()
+            binding.tvDataShowTime.text = modelDataShow.time
         }
     }
 
