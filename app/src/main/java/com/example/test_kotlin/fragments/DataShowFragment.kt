@@ -1,5 +1,6 @@
 package com.example.test_kotlin.fragments
 
+import android.os.Build
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.LayoutInflater
@@ -14,11 +15,13 @@ import com.example.test_kotlin.R
 import com.example.test_kotlin.adapters.DataShowAdapter
 import com.example.test_kotlin.databinding.FragmentDataShowBinding
 import com.example.test_kotlin.models.ModelDataShow
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.time.format.FormatStyle
 
 
 class DataShowFragment : Fragment() {
     private lateinit var binding: FragmentDataShowBinding
-    private var i = 0
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -46,12 +49,17 @@ class DataShowFragment : Fragment() {
 
     private fun setAdapter(name: String) {
         val finalList = ArrayList<ModelDataShow>()
+        val current = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            LocalDateTime.now()
+        } else {
+            TODO("VERSION.SDK_INT < O")
+        }
+        val time = current.format(DateTimeFormatter.ofLocalizedTime(FormatStyle.MEDIUM))
         val adapter: DataShowAdapter
         val message: String
         if (!TextUtils.isEmpty(binding.etSendMessage.text)) {
-            i++
             message = binding.etSendMessage.text.toString()
-            finalList.add(ModelDataShow(name, message, i))
+            finalList.add(ModelDataShow(name, message, time))
             adapter = DataShowAdapter(finalList)
             adapter.notifyItemInserted(finalList.size - 1)
             binding.RecyclerViewDataShow.layoutManager = LinearLayoutManager(requireContext())

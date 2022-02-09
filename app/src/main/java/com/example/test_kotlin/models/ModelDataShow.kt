@@ -1,3 +1,5 @@
 package com.example.test_kotlin.models
 
-data class ModelDataShow(var username: String, var message: String, var time: Int)
+import java.time.LocalDateTime
+
+data class ModelDataShow(var username: String, var message: String, var time: String)
