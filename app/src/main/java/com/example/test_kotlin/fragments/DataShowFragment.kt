@@ -22,6 +22,9 @@ import java.time.format.FormatStyle
 
 class DataShowFragment : Fragment() {
     private lateinit var binding: FragmentDataShowBinding
+    private val finalList = ArrayList<ModelDataShow>()
+
+    private val adapter = DataShowAdapter(finalList)
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -50,7 +53,6 @@ class DataShowFragment : Fragment() {
     }
 
     private fun setDefaultAdapter(name: String?) {
-        val tempList = ArrayList<ModelDataShow>()
         val current = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             LocalDateTime.now()
         } else {
@@ -59,8 +61,18 @@ class DataShowFragment : Fragment() {
         val tempTime = current.format(DateTimeFormatter.ofLocalizedTime(FormatStyle.MEDIUM))
         binding.tvTime.text = tempTime
         val message = "Hello $name"
-        tempList.add(
+        finalList.add(
             ModelDataShow(
+                DataShowAdapter.THE_FIRST_VIEW,
+                R.drawable.man1,
+                message_receiver = message,
+                R.drawable.woman,
+                message_sender = message
+            )
+        )
+        finalList.add(
+            ModelDataShow(
+                2,
                 R.drawable.man1,
                 message_receiver = message,
                 R.drawable.woman,
@@ -68,8 +80,7 @@ class DataShowFragment : Fragment() {
             )
         )
         binding.etSendMessage.text?.clear()
-        val adapter = DataShowAdapter(tempList)
-        adapter.notifyItemInserted(tempList.size - 1)
+        adapter.notifyItemInserted(finalList.size - 1)
         binding.RecyclerViewDataShow.layoutManager = LinearLayoutManager(requireContext())
         binding.RecyclerViewDataShow.adapter = adapter
     }
@@ -81,22 +92,30 @@ class DataShowFragment : Fragment() {
             TODO("VERSION.SDK_INT < O")
         }
         val time = current.format(DateTimeFormatter.ofLocalizedTime(FormatStyle.MEDIUM))
-        val finalList = ArrayList<ModelDataShow>()
-        val adapter: DataShowAdapter
         val message: String
         if (!TextUtils.isEmpty(binding.etSendMessage.text)) {
+            binding.etSendMessage.defaultFocusHighlightEnabled = false
             binding.tvTime.text = time
             message = binding.etSendMessage.text.toString()
             finalList.add(
                 ModelDataShow(
+                    DataShowAdapter.THE_FIRST_VIEW,
                     R.drawable.businessman1,
                     message_receiver = message,
                     R.drawable.woman,
                     message_sender = message
                 )
             )
+            finalList.add(
+                ModelDataShow(
+                    2,
+                    R.drawable.man1,
+                    message_receiver = message,
+                    R.drawable.woman,
+                    message_sender = message
+                )
+            )
             binding.etSendMessage.text?.clear()
-            adapter = DataShowAdapter(finalList)
             adapter.notifyItemInserted(finalList.size - 1)
             binding.RecyclerViewDataShow.layoutManager = LinearLayoutManager(requireContext())
             binding.RecyclerViewDataShow.adapter = adapter
