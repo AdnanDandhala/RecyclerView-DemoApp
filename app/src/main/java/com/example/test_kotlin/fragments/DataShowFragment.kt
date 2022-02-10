@@ -39,33 +39,60 @@ class DataShowFragment : Fragment() {
         val bundle = arguments
         val finalResult = bundle?.getString("KEY_1")
         binding.tvTittleToolbar.text = finalResult
+        binding.etSendMessage.hint = "Message $finalResult"
+        setDefaultAdapter(finalResult)
         binding.imgBackDataShow.setOnClickListener {
             findNavController().navigate(R.id.action_dataShow2_to_recyclerviewData2)
         }
         binding.btnSendMessage.setOnClickListener {
-            setAdapter(finalResult.toString())
+            setAdapter()
         }
     }
 
-    private fun setAdapter(name: String) {
-        val finalList = ArrayList<ModelDataShow>()
+    private fun setDefaultAdapter(name: String?) {
+        val tempList = ArrayList<ModelDataShow>()
+        val current = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            LocalDateTime.now()
+        } else {
+            TODO("VERSION.SDK_INT < O")
+        }
+        val tempTime = current.format(DateTimeFormatter.ofLocalizedTime(FormatStyle.MEDIUM))
+        binding.tvTime.text = tempTime
+        val message = "Hello $name"
+        tempList.add(
+            ModelDataShow(
+                R.drawable.man1,
+                message_receiver = message,
+                R.drawable.woman,
+                message_sender = message
+            )
+        )
+        binding.etSendMessage.text?.clear()
+        val adapter = DataShowAdapter(tempList)
+        adapter.notifyItemInserted(tempList.size - 1)
+        binding.RecyclerViewDataShow.layoutManager = LinearLayoutManager(requireContext())
+        binding.RecyclerViewDataShow.adapter = adapter
+    }
+
+    private fun setAdapter() {
         val current = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             LocalDateTime.now()
         } else {
             TODO("VERSION.SDK_INT < O")
         }
         val time = current.format(DateTimeFormatter.ofLocalizedTime(FormatStyle.MEDIUM))
+        val finalList = ArrayList<ModelDataShow>()
         val adapter: DataShowAdapter
         val message: String
         if (!TextUtils.isEmpty(binding.etSendMessage.text)) {
+            binding.tvTime.text = time
             message = binding.etSendMessage.text.toString()
             finalList.add(
                 ModelDataShow(
-                    name,
-                    message,
-                    time,
-                    "Adnan",
-                    message
+                    R.drawable.businessman1,
+                    message_receiver = message,
+                    R.drawable.woman,
+                    message_sender = message
                 )
             )
             binding.etSendMessage.text?.clear()

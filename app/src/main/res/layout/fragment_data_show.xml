@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/recyclerview_background"
     tools:context=".fragments.DataShowFragment">
 
     <androidx.appcompat.widget.Toolbar
@@ -31,7 +30,29 @@
             android:textColor="@color/recyclerview_background"
             android:textSize="20sp" />
 
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_options"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="end"
+            android:layout_marginEnd="10dp"
+            android:padding="1dp"
+            app:srcCompat="@drawable/ic_baseline_info_24" />
+
     </androidx.appcompat.widget.Toolbar>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:text="@string/testing_text"
+        android:textAlignment="center"
+        android:textColor="#696060"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_dataShow" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/RecyclerView_dataShow"
@@ -42,8 +63,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_dataShow"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintTop_toBottomOf="@+id/tv_time"
         tools:listitem="@layout/recyclerview_data_show" />
 
     <androidx.appcompat.widget.AppCompatEditText
@@ -54,7 +74,7 @@
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/round_border"
-        android:hint="@string/et_text_message"
+        android:inputType="textShortMessage|textMultiLine"
         android:minHeight="48dp"
         android:padding="10dp"
         android:textColor="@color/toolbar_color"
