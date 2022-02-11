@@ -65,45 +65,45 @@ class DataShowFragment : Fragment() {
             ModelDataShow(
                 DataShowAdapter.THE_FIRST_VIEW,
                 R.drawable.man1,
-                message_receiver = message,
+                message_receiver = message.replace("\n", ""),
                 R.drawable.woman,
-                message_sender = message
+                message_sender = message.replace("\n", "")
             )
         )
         finalList.add(
             ModelDataShow(
                 DataShowAdapter.THE_FIRST_VIEW,
                 R.drawable.man1,
-                message_receiver = message,
+                message_receiver = message.replace("\n", ""),
                 R.drawable.woman,
-                message_sender = message
+                message_sender = message.replace("\n", "")
             )
         )
         finalList.add(
             ModelDataShow(
                 DataShowAdapter.THE_FIRST_VIEW,
                 R.drawable.man1,
-                message_receiver = message,
+                message_receiver = message.replace("\n", ""),
                 R.drawable.woman,
-                message_sender = message
+                message_sender = message.replace("\n", "")
             )
         )
         finalList.add(
             ModelDataShow(
                 2,
                 R.drawable.man1,
-                message_receiver = message,
+                message_receiver = message.replace("\n", ""),
                 R.drawable.woman,
-                message_sender = message
+                message_sender = message.replace("\n", "")
             )
         )
         finalList.add(
             ModelDataShow(
                 2,
                 R.drawable.man1,
-                message_receiver = message,
+                message_receiver = message.replace("\n", ""),
                 R.drawable.woman,
-                message_sender = message
+                message_sender = message.replace("\n", "")
             )
         )
         binding.etSendMessage.text?.clear()
@@ -130,18 +130,18 @@ class DataShowFragment : Fragment() {
                 ModelDataShow(
                     DataShowAdapter.THE_FIRST_VIEW,
                     R.drawable.businessman1,
-                    message_receiver = adjusted,
+                    message_receiver = adjusted.replace("\n", ""),
                     R.drawable.woman,
-                    message_sender = adjusted
+                    message_sender = adjusted.replace("\n", "")
                 )
             )
             finalList.add(
                 ModelDataShow(
                     2,
                     R.drawable.man1,
-                    message_receiver = adjusted,
+                    message_receiver = adjusted.replace("\n", ""),
                     R.drawable.woman,
-                    message_sender = adjusted
+                    message_sender = adjusted.replace("\n", "")
                 )
             )
             binding.etSendMessage.text?.clear()
