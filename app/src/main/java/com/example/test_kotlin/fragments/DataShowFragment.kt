@@ -132,7 +132,7 @@ class DataShowFragment : Fragment() {
             val adjusted = message.replaceRange(0, message.length, message)
             finalList.add(
                 ModelDataShow(
-                    DataShowAdapter.THE_FIRST_VIEW,
+                    2,
                     R.drawable.businessman1,
                     message_receiver = adjusted.replace("\n", ""),
                     R.drawable.woman,
