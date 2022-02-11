@@ -133,7 +133,7 @@ class DataShowFragment : Fragment() {
             finalList.add(
                 ModelDataShow(
                     2,
-                    R.drawable.businessman1,
+                    R.drawable.man1,
                     message_receiver = adjusted.replace("\n", ""),
                     R.drawable.woman,
                     message_sender = adjusted.replace("\n", "")
