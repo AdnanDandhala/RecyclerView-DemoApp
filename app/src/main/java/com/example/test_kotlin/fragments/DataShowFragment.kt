@@ -139,19 +139,11 @@ class DataShowFragment : Fragment() {
                     message_sender = adjusted.replace("\n", "")
                 )
             )
-            finalList.add(
-                ModelDataShow(
-                    2,
-                    R.drawable.man1,
-                    message_receiver = adjusted.replace("\n", ""),
-                    R.drawable.woman,
-                    message_sender = adjusted.replace("\n", "")
-                )
-            )
             binding.etSendMessage.text?.clear()
             adapter.notifyItemInserted(finalList.size - 1)
             binding.RecyclerViewDataShow.layoutManager = LinearLayoutManager(requireContext())
             binding.RecyclerViewDataShow.adapter = adapter
+            binding.RecyclerViewDataShow.scrollToPosition(finalList.size - 1)
         } else {
             Toast.makeText(requireContext(), "Enter Message", Toast.LENGTH_SHORT).show()
         }
