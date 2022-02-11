@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/recyclerview_layout_bg"
     tools:context=".fragments.DataShowFragment">
 
     <androidx.appcompat.widget.Toolbar
@@ -45,11 +46,12 @@
         android:id="@+id/tv_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
+        android:background="@color/recyclerview_layout_bg"
         android:text="@string/testing_text"
         android:textAlignment="center"
-        android:textColor="#696060"
+        android:textColor="@color/text_color_time"
         android:textSize="15sp"
+        android:textStyle="bold|normal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar_dataShow" />
@@ -58,7 +60,7 @@
         android:id="@+id/RecyclerView_dataShow"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/et_send_message"
+        app:layout_constraintBottom_toTopOf="@+id/img_sendMessage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -71,37 +73,30 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="15dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/round_border"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/et_bg_border"
         android:inputType="textShortMessage|textMultiLine"
+        android:maxLines="6"
         android:minHeight="48dp"
+        android:padding="5dp"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/img_sendMessage"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/img_sendMessage"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/send_img_bg"
         android:padding="10dp"
         android:textColor="@color/toolbar_color"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btn_send_message"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_send_message"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/round_border"
-        android:text="@string/btn_text"
-        android:textColor="@color/toolbar_color"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_baseline_send_24"
         tools:ignore="TouchTargetSizeCheck" />
 
-    <View
-        android:id="@+id/view_layout_dataShow_down"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_margin="4dp"
-        android:background="@color/toolbar_color"
-        app:layout_constraintBottom_toBottomOf="@id/btn_send_message"
-        app:layout_constraintEnd_toEndOf="@+id/et_send_message"
-        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

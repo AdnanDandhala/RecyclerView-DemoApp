@@ -9,9 +9,11 @@
     <color name="white">#FFFFFFFF</color>
 
     //My Custom Colours
+    <color name="recyclerview_layout_bg">#EBF8F8F8</color>
     <color name="toolbar_color">#4A38D2</color>
     <color name="recyclerview_background">#FFFFFF</color>
     <color name="text_background">#000000</color>
+    <color name="text_color_time">#726A6A</color>
 
 
 </resources>

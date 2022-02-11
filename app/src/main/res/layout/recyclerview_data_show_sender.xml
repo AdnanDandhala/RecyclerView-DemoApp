@@ -4,7 +4,7 @@
     android:id="@+id/main_layout_sender"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white"
+    android:background="#FCF4F4"
     android:padding="10dp">
 
     <androidx.cardview.widget.CardView
@@ -33,14 +33,14 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
-        android:background="@drawable/round_border"
+        android:background="@drawable/message_border_bg_sender"
         android:includeFontPadding="false"
         android:lineSpacingExtra="0dp"
         android:minLines="1"
         android:nestedScrollingEnabled="true"
         android:padding="10dp"
         android:text="@string/testing_text"
-        android:textColor="@color/toolbar_color"
+        android:textColor="@color/black"
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -17,7 +17,6 @@ import com.example.test_kotlin.databinding.FragmentDataShowBinding
 import com.example.test_kotlin.models.ModelDataShow
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
-import java.time.format.FormatStyle
 
 
 class DataShowFragment : Fragment() {
@@ -47,7 +46,7 @@ class DataShowFragment : Fragment() {
         binding.imgBackDataShow.setOnClickListener {
             findNavController().navigate(R.id.action_dataShow2_to_recyclerviewData2)
         }
-        binding.btnSendMessage.setOnClickListener {
+        binding.imgSendMessage.setOnClickListener {
             setAdapter()
         }
     }
@@ -58,8 +57,9 @@ class DataShowFragment : Fragment() {
         } else {
             TODO("VERSION.SDK_INT < O")
         }
-        val tempTime = current.format(DateTimeFormatter.ofLocalizedTime(FormatStyle.MEDIUM))
-        binding.tvTime.text = tempTime
+        val tempTime = DateTimeFormatter.ofPattern("dd.MM.yyyy. HH:mm:ss")
+        val answer: String = current.format(tempTime)
+        binding.tvTime.text = answer
         val message = "Hello $name"
         finalList.add(
             ModelDataShow(
@@ -91,28 +91,30 @@ class DataShowFragment : Fragment() {
         } else {
             TODO("VERSION.SDK_INT < O")
         }
-        val time = current.format(DateTimeFormatter.ofLocalizedTime(FormatStyle.MEDIUM))
+        val tempTime = DateTimeFormatter.ofPattern("dd.MM.yyyy. HH:mm:ss")
+        val answer: String = current.format(tempTime)
         val message: String
         if (!TextUtils.isEmpty(binding.etSendMessage.text)) {
             binding.etSendMessage.defaultFocusHighlightEnabled = false
-            binding.tvTime.text = time
+            binding.tvTime.text = answer
             message = binding.etSendMessage.text.toString()
+            val adjusted = message.replaceRange(0, message.length, message)
             finalList.add(
                 ModelDataShow(
                     DataShowAdapter.THE_FIRST_VIEW,
                     R.drawable.businessman1,
-                    message_receiver = message,
+                    message_receiver = adjusted,
                     R.drawable.woman,
-                    message_sender = message
+                    message_sender = adjusted
                 )
             )
             finalList.add(
                 ModelDataShow(
                     2,
                     R.drawable.man1,
-                    message_receiver = message,
+                    message_receiver = adjusted,
                     R.drawable.woman,
-                    message_sender = message
+                    message_sender = adjusted
                 )
             )
             binding.etSendMessage.text?.clear()
