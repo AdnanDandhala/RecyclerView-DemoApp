@@ -72,6 +72,33 @@ class DataShowFragment : Fragment() {
         )
         finalList.add(
             ModelDataShow(
+                DataShowAdapter.THE_FIRST_VIEW,
+                R.drawable.man1,
+                message_receiver = message,
+                R.drawable.woman,
+                message_sender = message
+            )
+        )
+        finalList.add(
+            ModelDataShow(
+                DataShowAdapter.THE_FIRST_VIEW,
+                R.drawable.man1,
+                message_receiver = message,
+                R.drawable.woman,
+                message_sender = message
+            )
+        )
+        finalList.add(
+            ModelDataShow(
+                2,
+                R.drawable.man1,
+                message_receiver = message,
+                R.drawable.woman,
+                message_sender = message
+            )
+        )
+        finalList.add(
+            ModelDataShow(
                 2,
                 R.drawable.man1,
                 message_receiver = message,

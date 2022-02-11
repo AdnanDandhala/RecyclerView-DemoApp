@@ -6,14 +6,15 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="white">#FFFFFF</color>
 
     //My Custom Colours
-    <color name="recyclerview_layout_bg">#EBF8F8F8</color>
+    <color name="recyclerview_layout_bg">#F8F6F2</color>
     <color name="toolbar_color">#4A38D2</color>
     <color name="recyclerview_background">#FFFFFF</color>
     <color name="text_background">#000000</color>
-    <color name="text_color_time">#726A6A</color>
+    <color name="text_color_time">#827A7A</color>
+
 
 
 </resources>
