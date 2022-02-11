@@ -47,6 +47,7 @@
     </androidx.appcompat.widget.Toolbar>
 
 
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/parent_layout"
         android:layout_width="match_parent"
