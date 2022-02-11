@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -121,6 +122,9 @@ class DataShowFragment : Fragment() {
         val tempTime = DateTimeFormatter.ofPattern("dd.MM.yyyy. HH:mm:ss")
         val answer: String = current.format(tempTime)
         val message: String
+        binding.etSendMessage.doAfterTextChanged {
+
+        }
         if (!TextUtils.isEmpty(binding.etSendMessage.text)) {
             binding.etSendMessage.defaultFocusHighlightEnabled = false
             binding.tvTime.text = answer
