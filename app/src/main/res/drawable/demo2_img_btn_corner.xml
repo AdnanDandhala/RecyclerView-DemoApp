@@ -3,6 +3,6 @@
     android:shape="oval">
     <gradient
         android:angle="270"
-        android:endColor="@color/btn_first_screen_color"
-        android:startColor="@color/btn_first_screen_color" />
+        android:endColor="@color/white"
+        android:startColor="@color/white" />
 </shape>
