@@ -1,51 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/main_layout_sender"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/recyclerview_layout_bg"
-    android:padding="10dp">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView_img_sender"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        app:cardCornerRadius="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <data>
 
+        <import type="com.example.test_kotlin.models.ModelDataShow" />
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/img_sender"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:scaleType="centerCrop"
-            app:srcCompat="@drawable/businessman1" />
+        <variable
+            name="post_sender"
+            type="com.example.test_kotlin.models.ModelDataShow" />
+    </data>
 
-    </androidx.cardview.widget.CardView>
-
-    <TextView
-        android:id="@+id/tv_message_sender"
-        android:layout_width="0dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main_layout_sender"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:background="@drawable/message_border_bg_sender"
-        android:includeFontPadding="false"
-        android:lineSpacingExtra="0dp"
-        android:minLines="1"
-        android:nestedScrollingEnabled="true"
-        android:padding="10dp"
-        android:text="@string/testing_text"
-        android:textColor="@color/black"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/cardView_img_sender"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:background="@color/recyclerview_layout_bg"
+        android:padding="10dp">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView_img_sender"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            app:cardCornerRadius="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/img_sender"
+                imageUrl="@{post_sender.img_id_sender}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="centerCrop" />
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/tv_message_sender"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:background="@drawable/message_border_bg_sender"
+            android:includeFontPadding="false"
+            android:lineSpacingExtra="0dp"
+            android:minLines="1"
+            android:nestedScrollingEnabled="true"
+            android:padding="10dp"
+            android:text="@{post_sender.message_sender}"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/cardView_img_sender"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

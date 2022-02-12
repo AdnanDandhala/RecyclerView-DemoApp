@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -45,7 +44,7 @@ class DataShowFragment : Fragment() {
         binding.etSendMessage.hint = "Message $finalResult"
         setDefaultAdapter(finalResult)
         binding.imgBackDataShow.setOnClickListener {
-            findNavController().navigate(R.id.action_dataShow2_to_recyclerviewData2)
+            findNavController().navigate(R.id.action_dataShowFragment_to_frontDataFragment)
         }
         binding.imgSendMessage.setOnClickListener {
             setAdapter()
@@ -109,8 +108,8 @@ class DataShowFragment : Fragment() {
         )
         binding.etSendMessage.text?.clear()
         adapter.notifyItemInserted(finalList.size - 1)
-        binding.RecyclerViewDataShow.layoutManager = LinearLayoutManager(requireContext())
-        binding.RecyclerViewDataShow.adapter = adapter
+        binding.recyclerViewDataShow.layoutManager = LinearLayoutManager(requireContext())
+        binding.recyclerViewDataShow.adapter = adapter
     }
 
     private fun setAdapter() {
@@ -122,9 +121,6 @@ class DataShowFragment : Fragment() {
         val tempTime = DateTimeFormatter.ofPattern("dd.MM.yyyy. HH:mm:ss")
         val answer: String = current.format(tempTime)
         val message: String
-        binding.etSendMessage.doAfterTextChanged {
-
-        }
         if (!TextUtils.isEmpty(binding.etSendMessage.text)) {
             binding.etSendMessage.defaultFocusHighlightEnabled = false
             binding.tvTime.text = answer
@@ -141,11 +137,12 @@ class DataShowFragment : Fragment() {
             )
             binding.etSendMessage.text?.clear()
             adapter.notifyItemInserted(finalList.size - 1)
-            binding.RecyclerViewDataShow.layoutManager = LinearLayoutManager(requireContext())
-            binding.RecyclerViewDataShow.adapter = adapter
-            binding.RecyclerViewDataShow.scrollToPosition(finalList.size - 1)
+            binding.recyclerViewDataShow.layoutManager = LinearLayoutManager(requireContext())
+            binding.recyclerViewDataShow.adapter = adapter
+            binding.recyclerViewDataShow.scrollToPosition(finalList.size - 1)
         } else {
             Toast.makeText(requireContext(), "Enter Message", Toast.LENGTH_SHORT).show()
         }
     }
+
 }

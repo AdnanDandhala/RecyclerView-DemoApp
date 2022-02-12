@@ -1,51 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/main_layout_receiver"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/recyclerview_layout_bg"
-    android:padding="10dp">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
-        android:id="@+id/tv_message_receiver"
-        android:layout_width="0dp"
+    <data>
+
+        <import type="com.example.test_kotlin.models.ModelDataShow" />
+
+        <variable
+            name="post_receiver"
+            type="com.example.test_kotlin.models.ModelDataShow" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main_layout_receiver"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="5dp"
-        android:background="@drawable/message_border_bg_receiver"
-        android:includeFontPadding="false"
-        android:lineSpacingExtra="0dp"
-        android:minLines="1"
-        android:nestedScrollingEnabled="true"
-        android:padding="10dp"
-        android:text="@string/testing_text"
-        android:textColor="@color/white"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/cardView_img_receiver"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:background="@color/recyclerview_layout_bg"
+        android:padding="10dp">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView_img_receiver"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        app:cardCornerRadius="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_message_receiver"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/img_receiver"
-            android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/tv_message_receiver"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:scaleType="centerCrop"
-            app:srcCompat="@drawable/man1" />
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/message_border_bg_receiver"
+            android:includeFontPadding="false"
+            android:lineSpacingExtra="0dp"
+            android:minLines="1"
+            android:nestedScrollingEnabled="true"
+            android:padding="10dp"
+            android:text="@{post_receiver.message_receiver}"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/cardView_img_receiver"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView_img_receiver"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            app:cardCornerRadius="20dp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_message_receiver"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/img_receiver"
+                imageUrl="@{post_receiver.img_id_receiver}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="centerCrop" />
+
+        </androidx.cardview.widget.CardView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

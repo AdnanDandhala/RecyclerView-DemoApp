@@ -60,7 +60,7 @@ class LayoutHolderAdapter(
                     val arguments = Bundle()
                     arguments.putString("KEY_1", text1)
                     Log.i("TAG", arguments.toString())
-                    navController.navigate(R.id.dataShow2, arguments)
+                    navController.navigate(R.id.dataShowFragment, arguments)
                 }
                 binding.tvText2.id -> {
                     val navController: NavController =
@@ -69,7 +69,7 @@ class LayoutHolderAdapter(
                     val arguments = Bundle()
                     arguments.putString("KEY_1", text1)
                     Log.i("TAG", arguments.toString())
-                    navController.navigate(R.id.dataShow2, arguments)
+                    navController.navigate(R.id.dataShowFragment, arguments)
                 }
             }
         }
@@ -90,7 +90,8 @@ class LayoutHolderAdapter(
             THE_FIRST_VIEW -> {
                 return LayoutHold1ViewHolder(
                     RecyclerviewLayoutTopBinding.inflate(
-                        LayoutInflater.from(context), parent, false
+                        LayoutInflater.from(context),
+                        parent, false
                     )
                 )
             }

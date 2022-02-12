@@ -4,6 +4,8 @@
 
     <data>
 
+        <import type="com.example.test_kotlin.models.ModelLayoutHolder" />
+
         <variable
             name="postBottom"
             type="com.example.test_kotlin.models.ModelLayoutHolder" />

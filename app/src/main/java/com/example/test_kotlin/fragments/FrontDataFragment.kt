@@ -36,7 +36,7 @@ class FrontDataFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        findNavController().popBackStack(R.id.dataShow2, true)
+        findNavController().popBackStack(R.id.dataShowFragment, true)
     }
 
     private fun setData() {

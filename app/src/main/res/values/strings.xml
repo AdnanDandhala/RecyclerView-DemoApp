@@ -10,4 +10,9 @@
     <string name="et_text_message"><font color="#00203F">Enter Message</font></string>
     <string name="btn_text">Send</string>
     <string name="tv_time">Time</string>
+    <string name="btn_txt_demo1">Demo 1</string>
+    <string name="btn_txt_demo2">Demo 2</string>
+    <string name="btn_txt_demo3">Demo 3</string>
+    <string name="btn_txt_demo4">Demo 4</string>
+    <string name="recyclerview_demo_toolbar_text"><font color="#FFFFFF">Recyclerview Demo</font></string>
 </resources>

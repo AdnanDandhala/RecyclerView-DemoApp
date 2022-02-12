@@ -3,22 +3,45 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/recyclerviewData2">
+    app:startDestination="@id/fragmentFirstScreen2">
+
     <fragment
-        android:id="@+id/recyclerviewData2"
-        android:name="com.example.test_kotlin.fragments.FrontDataFragment"
-        android:label="RecyclerviewData">
+        android:id="@+id/fragmentFirstScreen2"
+        android:name="com.example.test_kotlin.fragments.FragmentFirstScreen"
+        android:label="FragmentFirstScreen" >
         <action
-            android:id="@+id/action_recyclerviewData2_to_dataShow2"
-            app:destination="@id/dataShow2" />
+            android:id="@+id/action_fragmentFirstScreen2_to_frontDataFragment"
+            app:destination="@id/frontDataFragment" />
+        <action
+            android:id="@+id/action_fragmentFirstScreen2_to_fragmentDemo22"
+            app:destination="@id/fragmentDemo2" />
     </fragment>
     <fragment
-        android:id="@+id/dataShow2"
+        android:id="@+id/fragmentDemo2"
+        android:name="com.example.test_kotlin.fragments.FragmentDemo2"
+        android:label="FragmentDemo2" >
+        <action
+            android:id="@+id/action_fragmentDemo22_to_fragmentFirstScreen2"
+            app:destination="@id/fragmentFirstScreen2" />
+    </fragment>
+    <fragment
+        android:id="@+id/frontDataFragment"
+        android:name="com.example.test_kotlin.fragments.FrontDataFragment"
+        android:label="FrontDataFragment" >
+        <action
+            android:id="@+id/action_frontDataFragment_to_dataShowFragment"
+            app:destination="@id/dataShowFragment" />
+        <action
+            android:id="@+id/action_frontDataFragment_to_fragmentFirstScreen2"
+            app:destination="@id/fragmentFirstScreen2" />
+    </fragment>
+    <fragment
+        android:id="@+id/dataShowFragment"
         android:name="com.example.test_kotlin.fragments.DataShowFragment"
         android:label="fragment_data_show"
-        tools:layout="@layout/fragment_data_show">
+        tools:layout="@layout/fragment_data_show" >
         <action
-            android:id="@+id/action_dataShow2_to_recyclerviewData2"
-            app:destination="@id/recyclerviewData2" />
+            android:id="@+id/action_dataShowFragment_to_frontDataFragment"
+            app:destination="@id/frontDataFragment" />
     </fragment>
 </navigation>

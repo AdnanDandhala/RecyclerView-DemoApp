@@ -22,8 +22,8 @@ class DataShowAdapter(
         RecyclerView.ViewHolder(binding.root) {
         fun bind(position: Int) {
             val modelDataShow = dataList[position]
-            binding.imgSender.setImageResource(modelDataShow.img_id_sender)
-            binding.tvMessageSender.text = modelDataShow.message_sender
+            binding.postSender = modelDataShow
+            binding.postSender = modelDataShow
         }
     }
 
@@ -31,8 +31,8 @@ class DataShowAdapter(
         RecyclerView.ViewHolder(binding.root) {
         fun bind(position: Int) {
             val modelDataShow = dataList[position]
-            binding.imgReceiver.setImageResource(modelDataShow.img_id_receiver)
-            binding.tvMessageReceiver.text = modelDataShow.message_receiver
+            binding.postReceiver = modelDataShow
+            binding.postReceiver = modelDataShow
         }
     }
 
@@ -41,14 +41,16 @@ class DataShowAdapter(
             THE_FIRST_VIEW -> {
                 return DataShowViewHolderSender(
                     RecyclerviewDataShowSenderBinding.inflate(
-                        LayoutInflater.from(parent.context), parent, false
+                        LayoutInflater.from(parent.context),
+                        parent, false
                     )
                 )
             }
             else -> {
                 return DataShowViewHolderReceiver(
                     RecyclerviewDataShowReceiverBinding.inflate(
-                        LayoutInflater.from(parent.context), parent, false
+                        LayoutInflater.from(parent.context),
+                        parent, false
                     )
                 )
             }
