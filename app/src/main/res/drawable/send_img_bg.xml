@@ -6,6 +6,6 @@
 
 
     <!-- Round Corners -->
-    <corners android:radius="30dp" />
+    <corners android:radius="24dp" />
 
 </shape>

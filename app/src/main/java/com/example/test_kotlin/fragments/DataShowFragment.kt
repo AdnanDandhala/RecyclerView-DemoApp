@@ -43,7 +43,7 @@ class DataShowFragment : Fragment() {
         binding.tvTittleToolbar.text = finalResult
         binding.etSendMessage.hint = "Message $finalResult"
         setDefaultAdapter(finalResult)
-        binding.imgBackDataShow.setOnClickListener {
+        binding.toolbarDataShow.setNavigationOnClickListener {
             findNavController().navigate(R.id.action_dataShowFragment_to_frontDataFragment)
         }
         binding.imgSendMessage.setOnClickListener {

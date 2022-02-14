@@ -57,5 +57,4 @@ class FrontDataFragment : Fragment() {
         }
         viewModel.setDataUsingViewModel()
     }
-
 }

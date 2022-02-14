@@ -13,18 +13,13 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="2dp"
-        android:layout_marginTop="0dp"
         android:layout_marginEnd="2dp"
         android:background="@drawable/layout_corner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/ic_baseline_keyboard_backspace_24">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/img_back_dataShow"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            app:srcCompat="@drawable/ic_baseline_keyboard_backspace_24" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_tittle_toolbar"
@@ -41,7 +36,7 @@
             android:layout_height="30dp"
             android:layout_gravity="end"
             android:layout_marginEnd="10dp"
-            android:padding="1dp"
+            android:padding="3dp"
             app:srcCompat="@drawable/ic_baseline_info_24" />
 
     </androidx.appcompat.widget.Toolbar>
@@ -77,6 +72,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@color/recyclerview_layout_bg"
+            android:foreground="@drawable/send_img_ripple"
             app:layout_constraintBottom_toBottomOf="@+id/parent_layout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -121,7 +117,9 @@
             android:layout_height="48dp"
             android:layout_marginEnd="5dp"
             android:background="@drawable/send_img_bg"
-            android:padding="10dp"
+            android:foreground="@drawable/send_img_ripple"
+            android:paddingStart="12dp"
+            android:paddingEnd="10dp"
             android:textColor="@color/toolbar_color"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
