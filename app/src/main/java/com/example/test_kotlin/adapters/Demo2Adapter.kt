@@ -1,8 +1,6 @@
 package com.example.test_kotlin.adapters
 
-import android.text.Editable
 import android.text.TextUtils
-import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,47 +23,39 @@ class Demo2Adapter(list: ArrayList<ModelDemo2>, var calculateTotal: CalculateTot
             binding.postDemo2 = modelDemo2
             binding.imgBtnAdd.setOnClickListener(this)
             binding.imgBtnSub.setOnClickListener(this)
-            binding.etNumber.addTextChangedListener(object : TextWatcher {
-                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                }
-
-                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                    var total = 0
-                    for (i in 0 until finalList.size) {
-                        total += finalList[i].num.toInt()
-                    }
-                    calculateTotal.setTotal(total)
-                }
-
-                override fun afterTextChanged(p0: Editable?) {
-                }
-
-            })
         }
 
         override fun onClick(p0: View?) {
             when (p0?.id) {
                 binding.imgBtnAdd.id -> {
                     if (!TextUtils.isEmpty(binding.etNumber.text)) {
+                        var total = 0
                         val num = binding.etNumber.text.toString().toInt()
                         val resultText: String = (num + 1).toString()
                         binding.etNumber.setText(resultText)
+                        for (i in 0 until finalList.size) {
+                            total += finalList[i].num.toInt()
+                        }
+                        calculateTotal.setTotal(total)
                     } else {
                         binding.etNumber.setText("0")
                     }
                 }
                 binding.imgBtnSub.id -> {
                     if (!TextUtils.isEmpty(binding.etNumber.text)) {
+                        var total = 0
                         val num = binding.etNumber.text.toString().toInt()
                         val resultText: String
                         if (num > 0) {
                             resultText = (num - 1).toString()
                             binding.etNumber.setText(resultText)
+                            for (i in 0 until finalList.size) {
+                                total += finalList[i].num.toInt()
+                            }
                         }
                     } else {
                         binding.etNumber.setText("0")
                     }
-
                 }
             }
         }
