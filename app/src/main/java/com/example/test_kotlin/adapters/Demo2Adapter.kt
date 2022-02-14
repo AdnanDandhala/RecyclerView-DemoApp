@@ -8,9 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.test_kotlin.databinding.RecyclerviewDemo2Binding
 import com.example.test_kotlin.models.ModelDemo2
 
-class Demo2Adapter(list: ArrayList<ModelDemo2>, var calculateTotal: CalculateTotal) :
+class Demo2Adapter(val list: ArrayList<ModelDemo2>, var calculateTotal: CalculateTotal) :
     RecyclerView.Adapter<Demo2Adapter.Demo2ViewHolder>() {
-    var finalList = list
 
     interface CalculateTotal {
         fun setTotal(total: Int)
@@ -19,7 +18,7 @@ class Demo2Adapter(list: ArrayList<ModelDemo2>, var calculateTotal: CalculateTot
     inner class Demo2ViewHolder(private val binding: RecyclerviewDemo2Binding) :
         RecyclerView.ViewHolder(binding.root), View.OnClickListener {
         fun bind(position: Int) {
-            val modelDemo2 = finalList[position]
+            val modelDemo2 = list[position]
             binding.postDemo2 = modelDemo2
             binding.imgBtnAdd.setOnClickListener(this)
             binding.imgBtnSub.setOnClickListener(this)
@@ -33,8 +32,8 @@ class Demo2Adapter(list: ArrayList<ModelDemo2>, var calculateTotal: CalculateTot
                         val num = binding.etNumber.text.toString().toInt()
                         val resultText: String = (num + 1).toString()
                         binding.etNumber.setText(resultText)
-                        for (i in 0 until finalList.size) {
-                            total += finalList[i].num.toInt()
+                        for (i in 0 until list.size) {
+                            total += list[i].num.toInt()
                         }
                         calculateTotal.setTotal(total)
                     } else {
@@ -49,8 +48,8 @@ class Demo2Adapter(list: ArrayList<ModelDemo2>, var calculateTotal: CalculateTot
                         if (num > 0) {
                             resultText = (num - 1).toString()
                             binding.etNumber.setText(resultText)
-                            for (i in 0 until finalList.size) {
-                                total += finalList[i].num.toInt()
+                            for (i in 0 until list.size) {
+                                total += list[i].num.toInt()
                             }
                         }
                     } else {
@@ -76,6 +75,6 @@ class Demo2Adapter(list: ArrayList<ModelDemo2>, var calculateTotal: CalculateTot
     }
 
     override fun getItemCount(): Int {
-        return finalList.size
+        return list.size
     }
 }
