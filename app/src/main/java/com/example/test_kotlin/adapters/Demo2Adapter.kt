@@ -1,6 +1,7 @@
 package com.example.test_kotlin.adapters
 
 import android.text.Editable
+import android.text.TextUtils
 import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
@@ -17,11 +18,10 @@ class Demo2Adapter(list: ArrayList<ModelDemo2>, var calculateTotal: CalculateTot
         fun setTotal(total: Int)
     }
 
-    inner class Demo2ViewHolder(val binding: RecyclerviewDemo2Binding) :
+    inner class Demo2ViewHolder(private val binding: RecyclerviewDemo2Binding) :
         RecyclerView.ViewHolder(binding.root), View.OnClickListener {
         fun bind(position: Int) {
             val modelDemo2 = finalList[position]
-
             binding.postDemo2 = modelDemo2
             binding.imgBtnAdd.setOnClickListener(this)
             binding.imgBtnSub.setOnClickListener(this)
@@ -44,18 +44,28 @@ class Demo2Adapter(list: ArrayList<ModelDemo2>, var calculateTotal: CalculateTot
         }
 
         override fun onClick(p0: View?) {
-            val num = binding.etNumber.text.toString().toInt()
-            val resultText: String
             when (p0?.id) {
                 binding.imgBtnAdd.id -> {
-                    resultText = (num + 1).toString()
-                    binding.etNumber.setText(resultText)
+                    if (!TextUtils.isEmpty(binding.etNumber.text)) {
+                        val num = binding.etNumber.text.toString().toInt()
+                        val resultText: String = (num + 1).toString()
+                        binding.etNumber.setText(resultText)
+                    } else {
+                        binding.etNumber.setText("0")
+                    }
                 }
                 binding.imgBtnSub.id -> {
-                    if (num > 0) {
-                        resultText = (num - 1).toString()
-                        binding.etNumber.setText(resultText)
+                    if (!TextUtils.isEmpty(binding.etNumber.text)) {
+                        val num = binding.etNumber.text.toString().toInt()
+                        val resultText: String
+                        if (num > 0) {
+                            resultText = (num - 1).toString()
+                            binding.etNumber.setText(resultText)
+                        }
+                    } else {
+                        binding.etNumber.setText("0")
                     }
+
                 }
             }
         }

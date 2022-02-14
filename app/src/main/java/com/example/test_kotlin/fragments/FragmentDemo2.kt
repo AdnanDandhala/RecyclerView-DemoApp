@@ -16,7 +16,7 @@ import com.example.test_kotlin.models.ModelDemo2
 
 class FragmentDemo2 : Fragment(), Demo2Adapter.CalculateTotal {
     private lateinit var binding: FragmentDemo2Binding
-    private val aList = ArrayList<ModelDemo2>()
+    private var aList = ArrayList<ModelDemo2>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -58,4 +58,6 @@ class FragmentDemo2 : Fragment(), Demo2Adapter.CalculateTotal {
     override fun setTotal(total: Int) {
         binding.tvDemo2Total.text = total.toString()
     }
+
+
 }
