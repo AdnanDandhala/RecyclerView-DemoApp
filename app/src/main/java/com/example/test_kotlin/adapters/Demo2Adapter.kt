@@ -1,5 +1,7 @@
 package com.example.test_kotlin.adapters
 
+import android.annotation.SuppressLint
+import android.graphics.Color
 import android.text.Editable
 import android.text.TextUtils
 import android.text.TextWatcher
@@ -28,6 +30,7 @@ class Demo2Adapter(val list: ArrayList<ModelDemo2>, var calculateTotal: Calculat
                 override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 }
 
+                @SuppressLint("ResourceAsColor")
                 override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                     if (TextUtils.isEmpty(binding.etNumber.text)) {
                         binding.etNumber.setText("0")
@@ -38,9 +41,9 @@ class Demo2Adapter(val list: ArrayList<ModelDemo2>, var calculateTotal: Calculat
                         for (i in 0 until list.size) {
                             total += list[i].num.toInt()
                         }
+                        checkNumber(list[position].num)
                         calculateTotal.setTotal(total)
                     }
-
                 }
 
                 override fun afterTextChanged(p0: Editable?) {
@@ -48,6 +51,7 @@ class Demo2Adapter(val list: ArrayList<ModelDemo2>, var calculateTotal: Calculat
             })
         }
 
+        @SuppressLint("ResourceAsColor")
         override fun onClick(p0: View?) {
             when (p0?.id) {
                 binding.imgBtnAdd.id -> {
@@ -71,6 +75,26 @@ class Demo2Adapter(val list: ArrayList<ModelDemo2>, var calculateTotal: Calculat
                         binding.etNumber.setText("0")
                     }
                 }
+            }
+        }
+
+        fun checkNumber(num: String) {
+            if (num == "100") {
+                binding.itemLayout.setBackgroundColor(Color.RED)
+            } else if (num == "200") {
+                binding.itemLayout.setBackgroundColor(Color.GREEN)
+            } else if (num == "300") {
+                binding.itemLayout.setBackgroundColor(Color.BLUE)
+            } else if (num == "400") {
+                binding.itemLayout.setBackgroundColor(Color.YELLOW)
+            } else if (num == "500") {
+                binding.itemLayout.setBackgroundColor(Color.BLACK)
+            } else if (num == "600") {
+                binding.itemLayout.setBackgroundColor(Color.LTGRAY)
+            } else if (num == "700") {
+                binding.itemLayout.setBackgroundColor(Color.CYAN)
+            } else {
+                binding.itemLayout.setBackgroundColor(Color.WHITE)
             }
         }
     }
