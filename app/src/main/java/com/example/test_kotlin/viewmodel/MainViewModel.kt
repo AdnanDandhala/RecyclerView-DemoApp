@@ -4,10 +4,48 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.test_kotlin.R
 import com.example.test_kotlin.adapters.LayoutHolderAdapter
+import com.example.test_kotlin.models.ModelDemo2
 import com.example.test_kotlin.models.ModelLayoutHolder
 
 class MainViewModel : ViewModel() {
     private var liveData: MutableLiveData<ArrayList<ModelLayoutHolder>> = MutableLiveData()
+    private var demo2LiveData: MutableLiveData<ArrayList<ModelDemo2>> = MutableLiveData()
+
+    fun setDataDemo2UsingViewModel(): MutableLiveData<ArrayList<ModelDemo2>> {
+        val dataList = ArrayList<ModelDemo2>()
+        dataList.add(
+            ModelDemo2("1")
+        )
+        dataList.add(
+            ModelDemo2("2")
+        )
+        dataList.add(
+            ModelDemo2("3")
+        )
+        dataList.add(
+            ModelDemo2("4")
+        )
+        dataList.add(
+            ModelDemo2("5")
+        )
+        dataList.add(
+            ModelDemo2("6")
+        )
+        dataList.add(
+            ModelDemo2("7")
+        )
+        dataList.add(
+            ModelDemo2("8")
+        )
+        dataList.add(
+            ModelDemo2("9")
+        )
+        dataList.add(
+            ModelDemo2("10")
+        )
+        demo2LiveData.value = dataList
+        return demo2LiveData
+    }
 
     fun setDataUsingViewModel(): MutableLiveData<ArrayList<ModelLayoutHolder>> {
         val dataList = ArrayList<ModelLayoutHolder>()

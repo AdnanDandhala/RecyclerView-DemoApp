@@ -4,19 +4,20 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.test_kotlin.R
 import com.example.test_kotlin.adapters.Demo2Adapter
 import com.example.test_kotlin.databinding.FragmentDemo2Binding
-import com.example.test_kotlin.models.ModelDemo2
+import com.example.test_kotlin.viewmodel.MainViewModel
 
 
 class FragmentDemo2 : Fragment(), Demo2Adapter.CalculateTotal {
     private lateinit var binding: FragmentDemo2Binding
-    private var aList = ArrayList<ModelDemo2>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,19 +41,21 @@ class FragmentDemo2 : Fragment(), Demo2Adapter.CalculateTotal {
     }
 
     private fun setAdapter() {
-        aList.add(ModelDemo2("1"))
-        aList.add(ModelDemo2("2"))
-        aList.add(ModelDemo2("3"))
-        aList.add(ModelDemo2("4"))
-        aList.add(ModelDemo2("5"))
-        aList.add(ModelDemo2("6"))
-        aList.add(ModelDemo2("7"))
-        aList.add(ModelDemo2("8"))
-        aList.add(ModelDemo2("9"))
-        aList.add(ModelDemo2("10"))
-        val adapter = Demo2Adapter(aList, this)
-        binding.recyclerViewDemo2.layoutManager = LinearLayoutManager(requireContext())
-        binding.recyclerViewDemo2.adapter = adapter
+        val viewModel = ViewModelProvider(this)[MainViewModel::class.java]
+        viewModel.setDataDemo2UsingViewModel().observe(viewLifecycleOwner) {
+            if (it != null) {
+                val adapter = Demo2Adapter(it, this)
+                binding.recyclerViewDemo2.layoutManager = LinearLayoutManager(requireContext())
+                binding.recyclerViewDemo2.adapter = adapter
+            } else {
+                Toast.makeText(
+                    requireContext(),
+                    "Some Error Occurred In Demo2 Fragment",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
+        viewModel.setDataDemo2UsingViewModel()
     }
 
     override fun setTotal(total: Int) {
