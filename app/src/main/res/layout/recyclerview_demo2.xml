@@ -59,6 +59,7 @@
                     android:background="@drawable/demo2_et_corner"
                     android:hint="@string/enter_number"
                     android:inputType="number"
+                    android:maxLength="8"
                     android:padding="8dp"
                     android:text="@{post_demo2.num}"
                     app:layout_constraintBottom_toBottomOf="parent"
