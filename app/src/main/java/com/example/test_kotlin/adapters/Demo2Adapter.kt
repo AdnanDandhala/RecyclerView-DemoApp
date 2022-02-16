@@ -1,9 +1,11 @@
 package com.example.test_kotlin.adapters
 
+import android.annotation.SuppressLint
 import android.text.Editable
 import android.text.TextUtils
 import android.text.TextWatcher
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -19,14 +21,15 @@ class Demo2Adapter(val list: ArrayList<ModelDemo2>, var calculateTotal: Calculat
     }
 
     inner class Demo2ViewHolder(private val binding: RecyclerviewDemo2Binding) :
-        RecyclerView.ViewHolder(binding.root), View.OnClickListener, View.OnLongClickListener {
+        RecyclerView.ViewHolder(binding.root), View.OnClickListener, View.OnTouchListener {
+        @SuppressLint("ClickableViewAccessibility")
         fun bind(position: Int) {
             val modelDemo2 = list[position]
             binding.postDemo2 = modelDemo2
             binding.imgBtnAdd.setOnClickListener(this)
-            binding.imgBtnAdd.setOnLongClickListener(this)
+//            binding.imgBtnAdd.setOnTouchListener(this)
             binding.imgBtnSub.setOnClickListener(this)
-            binding.imgBtnSub.setOnLongClickListener(this)
+//            binding.imgBtnSub.setOnTouchListener(this)
             binding.etNumber.addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 }
@@ -38,6 +41,7 @@ class Demo2Adapter(val list: ArrayList<ModelDemo2>, var calculateTotal: Calculat
                     } else {
                         var total = 0
                         list[position].num = p0.toString()
+                        binding.etNumber.setSelection(binding.etNumber.text!!.length)
                         for (i in 0 until list.size) {
                             total += list[i].num.toInt()
                         }
@@ -77,33 +81,6 @@ class Demo2Adapter(val list: ArrayList<ModelDemo2>, var calculateTotal: Calculat
             }
         }
 
-        override fun onLongClick(p0: View?): Boolean {
-            when (p0?.id) {
-                binding.imgBtnSub.id -> {
-                    if (!TextUtils.isEmpty(binding.etNumber.text)) {
-                        val num = binding.etNumber.text.toString().toInt()
-                        val resultText: String
-                        if (num > 0) {
-                            resultText = (num - 1).toString()
-                            binding.etNumber.setText(resultText)
-                        }
-                    } else {
-                        binding.etNumber.setText("0")
-                    }
-                }
-                binding.imgBtnAdd.id -> {
-                    if (!TextUtils.isEmpty(binding.etNumber.text)) {
-                        val num = binding.etNumber.text.toString().toInt()
-                        val resultText: String = (num + 1).toString()
-                        binding.etNumber.setText(resultText)
-                    } else {
-                        binding.etNumber.setText("0")
-                    }
-                }
-            }
-            return true
-        }
-
         fun checkNumber(num: String) {
             val number = num.toInt()
             when (number * 1) {
@@ -132,6 +109,34 @@ class Demo2Adapter(val list: ArrayList<ModelDemo2>, var calculateTotal: Calculat
                     binding.itemLayout.setBackgroundResource(R.color.white)
                 }
             }
+        }
+
+        @SuppressLint("ClickableViewAccessibility")
+        override fun onTouch(p0: View?, p1: MotionEvent?): Boolean {
+            when (p0?.id) {
+                binding.imgBtnSub.id -> {
+                    if (!TextUtils.isEmpty(binding.etNumber.text)) {
+                        val num = binding.etNumber.text.toString().toInt()
+                        val resultText: String
+                        if (num > 0) {
+                            resultText = (num - 1).toString()
+                            binding.etNumber.setText(resultText)
+                        }
+                    } else {
+                        binding.etNumber.setText("0")
+                    }
+                }
+                binding.imgBtnAdd.id -> {
+                    if (!TextUtils.isEmpty(binding.etNumber.text)) {
+                        val num = binding.etNumber.text.toString().toInt()
+                        val resultText: String = (num + 1).toString()
+                        binding.etNumber.setText(resultText)
+                    } else {
+                        binding.etNumber.setText("0")
+                    }
+                }
+            }
+            return true
         }
 
 
