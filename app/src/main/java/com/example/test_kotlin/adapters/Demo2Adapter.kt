@@ -79,22 +79,34 @@ class Demo2Adapter(val list: ArrayList<ModelDemo2>, var calculateTotal: Calculat
         }
 
         fun checkNumber(num: String) {
-            if (num == "100") {
-                binding.itemLayout.setBackgroundColor(Color.RED)
-            } else if (num == "200") {
-                binding.itemLayout.setBackgroundColor(Color.GREEN)
-            } else if (num == "300") {
-                binding.itemLayout.setBackgroundColor(Color.BLUE)
-            } else if (num == "400") {
-                binding.itemLayout.setBackgroundColor(Color.YELLOW)
-            } else if (num == "500") {
-                binding.itemLayout.setBackgroundColor(Color.BLACK)
-            } else if (num == "600") {
-                binding.itemLayout.setBackgroundColor(Color.LTGRAY)
-            } else if (num == "700") {
-                binding.itemLayout.setBackgroundColor(Color.CYAN)
-            } else {
-                binding.itemLayout.setBackgroundColor(Color.WHITE)
+            if (num == "0") {
+                binding.etNumber.setText("1")
+            }
+            when (num) {
+                "100" -> {
+                    binding.itemLayout.setBackgroundColor(Color.RED)
+                }
+                "200" -> {
+                    binding.itemLayout.setBackgroundColor(Color.GREEN)
+                }
+                "300" -> {
+                    binding.itemLayout.setBackgroundColor(Color.BLUE)
+                }
+                "400" -> {
+                    binding.itemLayout.setBackgroundColor(Color.YELLOW)
+                }
+                "500" -> {
+                    binding.itemLayout.setBackgroundColor(Color.BLACK)
+                }
+                "600" -> {
+                    binding.itemLayout.setBackgroundColor(Color.LTGRAY)
+                }
+                "700" -> {
+                    binding.itemLayout.setBackgroundColor(Color.CYAN)
+                }
+                else -> {
+                    binding.itemLayout.setBackgroundColor(Color.WHITE)
+                }
             }
         }
     }
