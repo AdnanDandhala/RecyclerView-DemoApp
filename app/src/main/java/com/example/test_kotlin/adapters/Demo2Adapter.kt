@@ -22,7 +22,6 @@ class Demo2Adapter(val list: ArrayList<ModelDemo2>, var calculateTotal: Calculat
 
     inner class Demo2ViewHolder(private val binding: RecyclerviewDemo2Binding) :
         RecyclerView.ViewHolder(binding.root), View.OnClickListener, View.OnTouchListener {
-        @SuppressLint("ClickableViewAccessibility")
         fun bind(position: Int) {
             val modelDemo2 = list[position]
             binding.postDemo2 = modelDemo2
@@ -138,8 +137,6 @@ class Demo2Adapter(val list: ArrayList<ModelDemo2>, var calculateTotal: Calculat
             }
             return true
         }
-
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Demo2ViewHolder {
