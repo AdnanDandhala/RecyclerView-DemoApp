@@ -34,15 +34,6 @@ class MainViewModel : ViewModel() {
         dataList.add(
             ModelDemo2("7")
         )
-        dataList.add(
-            ModelDemo2("8")
-        )
-        dataList.add(
-            ModelDemo2("9")
-        )
-        dataList.add(
-            ModelDemo2("10")
-        )
         demo2LiveData.value = dataList
         return demo2LiveData
     }
