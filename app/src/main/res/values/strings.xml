@@ -20,4 +20,7 @@
     <string name="enter_number">Enter Number</string>
     <string name="toolbar_text_demo2"><center>RecyclerView Demo</center></string>
     <string name="enter_message">Enter Message</string>
+    <string name="tab_text_login"><font size="12">Login</font></string>
+    <string name="tab_text_register"><font size="12">Register</font></string>
+    <string name="tab_text_search"><font size="12">Search</font></string>
 </resources>

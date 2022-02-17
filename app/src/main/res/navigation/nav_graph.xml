@@ -8,18 +8,21 @@
     <fragment
         android:id="@+id/fragmentFirstScreen2"
         android:name="com.example.test_kotlin.fragments.FragmentFirstScreen"
-        android:label="FragmentFirstScreen" >
+        android:label="FragmentFirstScreen">
         <action
             android:id="@+id/action_fragmentFirstScreen2_to_frontDataFragment"
             app:destination="@id/frontDataFragment" />
         <action
             android:id="@+id/action_fragmentFirstScreen2_to_fragmentDemo22"
             app:destination="@id/fragmentDemo2" />
+        <action
+            android:id="@+id/action_fragmentFirstScreen2_to_fragmentDemo3"
+            app:destination="@id/fragmentDemo3" />
     </fragment>
     <fragment
         android:id="@+id/fragmentDemo2"
         android:name="com.example.test_kotlin.fragments.FragmentDemo2"
-        android:label="FragmentDemo2" >
+        android:label="FragmentDemo2">
         <action
             android:id="@+id/action_fragmentDemo22_to_fragmentFirstScreen2"
             app:destination="@id/fragmentFirstScreen2" />
@@ -27,7 +30,7 @@
     <fragment
         android:id="@+id/frontDataFragment"
         android:name="com.example.test_kotlin.fragments.FrontDataFragment"
-        android:label="FrontDataFragment" >
+        android:label="FrontDataFragment">
         <action
             android:id="@+id/action_frontDataFragment_to_dataShowFragment"
             app:destination="@id/dataShowFragment" />
@@ -39,9 +42,17 @@
         android:id="@+id/dataShowFragment"
         android:name="com.example.test_kotlin.fragments.DataShowFragment"
         android:label="fragment_data_show"
-        tools:layout="@layout/fragment_data_show" >
+        tools:layout="@layout/fragment_data_show">
         <action
             android:id="@+id/action_dataShowFragment_to_frontDataFragment"
             app:destination="@id/frontDataFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentDemo3"
+        android:name="com.example.test_kotlin.fragments.FragmentDemo3"
+        android:label="FragmentDemo3">
+        <action
+            android:id="@+id/action_fragmentDemo3_to_fragmentFirstScreen2"
+            app:destination="@id/fragmentFirstScreen2" />
     </fragment>
 </navigation>

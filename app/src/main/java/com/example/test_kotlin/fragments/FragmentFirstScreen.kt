@@ -39,7 +39,7 @@ class FragmentFirstScreen : Fragment(), View.OnClickListener {
                 findNavController().navigate(R.id.fragmentDemo2)
             }
             binding.btnDemo3.id -> {
-                Toast.makeText(requireContext(), "Demo 3 Was Clicked", Toast.LENGTH_SHORT).show()
+                findNavController().navigate(R.id.fragmentDemo3)
             }
             binding.btnDemo4.id -> {
                 Toast.makeText(requireContext(), "Demo 4 Was Clicked", Toast.LENGTH_SHORT).show()
