@@ -19,4 +19,5 @@
     <string name="tv_text_demo2">Width</string>
     <string name="enter_number">Enter Number</string>
     <string name="toolbar_text_demo2"><center>RecyclerView Demo</center></string>
+    <string name="enter_message">Enter Message</string>
 </resources>

@@ -17,8 +17,6 @@
         app:navigationIcon="@drawable/ic_baseline_keyboard_backspace_24"
         app:title="@string/toolbar_text_demo2"
         app:titleTextColor="@color/white">
-
-
     </androidx.appcompat.widget.Toolbar>
 
     <androidx.constraintlayout.widget.ConstraintLayout

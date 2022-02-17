@@ -42,7 +42,7 @@ class FragmentDemo2 : Fragment(), Demo2Adapter.CalculateTotal {
 
     private fun setAdapter() {
         val viewModel = ViewModelProvider(this)[MainViewModel::class.java]
-        viewModel.setDataDemo2UsingViewModel().observe(viewLifecycleOwner) {
+        viewModel.setDataDemo2UsingViewModel().observe(requireActivity()) {
             if (it != null) {
                 val adapter = Demo2Adapter(it, this)
                 binding.recyclerViewDemo2.layoutManager = LinearLayoutManager(requireContext())
@@ -51,7 +51,7 @@ class FragmentDemo2 : Fragment(), Demo2Adapter.CalculateTotal {
                 Toast.makeText(
                     requireContext(),
                     "Some Error Occurred In Demo2 Fragment",
-                    Toast.LENGTH_SHORT
+                    Toast.LENGTH_SHORT,
                 ).show()
             }
         }

@@ -41,7 +41,7 @@ class FrontDataFragment : Fragment() {
 
     private fun setData() {
         val viewModel = ViewModelProvider(this)[MainViewModel::class.java]
-        viewModel.setDataUsingViewModel().observe(viewLifecycleOwner) {
+        viewModel.setDataUsingViewModel().observe(requireActivity()) {
             if (it != null) {
                 val adapter = LayoutHolderAdapter(requireContext(), it)
                 binding.mainRecyclerView.layoutManager = LinearLayoutManager(requireContext())

@@ -141,7 +141,8 @@ class DataShowFragment : Fragment() {
             binding.recyclerViewDataShow.adapter = adapter
             binding.recyclerViewDataShow.scrollToPosition(finalList.size - 1)
         } else {
-            Toast.makeText(requireContext(), "Enter Message", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), R.string.enter_message, Toast.LENGTH_SHORT)
+                .show()
         }
     }
 
