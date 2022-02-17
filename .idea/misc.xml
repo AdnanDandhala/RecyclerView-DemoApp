@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/drawable-v24/demo2_img_btn_corner_add_white.xml" value="0.1" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/drawable-v24/ic_baseline_add_white_24.xml" value="0.1" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/drawable-v24/ic_baseline_minus_white_24.xml" value="0.1" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/drawable/btn_background_first_screen.xml" value="0.119" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/drawable/btn_border.xml" value="0.25" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/drawable/demo2_child_layout_border.xml" value="0.141" />
@@ -43,7 +46,7 @@
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/layout/recyclerview_data_show.xml" value="0.5" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/layout/recyclerview_data_show_receiver.xml" value="0.25" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/layout/recyclerview_data_show_sender.xml" value="0.21419410004275333" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/layout/recyclerview_demo2.xml" value="0.30428769017980634" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/layout/recyclerview_demo2.xml" value="0.46218487394957986" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/layout/recyclerview_layout_bottom.xml" value="0.29322916666666665" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/layout/recyclerview_layout_middle.xml" value="0.25" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/layout/recyclerview_layout_top.xml" value="0.29322916666666665" />

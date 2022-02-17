@@ -61,6 +61,4 @@ class FragmentDemo2 : Fragment(), Demo2Adapter.CalculateTotal {
     override fun setTotal(total: Int) {
         binding.tvDemo2Total.text = total.toString()
     }
-
-
 }
