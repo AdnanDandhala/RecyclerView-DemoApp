@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#AA6DF5</color>
+    <color name="purple_200">#31006E</color>
     <color name="purple_500">#FFC0CB</color>
     <color name="purple_700">#4A38D2</color>
     <color name="teal_200">#FF03DAC5</color>
@@ -24,7 +24,7 @@
     <color name="text_color_time">#827A7A</color>
     <color name="btn_first_screen_color">#D6D7D7</color>
     <color name="Sapphie">#0E233D</color>
-    <color name="DarkViolet">#330073</color>
+    <color name="DarkViolet">#2C0063</color>
 
 
 </resources>

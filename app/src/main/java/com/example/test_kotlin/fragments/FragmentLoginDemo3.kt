@@ -23,7 +23,9 @@ class FragmentLoginDemo3 : Fragment(), View.OnClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.etEmailLogin.requestFocus()
+//        if (binding.etEmailLogin.requestFocus()) {
+//            activity?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+//        }
         binding.btnLogin.setOnClickListener(this)
         binding.tvForgotPasswordLogin.setOnClickListener(this)
     }
