@@ -35,6 +35,8 @@ class FragmentLoginDemo3 : Fragment(), View.OnClickListener {
             Toast.makeText(requireContext(), "Enter Valid Email", Toast.LENGTH_SHORT).show()
         } else {
             Toast.makeText(requireContext(), "Login Successfully", Toast.LENGTH_SHORT).show()
+            binding.etEmailLogin.text?.clear()
+            binding.etPasswordLogin.text?.clear()
         }
     }
 }
