@@ -7,7 +7,7 @@
     <string name="tv_username">Username</string>
     <string name="tv_message">Message</string>
     <string name="testing_text">Hello I Am Adnan I Am Testing  </string>
-    <string name="et_text_message"><font color="#00203F">Enter Message</font></string>
+    <string name="et_text_message">Enter Message</string>
     <string name="btn_text">Send</string>
     <string name="tv_time">Time</string>
     <string name="btn_txt_demo1">Demo 1</string>
@@ -23,4 +23,11 @@
     <string name="tab_text_login"><font size="12">Login</font></string>
     <string name="tab_text_register"><font size="12">Register</font></string>
     <string name="tab_text_search"><font size="12">Search</font></string>
+    <string name="demo3_tittle_toolbar">Tab-Layout</string>
+    <string name="text_tv_welcome">Welcome Back!</string>
+    <string name="tv_text_description">Please sign in to continue app</string>
+    <string name="et_hint_email_login">Email address</string>
+    <string name="et_hint_password_login">Password</string>
+    <string name="tv_text_forgot_login">Forgot Password?</string>
+    <string name="btn_text_login">Sign in Account</string>
 </resources>
