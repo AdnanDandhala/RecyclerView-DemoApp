@@ -31,22 +31,12 @@
         app:tabSelectedTextColor="@color/white"
         app:tabTextColor="@color/black" />
 
-    <androidx.core.widget.NestedScrollView
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/demo3_viewPager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/demo3_tabLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/demo3_toolbar">
-
-        <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/demo3_viewPager"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@+id/demo3_tabLayout"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/demo3_toolbar" />
-    </androidx.core.widget.NestedScrollView>
-
+        app:layout_constraintTop_toBottomOf="@+id/demo3_toolbar" />
 </androidx.constraintlayout.widget.ConstraintLayout>

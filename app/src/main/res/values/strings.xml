@@ -25,9 +25,16 @@
     <string name="tab_text_search"><font size="12">Search</font></string>
     <string name="demo3_tittle_toolbar">Tab-Layout</string>
     <string name="text_tv_welcome">Welcome Back!</string>
-    <string name="tv_text_description">Please sign in to continue app</string>
+    <string name="tv_text_login_description">Please sign in to continue app</string>
+    <string name="tv_text_signup_description">Required information for account creation</string>
     <string name="et_hint_email_login">Email address</string>
     <string name="et_hint_password_login">Password</string>
     <string name="tv_text_forgot_login">Forgot Password?</string>
     <string name="btn_text_login">Sign in Account</string>
+    <string name="text_tv_signup">Sign Up</string>
+    <string name="et_hint_username_signup">User Name</string>
+    <string name="et_hint_mobile_number_signup">Mobile Number</string>
+    <string name="et_hint_address_signup">Address</string>
+    <string name="et_hint_pin_code_signup">Pincode</string>
+    <string name="btn_text_signup">Submit</string>
 </resources>
