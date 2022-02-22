@@ -6,8 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".fragments.FragmentLoginDemo3">
 
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -15,84 +14,90 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_welcome_back_login"
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="25dp"
-            android:fontFamily="@font/roboto_bold"
-            android:text="@string/text_tv_welcome"
-            android:textColor="@color/DarkViolet"
-            android:textSize="30sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/tv_description_login"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_height="wrap_content">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_description_login"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="5dp"
-            android:fontFamily="sans-serif-thin"
-            android:text="@string/tv_text_login_description"
-            android:textColor="@color/DarkViolet"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_welcome_back_login" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_welcome_back_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="25dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="@string/text_tv_welcome"
+                android:textColor="@color/DarkViolet"
+                android:textSize="30sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/tv_description_login"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/et_email_login"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:background="@drawable/demo3_et_shape"
-            android:drawableEnd="@drawable/ic_outline_mail_outline_24"
-            android:hint="@string/et_hint_email_login"
-            android:inputType="textEmailAddress"
-            android:padding="18dp"
-            app:layout_constraintEnd_toEndOf="@+id/tv_description_login"
-            app:layout_constraintStart_toStartOf="@+id/tv_description_login"
-            app:layout_constraintTop_toBottomOf="@+id/tv_description_login" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_description_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="sans-serif-thin"
+                android:text="@string/tv_text_login_description"
+                android:textColor="@color/DarkViolet"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_welcome_back_login" />
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/et_password_login"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:background="@drawable/demo3_et_shape"
-            android:drawableEnd="@drawable/ic_outline_remove_red_eye_24"
-            android:hint="@string/et_hint_password_login"
-            android:inputType="textPassword"
-            android:padding="18dp"
-            app:layout_constraintEnd_toEndOf="@+id/et_email_login"
-            app:layout_constraintStart_toStartOf="@+id/et_email_login"
-            app:layout_constraintTop_toBottomOf="@+id/et_email_login" />
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_email_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:background="@drawable/demo3_et_shape"
+                android:drawableEnd="@drawable/ic_outline_mail_outline_24"
+                android:hint="@string/et_hint_email_login"
+                android:inputType="textEmailAddress"
+                android:padding="18dp"
+                app:layout_constraintEnd_toEndOf="@+id/tv_description_login"
+                app:layout_constraintStart_toStartOf="@+id/tv_description_login"
+                app:layout_constraintTop_toBottomOf="@+id/tv_description_login" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_forgot_password_login"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10sp"
-            android:layout_marginEnd="20dp"
-            android:text="@string/tv_text_forgot_login"
-            android:textColor="@color/purple_200"
-            android:textSize="17sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_password_login" />
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_password_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:background="@drawable/demo3_et_shape"
+                android:drawableEnd="@drawable/ic_outline_remove_red_eye_24"
+                android:hint="@string/et_hint_password_login"
+                android:inputType="textPassword"
+                android:padding="18dp"
+                app:layout_constraintEnd_toEndOf="@+id/et_email_login"
+                app:layout_constraintStart_toStartOf="@+id/et_email_login"
+                app:layout_constraintTop_toBottomOf="@+id/et_email_login" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_login"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:background="@drawable/demo3_btn_border"
-            android:text="@string/btn_text_login"
-            android:textColor="@color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_forgot_password_login" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_forgot_password_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10sp"
+                android:layout_marginEnd="20dp"
+                android:text="@string/tv_text_forgot_login"
+                android:textColor="@color/purple_200"
+                android:textSize="17sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_password_login" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:background="@drawable/demo3_btn_border"
+                android:text="@string/btn_text_login"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_forgot_password_login" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
