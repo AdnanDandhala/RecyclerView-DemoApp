@@ -37,4 +37,6 @@
     <string name="et_hint_address_signup">Address</string>
     <string name="et_hint_pin_code_signup">Pincode</string>
     <string name="btn_text_signup">Submit</string>
+    <string name="hint_resource">Enter City</string>
+    <string name="et_hint_confirm_password_login">Confirm Password</string>
 </resources>

@@ -53,28 +53,14 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
                 android:background="@drawable/demo3_et_shape"
-                android:drawableEnd="@drawable/ic_outline_mail_outline_24"
+                android:drawableEnd="@drawable/ic_outline_assignment_ind_24"
+                android:drawablePadding="10dp"
                 android:hint="@string/et_hint_username_signup"
-                android:inputType="textEmailAddress"
+                android:inputType="text"
                 android:padding="18dp"
                 app:layout_constraintEnd_toEndOf="@+id/tv_description_signup"
                 app:layout_constraintStart_toStartOf="@+id/tv_description_signup"
                 app:layout_constraintTop_toBottomOf="@+id/tv_description_signup" />
-
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/et_email_signup"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:background="@drawable/demo3_et_shape"
-                android:drawableEnd="@drawable/ic_outline_remove_red_eye_24"
-                android:hint="@string/et_hint_email_login"
-                android:inputType="textPassword"
-                android:padding="18dp"
-                app:layout_constraintEnd_toEndOf="@+id/et_username_signup"
-                app:layout_constraintStart_toStartOf="@+id/et_username_signup"
-                app:layout_constraintTop_toBottomOf="@+id/et_username_signup" />
-
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/et_number_signup"
@@ -82,13 +68,65 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
                 android:background="@drawable/demo3_et_shape"
-                android:drawableEnd="@drawable/ic_outline_mail_outline_24"
+                android:drawableEnd="@drawable/ic_outline_phone_iphone_24"
+                android:drawablePadding="10dp"
                 android:hint="@string/et_hint_mobile_number_signup"
                 android:inputType="number"
                 android:padding="18dp"
+                android:singleLine="true"
+                app:layout_constraintEnd_toEndOf="@+id/et_username_signup"
+                app:layout_constraintStart_toStartOf="@+id/et_username_signup"
+                app:layout_constraintTop_toBottomOf="@+id/et_username_signup" />
+
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_email_signup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:background="@drawable/demo3_et_shape"
+                android:drawableEnd="@drawable/ic_outline_mail_outline_24"
+                android:drawablePadding="10dp"
+                android:hint="@string/et_hint_email_login"
+                android:inputType="textEmailAddress"
+                android:padding="18dp"
+                android:singleLine="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_number_signup" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_password_signup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:background="@drawable/demo3_et_shape"
+                android:drawableEnd="@drawable/ic_outline_remove_red_eye_24"
+                android:drawablePadding="10dp"
+                android:hint="@string/et_hint_password_login"
+                android:inputType="textPassword"
+                android:padding="18dp"
+                android:singleLine="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/et_email_signup" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_confirm_password_signup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:background="@drawable/demo3_et_shape"
+                android:drawableEnd="@drawable/ic_outline_remove_red_eye_24"
+                android:drawablePadding="10dp"
+                android:hint="@string/et_hint_confirm_password_login"
+                android:inputType="textPassword"
+                android:padding="18dp"
+                android:singleLine="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_password_signup" />
+
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/et_address_signup"
@@ -96,13 +134,15 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
                 android:background="@drawable/demo3_et_shape"
-                android:drawableEnd="@drawable/ic_outline_mail_outline_24"
+                android:drawableEnd="@drawable/ic_outline_add_location_alt_24"
+                android:drawablePadding="10dp"
                 android:hint="@string/et_hint_address_signup"
-                android:inputType="textAutoComplete"
+                android:inputType="text"
                 android:padding="18dp"
+                android:singleLine="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/et_number_signup" />
+                app:layout_constraintTop_toBottomOf="@+id/et_confirm_password_signup" />
 
 
             <androidx.appcompat.widget.AppCompatEditText
@@ -111,14 +151,29 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
                 android:background="@drawable/demo3_et_shape"
-                android:drawableEnd="@drawable/ic_outline_mail_outline_24"
+                android:drawableEnd="@drawable/ic_outline_person_pin_circle_24"
+                android:drawablePadding="10dp"
                 android:hint="@string/et_hint_pin_code_signup"
                 android:inputType="number"
                 android:padding="18dp"
+                android:singleLine="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/et_address_signup" />
 
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/city_drop_down"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:background="@drawable/gradient_spinner"
+                android:drawablePadding="10dp"
+                android:spinnerMode="dropdown"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_pin_code_signup"
+                tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_signup"
@@ -133,16 +188,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/city_drop_down" />
 
-            <Spinner
-                android:id="@+id/city_drop_down"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:autofillHints="postalAddress"
-                android:padding="18dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/et_pin_code_signup" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 

@@ -23,9 +23,6 @@ class FragmentLoginDemo3 : Fragment(), View.OnClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        if (binding.etEmailLogin.requestFocus()) {
-//            activity?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
-//        }
         binding.btnLogin.setOnClickListener(this)
         binding.tvForgotPasswordLogin.setOnClickListener(this)
     }
@@ -34,7 +31,8 @@ class FragmentLoginDemo3 : Fragment(), View.OnClickListener {
         when (p0?.id) {
             binding.btnLogin.id -> {
                 val txtEtEmail = binding.etEmailLogin.text
-                if (TextUtils.isEmpty(txtEtEmail) || TextUtils.isEmpty(txtEtEmail)) {
+                val txtEtPassword = binding.etPasswordLogin.text
+                if (TextUtils.isEmpty(txtEtEmail) || TextUtils.isEmpty(txtEtPassword)) {
                     Toast.makeText(requireContext(), "Enter All Field", Toast.LENGTH_SHORT).show()
                 } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(txtEtEmail.toString())
                         .matches()
@@ -53,6 +51,5 @@ class FragmentLoginDemo3 : Fragment(), View.OnClickListener {
                     .show()
             }
         }
-
     }
 }
