@@ -23,7 +23,7 @@ val spinnerItems = arrayOf(
     "London"
 )
 
-@Suppress("NAME_SHADOWING")
+@Suppress("NAME_SHADOWING", "DEPRECATION")
 class FragmentRegisterDemo3 : Fragment(), View.OnClickListener {
     private lateinit var binding: FragmentRegistorDemo3Binding
 
