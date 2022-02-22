@@ -6,8 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.example.test_kotlin.databinding.FragmentLoginDemo3Binding
+
 
 class FragmentLoginDemo3 : Fragment(), View.OnClickListener {
     private lateinit var binding: FragmentLoginDemo3Binding
@@ -23,14 +25,18 @@ class FragmentLoginDemo3 : Fragment(), View.OnClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        if (binding.tvUserLogin.isVisible || binding.btnLogout.isVisible) {
+            binding.tvUserLogin.visibility = View.GONE
+        }
         binding.btnLogin.setOnClickListener(this)
         binding.tvForgotPasswordLogin.setOnClickListener(this)
+        binding.btnLogout.setOnClickListener(this)
     }
 
     override fun onClick(p0: View?) {
         when (p0?.id) {
             binding.btnLogin.id -> {
-                val txtEtEmail = binding.etEmailLogin.text
+                val txtEtEmail = binding.etEmailLogin.text?.trim()
                 val txtEtPassword = binding.etPasswordLogin.text
                 if (TextUtils.isEmpty(txtEtEmail) || TextUtils.isEmpty(txtEtPassword)) {
                     Toast.makeText(requireContext(), "Enter All Field", Toast.LENGTH_SHORT).show()
@@ -44,11 +50,25 @@ class FragmentLoginDemo3 : Fragment(), View.OnClickListener {
                     binding.etEmailLogin.text?.clear()
                     binding.etPasswordLogin.text?.clear()
                     binding.etEmailLogin.requestFocus()
+                    binding.parentLayoutLogin.visibility = View.GONE
+                    binding.tvUserLogin.visibility = View.VISIBLE
+                    binding.btnLogout.visibility = View.VISIBLE
                 }
             }
             binding.tvForgotPasswordLogin.id -> {
                 Toast.makeText(requireContext(), "Forgot Password Was Clicked", Toast.LENGTH_SHORT)
                     .show()
+            }
+            binding.btnLogout.id -> {
+                if (!binding.parentLayoutLogin.isVisible) {
+                    binding.parentLayoutLogin.visibility = View.VISIBLE
+                    if (binding.tvUserLogin.isVisible && binding.btnLogout.isVisible) {
+                        binding.tvUserLogin.visibility = View.GONE
+                        binding.btnLogout.visibility = View.GONE
+                        Toast.makeText(requireContext(), "Logout Successfully", Toast.LENGTH_SHORT)
+                            .show()
+                    }
+                }
             }
         }
     }

@@ -31,6 +31,7 @@
     <string name="et_hint_password_login">Password</string>
     <string name="tv_text_forgot_login">Forgot Password?</string>
     <string name="btn_text_login">Sign in Account</string>
+    <string name="btn_text_logout">Logout</string>
     <string name="text_tv_signup">Sign Up</string>
     <string name="et_hint_username_signup">User Name</string>
     <string name="et_hint_mobile_number_signup">Mobile Number</string>
@@ -39,4 +40,5 @@
     <string name="btn_text_signup">Submit</string>
     <string name="hint_resource">Enter City</string>
     <string name="et_hint_confirm_password_login">Confirm Password</string>
+    <string name="tv_text_after_login">User Login Successfully</string>
 </resources>
