@@ -10,12 +10,14 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.example.test_kotlin.databinding.FragmentLoginDemo3Binding
+import com.example.test_kotlin.room.UserViewModel
 
 
 class FragmentLoginDemo3 : Fragment(), View.OnClickListener {
     private lateinit var binding: FragmentLoginDemo3Binding
-
+    private lateinit var userViewModel: UserViewModel
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -27,6 +29,7 @@ class FragmentLoginDemo3 : Fragment(), View.OnClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        userViewModel = ViewModelProvider(this)[UserViewModel::class.java]
         if (binding.tvUserLogin.isVisible || binding.btnLogout.isVisible) {
             binding.tvUserLogin.visibility = View.GONE
         }
@@ -55,6 +58,8 @@ class FragmentLoginDemo3 : Fragment(), View.OnClickListener {
                         binding.tvValidEmail.visibility = View.GONE
                         binding.tvValidPassword.visibility = View.GONE
                     }
+//                    val isTrue =
+//                        userViewModel.checkUser(txtEtEmail.toString(), txtEtPassword.toString())
                     p0.hideKeyboard()
                     binding.etEmailLogin.text?.clear()
                     binding.etPasswordLogin.text?.clear()

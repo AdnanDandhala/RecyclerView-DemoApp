@@ -1,6 +1,7 @@
 package com.example.test_kotlin.room
 
 import android.content.Context
+import android.util.Log
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
@@ -28,6 +29,10 @@ class UserRepository {
                     Users(username, mobileNo, emailAddress, password, address, pincode, city)
                 usersDatabase!!.userDao().insertUser(userDetails)
             }
+        }
+
+        fun checkUser(emailAddress: String, password: String): Boolean {
+            return usersDatabase!!.userDao().checkUser(emailAddress, password)
         }
     }
 }

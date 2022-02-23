@@ -24,4 +24,11 @@ class UserViewModel : ViewModel() {
             city
         )
     }
+
+    fun checkUser(
+        emailAddress: String,
+        password: String
+    ): Boolean {
+        return UserRepository.checkUser(emailAddress, password)
+    }
 }
