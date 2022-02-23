@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,8 +14,10 @@ import android.widget.ScrollView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.example.test_kotlin.R
 import com.example.test_kotlin.databinding.FragmentRegistorDemo3Binding
+import com.example.test_kotlin.room.UserViewModel
 
 val spinnerItems = arrayOf(
     "Select City",
@@ -29,7 +32,7 @@ val spinnerItems = arrayOf(
 @Suppress("NAME_SHADOWING", "DEPRECATION")
 class FragmentRegisterDemo3 : Fragment(), View.OnClickListener {
     private lateinit var binding: FragmentRegistorDemo3Binding
-
+    private lateinit var userViewModel: UserViewModel
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -41,6 +44,7 @@ class FragmentRegisterDemo3 : Fragment(), View.OnClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        userViewModel = ViewModelProvider(this)[UserViewModel::class.java]
         binding.btnSignup.setOnClickListener(this)
         val adapter = object : ArrayAdapter<String>(
             requireContext(), android.R.layout.simple_list_item_1,
@@ -85,10 +89,34 @@ class FragmentRegisterDemo3 : Fragment(), View.OnClickListener {
                 Toast.LENGTH_SHORT
             ).show()
         } else {
-            Toast.makeText(requireContext(), "Registered Successfully", Toast.LENGTH_SHORT)
-                .show()
+            val userName = binding.etUsernameSignup.text.toString()
+            Log.i("TAG",userName)
+            val mobileNo = binding.etNumberSignup.text.toString()
+            Log.i("TAG",mobileNo)
+            val emailAddress = binding.etEmailSignup.text.toString()
+            Log.i("TAG",emailAddress)
+            val password = binding.etPasswordSignup.text.toString()
+            Log.i("TAG",password)
+            val address = binding.etAddressSignup.text.toString()
+            Log.i("TAG",address)
+            val pincode = binding.etPinCodeSignup.text.toString()
+            Log.i("TAG",pincode)
+            val city = binding.cityDropDown.selectedItem.toString()
+            Log.i("TAG",city)
+            userViewModel.insertData(
+                requireContext(),
+                userName,
+                mobileNo,
+                emailAddress,
+                password,
+                address,
+                pincode,
+                city
+            )
             p0?.hideKeyboard()
             clearAllFields()
+            Toast.makeText(requireContext(), "Registered Successfully", Toast.LENGTH_SHORT)
+                .show()
         }
     }
 
