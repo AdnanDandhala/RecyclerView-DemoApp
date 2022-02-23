@@ -54,14 +54,16 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
                 android:background="@drawable/demo3_et_shape"
-                android:drawableEnd="@drawable/ic_outline_assignment_ind_24"
+                android:drawableEnd="@drawable/et_icon_username_signup"
                 android:drawablePadding="10dp"
                 android:hint="@string/et_hint_username_signup"
                 android:inputType="text"
                 android:padding="18dp"
+                android:textColorHint="#757575"
                 app:layout_constraintEnd_toEndOf="@+id/tv_description_signup"
                 app:layout_constraintStart_toStartOf="@+id/tv_description_signup"
-                app:layout_constraintTop_toBottomOf="@+id/tv_description_signup" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_description_signup"
+                tools:ignore="TextContrastCheck,TextContrastCheck" />
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/et_number_signup"
@@ -69,7 +71,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
                 android:background="@drawable/demo3_et_shape"
-                android:drawableEnd="@drawable/ic_outline_phone_iphone_24"
+                android:drawableEnd="@drawable/et_icon_mobile_signup"
                 android:drawablePadding="10dp"
                 android:hint="@string/et_hint_mobile_number_signup"
                 android:inputType="number"
@@ -77,7 +79,8 @@
                 android:singleLine="true"
                 app:layout_constraintEnd_toEndOf="@+id/et_username_signup"
                 app:layout_constraintStart_toStartOf="@+id/et_username_signup"
-                app:layout_constraintTop_toBottomOf="@+id/et_username_signup" />
+                app:layout_constraintTop_toBottomOf="@+id/et_username_signup"
+                tools:ignore="TextContrastCheck" />
 
 
             <androidx.appcompat.widget.AppCompatEditText
@@ -86,7 +89,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
                 android:background="@drawable/demo3_et_shape"
-                android:drawableEnd="@drawable/ic_outline_mail_outline_24"
+                android:drawableEnd="@drawable/et_icon_mail_login"
                 android:drawablePadding="10dp"
                 android:hint="@string/et_hint_email_login"
                 android:inputType="textEmailAddress"
@@ -94,7 +97,8 @@
                 android:singleLine="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/et_number_signup" />
+                app:layout_constraintTop_toBottomOf="@+id/et_number_signup"
+                tools:ignore="TextContrastCheck,TextContrastCheck" />
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/et_password_signup"
@@ -102,7 +106,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
                 android:background="@drawable/demo3_et_shape"
-                android:drawableEnd="@drawable/ic_outline_remove_red_eye_24"
+                android:drawableEnd="@drawable/et_icon_password_login"
                 android:drawablePadding="10dp"
                 android:hint="@string/et_hint_password_login"
                 android:inputType="textPassword"
@@ -110,7 +114,8 @@
                 android:singleLine="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/et_email_signup" />
+                app:layout_constraintTop_toBottomOf="@+id/et_email_signup"
+                tools:ignore="TextContrastCheck" />
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/et_confirm_password_signup"
@@ -118,7 +123,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
                 android:background="@drawable/demo3_et_shape"
-                android:drawableEnd="@drawable/ic_outline_remove_red_eye_24"
+                android:drawableEnd="@drawable/et_icon_password_login"
                 android:drawablePadding="10dp"
                 android:hint="@string/et_hint_confirm_password_login"
                 android:inputType="textPassword"
@@ -126,7 +131,8 @@
                 android:singleLine="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/et_password_signup" />
+                app:layout_constraintTop_toBottomOf="@+id/et_password_signup"
+                tools:ignore="TextContrastCheck,TextContrastCheck" />
 
 
             <androidx.appcompat.widget.AppCompatEditText
@@ -135,7 +141,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
                 android:background="@drawable/demo3_et_shape"
-                android:drawableEnd="@drawable/ic_outline_add_location_alt_24"
+                android:drawableEnd="@drawable/et_icon_address_signup"
                 android:drawablePadding="10dp"
                 android:hint="@string/et_hint_address_signup"
                 android:inputType="text"
@@ -143,7 +149,8 @@
                 android:singleLine="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/et_confirm_password_signup" />
+                app:layout_constraintTop_toBottomOf="@+id/et_confirm_password_signup"
+                tools:ignore="TextContrastCheck" />
 
 
             <androidx.appcompat.widget.AppCompatEditText
@@ -152,7 +159,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
                 android:background="@drawable/demo3_et_shape"
-                android:drawableEnd="@drawable/ic_outline_person_pin_circle_24"
+                android:drawableEnd="@drawable/et_icon_pincode_signup"
                 android:drawablePadding="10dp"
                 android:hint="@string/et_hint_pin_code_signup"
                 android:inputType="number"
@@ -160,7 +167,8 @@
                 android:singleLine="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/et_address_signup" />
+                app:layout_constraintTop_toBottomOf="@+id/et_address_signup"
+                tools:ignore="TextContrastCheck,TextContrastCheck" />
 
 
             <androidx.appcompat.widget.AppCompatSpinner
