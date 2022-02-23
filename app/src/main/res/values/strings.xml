@@ -41,4 +41,6 @@
     <string name="hint_resource">Enter City</string>
     <string name="et_hint_confirm_password_login">Confirm Password</string>
     <string name="tv_text_after_login">User Login Successfully</string>
+    <string name="tv_text_valid_email">Please Enter Valid Email Address</string>
+    <string name="tv_text_valid_password">Minimum length of password is six characters></string>
 </resources>

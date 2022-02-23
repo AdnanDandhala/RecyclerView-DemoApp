@@ -1,10 +1,12 @@
 package com.example.test_kotlin.fragments
 
+import android.content.Context
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -40,13 +42,20 @@ class FragmentLoginDemo3 : Fragment(), View.OnClickListener {
                 val txtEtPassword = binding.etPasswordLogin.text
                 if (TextUtils.isEmpty(txtEtEmail) || TextUtils.isEmpty(txtEtPassword)) {
                     Toast.makeText(requireContext(), "Enter All Field", Toast.LENGTH_SHORT).show()
+                    binding.tvValidEmail.visibility = View.VISIBLE
+                    binding.tvValidPassword.visibility = View.VISIBLE
                 } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(txtEtEmail.toString())
                         .matches()
                 ) {
-                    Toast.makeText(requireContext(), "Enter Valid Email", Toast.LENGTH_SHORT).show()
+                    if (!binding.tvValidEmail.isVisible) {
+                        binding.tvValidEmail.visibility = View.VISIBLE
+                    }
                 } else {
-                    Toast.makeText(requireContext(), "Login Successfully", Toast.LENGTH_SHORT)
-                        .show()
+                    if (binding.tvValidEmail.isVisible || binding.tvValidPassword.isVisible) {
+                        binding.tvValidEmail.visibility = View.GONE
+                        binding.tvValidPassword.visibility = View.GONE
+                    }
+                    p0.hideKeyboard()
                     binding.etEmailLogin.text?.clear()
                     binding.etPasswordLogin.text?.clear()
                     binding.etEmailLogin.requestFocus()
@@ -72,4 +81,11 @@ class FragmentLoginDemo3 : Fragment(), View.OnClickListener {
             }
         }
     }
+
+    private fun View.hideKeyboard() {
+        val inputManager =
+            context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputManager.hideSoftInputFromWindow(windowToken, 0)
+    }
+
 }

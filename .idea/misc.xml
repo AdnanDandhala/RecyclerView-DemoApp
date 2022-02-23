@@ -6,6 +6,8 @@
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/drawable-v24/demo2_img_btn_corner_add_white.xml" value="0.1" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/drawable-v24/ic_baseline_add_white_24.xml" value="0.1" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/drawable-v24/ic_baseline_minus_white_24.xml" value="0.1" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/drawable-v24/ic_outline_mail2_outline_24.xml" value="0.1" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/drawable-v24/ic_outline_remove_red_eye2_24.xml" value="0.1255" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/drawable/btn_background_first_screen.xml" value="0.119" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/drawable/btn_border.xml" value="0.25" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/drawable/demo2_child_layout_border.xml" value="0.141" />
@@ -19,6 +21,8 @@
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/drawable/demo3_et_shape.xml" value="0.1" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/drawable/et_bg_border.xml" value="0.1355" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/drawable/et_border.xml" value="0.1" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/drawable/et_icon_mail_login.xml" value="0.1" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/drawable/et_icon_password_login.xml" value="0.1" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/drawable/gradient_spinner.xml" value="0.13" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.1225" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/drawable/ic_baseline_add_white_24.xml" value="0.1435" />
@@ -56,7 +60,7 @@
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/layout/fragment_demo2.xml" value="0.23274974253347064" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/layout/fragment_demo3.xml" value="0.25" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/layout/fragment_first_screen.xml" value="0.33" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/layout/fragment_login__demo3.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/layout/fragment_login__demo3.xml" value="0.33" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/layout/fragment_recyclerview_data.xml" value="0.2609375" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/layout/fragment_registor_demo3.xml" value="0.22" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/layout/fragment_search_demo3.xml" value="0.21419410004275333" />

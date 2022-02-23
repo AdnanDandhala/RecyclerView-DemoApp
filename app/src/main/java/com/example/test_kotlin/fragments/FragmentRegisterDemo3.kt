@@ -1,12 +1,15 @@
 package com.example.test_kotlin.fragments
 
+import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.ArrayAdapter
+import android.widget.ScrollView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -84,6 +87,7 @@ class FragmentRegisterDemo3 : Fragment(), View.OnClickListener {
         } else {
             Toast.makeText(requireContext(), "Registered Successfully", Toast.LENGTH_SHORT)
                 .show()
+            p0?.hideKeyboard()
             clearAllFields()
         }
     }
@@ -109,12 +113,20 @@ class FragmentRegisterDemo3 : Fragment(), View.OnClickListener {
     private fun clearAllFields() {
         binding.etUsernameSignup.text?.clear()
         binding.etNumberSignup.text?.clear()
+        binding.etNumberSignup.clearFocus()
         binding.etEmailSignup.text?.clear()
+        binding.etEmailSignup.clearFocus()
         binding.etPasswordSignup.text?.clear()
+        binding.etPasswordSignup.clearFocus()
         binding.etConfirmPasswordSignup.text?.clear()
+        binding.etConfirmPasswordSignup.clearFocus()
         binding.etAddressSignup.text?.clear()
+        binding.etAddressSignup.clearFocus()
         binding.etPinCodeSignup.text?.clear()
+        binding.etPinCodeSignup.clearFocus()
         binding.cityDropDown.setSelection(0)
+        binding.scrollViewSignup.fullScroll(ScrollView.FOCUS_UP)
+        binding.etUsernameSignup.clearFocus()
     }
 
     private fun checkEmpty(): Boolean {
@@ -123,5 +135,11 @@ class FragmentRegisterDemo3 : Fragment(), View.OnClickListener {
         ) || TextUtils.isEmpty(binding.etPasswordSignup.text) || TextUtils.isEmpty(binding.etConfirmPasswordSignup.text) || TextUtils.isEmpty(
             binding.etAddressSignup.text
         ) || TextUtils.isEmpty(binding.etPinCodeSignup.text)
+    }
+
+    private fun View.hideKeyboard() {
+        val inputManager =
+            context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputManager.hideSoftInputFromWindow(windowToken, 0)
     }
 }
