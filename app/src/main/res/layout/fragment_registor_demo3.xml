@@ -162,7 +162,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
                 android:background="@drawable/demo3_et_shape"
-                android:drawableEnd="@drawable/et_icon_pincode_signup"
+                android:drawableEnd="@drawable/et_icon_pin_code_signup"
                 android:drawablePadding="10dp"
                 android:hint="@string/et_hint_pin_code_signup"
                 android:inputType="number"
