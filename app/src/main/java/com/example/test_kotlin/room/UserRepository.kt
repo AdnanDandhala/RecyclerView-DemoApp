@@ -7,7 +7,7 @@ import kotlinx.coroutines.launch
 
 class UserRepository {
     companion object {
-        var usersDatabase: UsersDatabase? = null
+        private var usersDatabase: UsersDatabase? = null
         private fun initializeDB(context: Context): UsersDatabase {
             return UsersDatabase.getDatabaseObj(context)
         }
@@ -19,13 +19,13 @@ class UserRepository {
             emailAddress: String,
             password: String,
             address: String,
-            pincode: String,
+            pinCode: String,
             city: String
         ) {
             usersDatabase = initializeDB(context)
             CoroutineScope(IO).launch {
                 val userDetails =
-                    Users(username, mobileNo, emailAddress, password, address, pincode, city)
+                    Users(username, mobileNo, emailAddress, password, address, pinCode, city)
                 usersDatabase!!.userDao().insertUser(userDetails)
             }
         }

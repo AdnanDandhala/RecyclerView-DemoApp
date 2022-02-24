@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter
 import android.widget.ScrollView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -47,8 +48,13 @@ class FragmentRegisterDemo3 : Fragment(), View.OnClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        if (binding.tvUserLoginSignup.isVisible || binding.btnLogoutSignup.isVisible) {
+            binding.tvUserLoginSignup.visibility = View.GONE
+            binding.btnLogoutSignup.visibility = View.GONE
+        }
         userViewModel = ViewModelProvider(this)[UserViewModel::class.java]
         binding.btnSignup.setOnClickListener(this)
+        binding.btnLogoutSignup.setOnClickListener(this)
         val adapter = object : ArrayAdapter<String>(
             requireContext(), android.R.layout.simple_list_item_1,
             spinnerItems
@@ -77,57 +83,79 @@ class FragmentRegisterDemo3 : Fragment(), View.OnClickListener {
     }
 
     override fun onClick(p0: View?) {
-        if (checkEmpty()) {
-            Toast.makeText(requireContext(), "Enter All Field", Toast.LENGTH_SHORT).show()
-        } else if (!checkPhoneNumberFormat()) {
-            Toast.makeText(requireContext(), "Enter Valid Mobile Number", Toast.LENGTH_SHORT)
-                .show()
-        } else if (!checkEmailFormat()) {
-            Toast.makeText(requireContext(), "Enter Valid Email Format", Toast.LENGTH_SHORT)
-                .show()
-        } else if (!checkPassword()) {
-            Toast.makeText(
-                requireContext(),
-                "Password And Confirm Password Doesn't Matches",
-                Toast.LENGTH_SHORT
-            ).show()
-        } else {
-            val userName = binding.etUsernameSignup.text.toString()
-            val mobileNo = binding.etNumberSignup.text.toString()
-            val emailAddress = binding.etEmailSignup.text.toString()
-            val password = binding.etPasswordSignup.text.toString()
-            val address = binding.etAddressSignup.text.toString()
-            val pinCode = binding.etPinCodeSignup.text.toString()
-            val city = binding.cityDropDown.selectedItem.toString()
-            lifecycleScope.launch {
-                withContext(Dispatchers.IO) {
-                    val isPresent = userViewModel.checkEmail(requireContext(), emailAddress)
-                    withContext(Dispatchers.Main) {
-                        if (isPresent) {
-                            Toast.makeText(
-                                requireContext(),
-                                "Email Already Exists",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        } else {
-                            userViewModel.insertData(
-                                requireContext(),
-                                userName,
-                                mobileNo,
-                                emailAddress,
-                                password,
-                                address,
-                                pinCode,
-                                city
-                            )
-                            p0?.hideKeyboard()
-                            clearAllFields()
-                            Toast.makeText(
-                                requireContext(),
-                                "Registered Successfully",
-                                Toast.LENGTH_SHORT
-                            ).show()
+        when (p0?.id) {
+            binding.btnSignup.id -> {
+                if (checkEmpty()) {
+                    Toast.makeText(requireContext(), "Enter All Field", Toast.LENGTH_SHORT).show()
+                } else if (!checkPhoneNumberFormat()) {
+                    Toast.makeText(
+                        requireContext(),
+                        "Enter Valid Mobile Number",
+                        Toast.LENGTH_SHORT
+                    )
+                        .show()
+                } else if (!checkEmailFormat()) {
+                    Toast.makeText(requireContext(), "Enter Valid Email Format", Toast.LENGTH_SHORT)
+                        .show()
+                } else if (!checkPassword()) {
+                    Toast.makeText(
+                        requireContext(),
+                        "Password And Confirm Password Doesn't Matches",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                } else {
+                    val userName = binding.etUsernameSignup.text.toString()
+                    val mobileNo = binding.etNumberSignup.text.toString()
+                    val emailAddress = binding.etEmailSignup.text.toString()
+                    val password = binding.etPasswordSignup.text.toString()
+                    val address = binding.etAddressSignup.text.toString()
+                    val pinCode = binding.etPinCodeSignup.text.toString()
+                    val city = binding.cityDropDown.selectedItem.toString()
+                    lifecycleScope.launch {
+                        withContext(Dispatchers.IO) {
+                            val isPresent = userViewModel.checkEmail(requireContext(), emailAddress)
+                            withContext(Dispatchers.Main) {
+                                if (isPresent) {
+                                    Toast.makeText(
+                                        requireContext(),
+                                        "Email Already Exists",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                } else {
+                                    userViewModel.insertData(
+                                        requireContext(),
+                                        userName,
+                                        mobileNo,
+                                        emailAddress,
+                                        password,
+                                        address,
+                                        pinCode,
+                                        city
+                                    )
+                                    p0.hideKeyboard()
+                                    clearAllFields()
+                                    binding.parentLayoutRegister.visibility = View.GONE
+                                    binding.tvUserLoginSignup.visibility = View.VISIBLE
+                                    binding.btnLogoutSignup.visibility = View.VISIBLE
+                                    Toast.makeText(
+                                        requireContext(),
+                                        "Registered Successfully",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                }
+                            }
                         }
+                    }
+                }
+            }
+            binding.btnLogoutSignup.id -> {
+                if (!binding.parentLayoutRegister.isVisible) {
+                    binding.parentLayoutRegister.visibility = View.VISIBLE
+                    if (binding.tvUserLoginSignup.isVisible && binding.btnLogoutSignup.isVisible) {
+                        binding.tvUserLoginSignup.visibility = View.GONE
+                        binding.btnLogoutSignup.visibility = View.GONE
+                        Toast.makeText(requireContext(), "Logout Successfully", Toast.LENGTH_SHORT)
+                            .show()
                     }
                 }
             }

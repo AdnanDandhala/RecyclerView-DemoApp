@@ -10,7 +10,7 @@ class UserViewModel : ViewModel() {
         emailAddress: String,
         password: String,
         address: String,
-        pincode: String,
+        pinCode: String,
         city: String
     ) {
         UserRepository.insertData(
@@ -20,7 +20,7 @@ class UserViewModel : ViewModel() {
             emailAddress,
             password,
             address,
-            pincode,
+            pinCode,
             city
         )
     }

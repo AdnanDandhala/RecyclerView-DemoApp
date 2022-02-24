@@ -36,6 +36,7 @@ class FragmentLoginDemo3 : Fragment(), View.OnClickListener {
         userViewModel = ViewModelProvider(this)[UserViewModel::class.java]
         if (binding.tvUserLogin.isVisible || binding.btnLogout.isVisible) {
             binding.tvUserLogin.visibility = View.GONE
+            binding.btnLogout.visibility = View.GONE
         }
         binding.btnLogin.setOnClickListener(this)
         binding.tvForgotPasswordLogin.setOnClickListener(this)
@@ -48,7 +49,6 @@ class FragmentLoginDemo3 : Fragment(), View.OnClickListener {
                 val txtEtEmail = binding.etEmailLogin.text?.trim()
                 val txtEtPassword = binding.etPasswordLogin.text
                 if (TextUtils.isEmpty(txtEtEmail) || TextUtils.isEmpty(txtEtPassword)) {
-                    Toast.makeText(requireContext(), "Enter All Field", Toast.LENGTH_SHORT).show()
                     binding.tvValidEmail.visibility = View.VISIBLE
                     binding.tvValidPassword.visibility = View.VISIBLE
                 } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(txtEtEmail.toString())
