@@ -25,10 +25,15 @@ class UserViewModel : ViewModel() {
         )
     }
 
+    fun checkEmail(context: Context, emailAddress: String): Boolean {
+        return UserRepository.checkEmail(context, emailAddress)
+    }
+
     fun checkUser(
+        context: Context,
         emailAddress: String,
         password: String
     ): Boolean {
-        return UserRepository.checkUser(emailAddress, password)
+        return UserRepository.checkUser(context, emailAddress, password)
     }
 }

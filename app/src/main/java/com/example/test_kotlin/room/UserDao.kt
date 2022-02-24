@@ -10,6 +10,9 @@ interface UserDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertUser(users: Users)
 
-    @Query("Select emailAddress=:emailAddress,password=:password from user_data_tb")
+    @Query("SELECT count(emailAddress) From user_data_tb WHERE emailAddress =:emailAddress")
+    fun checkEmail(emailAddress: String): Boolean
+
+    @Query("SELECT count(emailAddress) FROM user_data_tb WHERE emailAddress=:emailAddress AND password=:password")
     fun checkUser(emailAddress: String, password: String): Boolean
 }

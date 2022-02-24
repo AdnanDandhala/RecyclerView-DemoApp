@@ -11,8 +11,12 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.example.test_kotlin.databinding.FragmentLoginDemo3Binding
 import com.example.test_kotlin.room.UserViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 
 class FragmentLoginDemo3 : Fragment(), View.OnClickListener {
@@ -58,15 +62,33 @@ class FragmentLoginDemo3 : Fragment(), View.OnClickListener {
                         binding.tvValidEmail.visibility = View.GONE
                         binding.tvValidPassword.visibility = View.GONE
                     }
-//                    val isTrue =
-//                        userViewModel.checkUser(txtEtEmail.toString(), txtEtPassword.toString())
-                    p0.hideKeyboard()
-                    binding.etEmailLogin.text?.clear()
-                    binding.etPasswordLogin.text?.clear()
-                    binding.etEmailLogin.requestFocus()
-                    binding.parentLayoutLogin.visibility = View.GONE
-                    binding.tvUserLogin.visibility = View.VISIBLE
-                    binding.btnLogout.visibility = View.VISIBLE
+                    lifecycleScope.launch {
+                        withContext(Dispatchers.IO) {
+                            val isTrue =
+                                userViewModel.checkUser(
+                                    requireContext(),
+                                    txtEtEmail.toString(),
+                                    txtEtPassword.toString()
+                                )
+                            withContext(Dispatchers.Main) {
+                                if (isTrue) {
+                                    p0.hideKeyboard()
+                                    binding.etEmailLogin.text?.clear()
+                                    binding.etPasswordLogin.text?.clear()
+                                    binding.etEmailLogin.requestFocus()
+                                    binding.parentLayoutLogin.visibility = View.GONE
+                                    binding.tvUserLogin.visibility = View.VISIBLE
+                                    binding.btnLogout.visibility = View.VISIBLE
+                                } else {
+                                    Toast.makeText(
+                                        requireContext(),
+                                        "Invalid Username And Password",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                }
+                            }
+                        }
+                    }
                 }
             }
             binding.tvForgotPasswordLogin.id -> {

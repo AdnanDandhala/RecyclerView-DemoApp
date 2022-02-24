@@ -4,7 +4,6 @@ import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,9 +14,13 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.example.test_kotlin.R
 import com.example.test_kotlin.databinding.FragmentRegistorDemo3Binding
 import com.example.test_kotlin.room.UserViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 val spinnerItems = arrayOf(
     "Select City",
@@ -90,33 +93,44 @@ class FragmentRegisterDemo3 : Fragment(), View.OnClickListener {
             ).show()
         } else {
             val userName = binding.etUsernameSignup.text.toString()
-            Log.i("TAG",userName)
             val mobileNo = binding.etNumberSignup.text.toString()
-            Log.i("TAG",mobileNo)
             val emailAddress = binding.etEmailSignup.text.toString()
-            Log.i("TAG",emailAddress)
             val password = binding.etPasswordSignup.text.toString()
-            Log.i("TAG",password)
             val address = binding.etAddressSignup.text.toString()
-            Log.i("TAG",address)
-            val pincode = binding.etPinCodeSignup.text.toString()
-            Log.i("TAG",pincode)
+            val pinCode = binding.etPinCodeSignup.text.toString()
             val city = binding.cityDropDown.selectedItem.toString()
-            Log.i("TAG",city)
-            userViewModel.insertData(
-                requireContext(),
-                userName,
-                mobileNo,
-                emailAddress,
-                password,
-                address,
-                pincode,
-                city
-            )
-            p0?.hideKeyboard()
-            clearAllFields()
-            Toast.makeText(requireContext(), "Registered Successfully", Toast.LENGTH_SHORT)
-                .show()
+            lifecycleScope.launch {
+                withContext(Dispatchers.IO) {
+                    val isPresent = userViewModel.checkEmail(requireContext(), emailAddress)
+                    withContext(Dispatchers.Main) {
+                        if (isPresent) {
+                            Toast.makeText(
+                                requireContext(),
+                                "Email Already Exists",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        } else {
+                            userViewModel.insertData(
+                                requireContext(),
+                                userName,
+                                mobileNo,
+                                emailAddress,
+                                password,
+                                address,
+                                pinCode,
+                                city
+                            )
+                            p0?.hideKeyboard()
+                            clearAllFields()
+                            Toast.makeText(
+                                requireContext(),
+                                "Registered Successfully",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    }
+                }
+            }
         }
     }
 

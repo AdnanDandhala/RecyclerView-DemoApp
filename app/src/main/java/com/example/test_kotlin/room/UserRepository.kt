@@ -1,7 +1,6 @@
 package com.example.test_kotlin.room
 
 import android.content.Context
-import android.util.Log
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
@@ -31,7 +30,13 @@ class UserRepository {
             }
         }
 
-        fun checkUser(emailAddress: String, password: String): Boolean {
+        fun checkEmail(context: Context, emailAddress: String): Boolean {
+            usersDatabase = initializeDB(context)
+            return usersDatabase!!.userDao().checkEmail(emailAddress)
+        }
+
+        fun checkUser(context: Context, emailAddress: String, password: String): Boolean {
+            usersDatabase = initializeDB(context)
             return usersDatabase!!.userDao().checkUser(emailAddress, password)
         }
     }
