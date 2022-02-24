@@ -5,15 +5,41 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.test_kotlin.R
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.test_kotlin.adapters.SearchDemo3Adapter
+import com.example.test_kotlin.databinding.FragmentSearchDemo3Binding
+import com.example.test_kotlin.room.UserViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class FragmentSearchDemo3 : Fragment() {
-
+    private lateinit var binding: FragmentSearchDemo3Binding
+    private lateinit var userViewModel: UserViewModel
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_search_demo3, container, false)
+        binding = FragmentSearchDemo3Binding.inflate(layoutInflater)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        userViewModel = ViewModelProvider(this)[UserViewModel::class.java]
+        lifecycleScope.launch {
+            withContext(Dispatchers.IO) {
+                val listUser = userViewModel.getDetails(requireContext())
+                withContext(Dispatchers.Main) {
+                    val adapter = SearchDemo3Adapter(listUser)
+                    binding.recyclerViewSearchDemo3.layoutManager =
+                        LinearLayoutManager(requireContext())
+                    binding.recyclerViewSearchDemo3.adapter = adapter
+                }
+            }
+        }
     }
 }

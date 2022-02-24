@@ -39,5 +39,10 @@ class UserRepository {
             usersDatabase = initializeDB(context)
             return usersDatabase!!.userDao().checkUser(emailAddress, password)
         }
+
+        fun getDetails(context: Context): List<Users> {
+            usersDatabase = initializeDB(context)
+            return usersDatabase!!.userDao().getDetails()
+        }
     }
 }

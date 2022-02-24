@@ -36,4 +36,8 @@ class UserViewModel : ViewModel() {
     ): Boolean {
         return UserRepository.checkUser(context, emailAddress, password)
     }
+
+    fun getDetails(context: Context): List<Users> {
+        return UserRepository.getDetails(context)
+    }
 }
