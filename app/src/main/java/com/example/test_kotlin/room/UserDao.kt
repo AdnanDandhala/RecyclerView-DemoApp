@@ -16,6 +16,6 @@ interface UserDao {
     @Query("SELECT count(emailAddress) FROM user_data_tb WHERE emailAddress=:emailAddress AND password=:password")
     fun checkUser(emailAddress: String, password: String): Boolean
 
-    @Query("SELECT userName,emailAddress,address FROM user_data_tb")
+    @Query("SELECT * FROM user_data_tb")
     fun getDetails(): List<Users>
 }
