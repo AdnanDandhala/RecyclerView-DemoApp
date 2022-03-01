@@ -33,35 +33,28 @@ class FragmentSearchDemo3 : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         userViewModel = ViewModelProvider(this)[UserViewModel::class.java]
         refreshRecyclerView()
-        setUpSwipeFunctionality()
-    }
-
-    private fun setUpSwipeFunctionality() {
-
-    }
-
-
-    override fun onResume() {
-        super.onResume()
-        refreshRecyclerView()
     }
 
     @SuppressLint("NotifyDataSetChanged")
     private fun refreshRecyclerView() {
-        lifecycleScope.launch {
-            withContext(Dispatchers.IO) {
-                val listUser = userViewModel.getDetails(requireContext())
-                val adapter = SearchDemo3Adapter(listUser)
-                withContext(Dispatchers.Main) {
-                    binding.recyclerViewSearchDemo3.layoutManager =
-                        LinearLayoutManager(requireContext())
-                    binding.recyclerViewSearchDemo3.adapter = adapter
-                    adapter.notifyDataSetChanged()
-                    binding.recyclerViewSearchDemo3.scrollToPosition(listUser.size - 1)
-                    (binding.recyclerViewSearchDemo3.itemAnimator as SimpleItemAnimator).supportsChangeAnimations =
-                        false
+        userViewModel.getDetails(requireContext()).observe(requireActivity()) {
+            if (it != null) {
+                lifecycleScope.launch {
+                    withContext(Dispatchers.IO) {
+                        val adapter = SearchDemo3Adapter(it)
+                        withContext(Dispatchers.Main) {
+                            binding.recyclerViewSearchDemo3.layoutManager =
+                                LinearLayoutManager(requireContext())
+                            binding.recyclerViewSearchDemo3.adapter = adapter
+                            adapter.notifyDataSetChanged()
+                            binding.recyclerViewSearchDemo3.scrollToPosition(it.size - 1)
+                            (binding.recyclerViewSearchDemo3.itemAnimator as SimpleItemAnimator).supportsChangeAnimations =
+                                false
+                        }
+                    }
                 }
             }
         }
+
     }
 }

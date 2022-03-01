@@ -1,11 +1,14 @@
 package com.example.test_kotlin.viewmodel
 
 import android.content.Context
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.example.test_kotlin.room.UserRepository
 import com.example.test_kotlin.room.Users
 
 class UserViewModel : ViewModel() {
+    private lateinit var liveData: LiveData<List<Users>>
+
     fun insertData(
         context: Context, username: String,
         mobileNo: String,
@@ -39,7 +42,7 @@ class UserViewModel : ViewModel() {
         return UserRepository.checkUser(context, emailAddress, password)
     }
 
-     fun getDetails(context: Context): List<Users> {
+    fun getDetails(context: Context): LiveData<List<Users>> {
         return UserRepository.getDetails(context)
     }
 }

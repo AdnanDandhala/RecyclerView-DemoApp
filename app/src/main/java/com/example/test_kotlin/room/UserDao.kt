@@ -1,5 +1,6 @@
 package com.example.test_kotlin.room
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -17,5 +18,5 @@ interface UserDao {
     fun checkUser(emailAddress: String, password: String): Boolean
 
     @Query("SELECT * FROM user_data_tb")
-    fun getDetails(): List<Users>
+    fun getDetails(): LiveData<List<Users>>
 }

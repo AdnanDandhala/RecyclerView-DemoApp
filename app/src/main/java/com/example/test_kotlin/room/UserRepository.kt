@@ -1,6 +1,7 @@
 package com.example.test_kotlin.room
 
 import android.content.Context
+import androidx.lifecycle.LiveData
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
@@ -40,9 +41,10 @@ class UserRepository {
             return usersDatabase!!.userDao().checkUser(emailAddress, password)
         }
 
-        fun getDetails(context: Context): List<Users> {
+        fun getDetails(context: Context): LiveData<List<Users>> {
             usersDatabase = initializeDB(context)
             return usersDatabase!!.userDao().getDetails()
         }
+
     }
 }
