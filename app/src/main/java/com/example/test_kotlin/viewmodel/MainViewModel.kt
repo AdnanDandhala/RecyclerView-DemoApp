@@ -1,13 +1,11 @@
 package com.example.test_kotlin.viewmodel
 
-import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.test_kotlin.R
 import com.example.test_kotlin.adapters.LayoutHolderAdapter
 import com.example.test_kotlin.models.ModelDemo2
 import com.example.test_kotlin.models.ModelLayoutHolder
-import com.example.test_kotlin.room.UserRepository
 
 class MainViewModel : ViewModel() {
     private var liveData: MutableLiveData<ArrayList<ModelLayoutHolder>> = MutableLiveData()

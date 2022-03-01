@@ -43,6 +43,7 @@ class FragmentDemo3 : Fragment() {
         setTabIcon()
     }
 
+
     private fun setTabIcon() {
         binding.demo3TabLayout.getTabAt(0)?.setIcon(tabIcons[0])
         binding.demo3TabLayout.getTabAt(1)?.setIcon(tabIcons[1])

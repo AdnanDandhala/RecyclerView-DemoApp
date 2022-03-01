@@ -14,7 +14,6 @@ class SearchDemo3Adapter(var list: List<Users>) :
         fun bind(position: Int) {
             val user = list[position]
             binding.postUsers = user
-            // executePendingBindings()
         }
     }
 

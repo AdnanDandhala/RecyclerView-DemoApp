@@ -18,7 +18,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.test_kotlin.R
 import com.example.test_kotlin.databinding.FragmentRegistorDemo3Binding
-import com.example.test_kotlin.room.UserViewModel
+import com.example.test_kotlin.viewmodel.UserViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
