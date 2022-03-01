@@ -40,6 +40,7 @@ class FragmentDemo3 : Fragment() {
         TabLayoutMediator(binding.demo3TabLayout, binding.demo3ViewPager) { tab, position ->
             tab.text = TabNames[position]
         }.attach()
+        binding.demo3ViewPager.isUserInputEnabled = false
         setTabIcon()
     }
 

@@ -12,10 +12,10 @@ import android.widget.ArrayAdapter
 import android.widget.ScrollView
 import android.widget.TextView
 import android.widget.Toast
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.viewpager2.widget.ViewPager2
 import com.example.test_kotlin.R
 import com.example.test_kotlin.databinding.FragmentRegistorDemo3Binding
 import com.example.test_kotlin.viewmodel.UserViewModel
@@ -37,6 +37,7 @@ val spinnerItems = arrayOf(
 class FragmentRegisterDemo3 : Fragment(), View.OnClickListener {
     private lateinit var binding: FragmentRegistorDemo3Binding
     private lateinit var userViewModel: UserViewModel
+    private lateinit var viewPager2: ViewPager2
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -48,13 +49,9 @@ class FragmentRegisterDemo3 : Fragment(), View.OnClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        if (binding.tvUserLoginSignup.isVisible || binding.btnLogoutSignup.isVisible) {
-            binding.tvUserLoginSignup.visibility = View.GONE
-            binding.btnLogoutSignup.visibility = View.GONE
-        }
         userViewModel = ViewModelProvider(this)[UserViewModel::class.java]
         binding.btnSignup.setOnClickListener(this)
-        binding.btnLogoutSignup.setOnClickListener(this)
+        viewPager2 = activity?.findViewById(R.id.demo3_viewPager)!!
         val adapter = object : ArrayAdapter<String>(
             requireContext(), android.R.layout.simple_list_item_1,
             spinnerItems
@@ -133,29 +130,16 @@ class FragmentRegisterDemo3 : Fragment(), View.OnClickListener {
                                         city
                                     )
                                     p0.hideKeyboard()
-                                    clearAllFields()
-                                    binding.parentLayoutRegister.visibility = View.GONE
-                                    binding.tvUserLoginSignup.visibility = View.VISIBLE
-                                    binding.btnLogoutSignup.visibility = View.VISIBLE
                                     Toast.makeText(
                                         requireContext(),
                                         "Registered Successfully",
                                         Toast.LENGTH_SHORT
                                     ).show()
+                                    viewPager2.currentItem = 0
+                                    clearAllFields()
                                 }
                             }
                         }
-                    }
-                }
-            }
-            binding.btnLogoutSignup.id -> {
-                if (!binding.parentLayoutRegister.isVisible) {
-                    binding.parentLayoutRegister.visibility = View.VISIBLE
-                    if (binding.tvUserLoginSignup.isVisible && binding.btnLogoutSignup.isVisible) {
-                        binding.tvUserLoginSignup.visibility = View.GONE
-                        binding.btnLogoutSignup.visibility = View.GONE
-                        Toast.makeText(requireContext(), "Logout Successfully", Toast.LENGTH_SHORT)
-                            .show()
                     }
                 }
             }
