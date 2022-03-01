@@ -12,10 +12,9 @@ class SearchDemo3Adapter(var list: List<Users>) :
     inner class SearchRecyclerViewHolder(val binding: RecyclerviewLayoutSearchDemo3Binding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(position: Int) {
-            val users = list[position]
-            binding.tvUsernameSearchRv.text = users.toString()
-            binding.tvEmailSearchRv.text = users.toString()
-            binding.tvAddressSearchRv.text = users.toString()
+            val user = list[position]
+            binding.postUsers = user
+            // executePendingBindings()
         }
     }
 
@@ -32,6 +31,7 @@ class SearchDemo3Adapter(var list: List<Users>) :
     override fun onBindViewHolder(holder: SearchRecyclerViewHolder, position: Int) {
         holder.bind(position)
     }
+
 
     override fun getItemCount(): Int {
         return list.size

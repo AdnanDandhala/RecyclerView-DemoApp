@@ -1,6 +1,7 @@
 package com.example.test_kotlin.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -30,13 +31,13 @@ class FragmentSearchDemo3 : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         userViewModel = ViewModelProvider(this)[UserViewModel::class.java]
+
         lifecycleScope.launch {
             withContext(Dispatchers.IO) {
                 val listUser = userViewModel.getDetails(requireContext())
+                val adapter = SearchDemo3Adapter(listUser)
                 withContext(Dispatchers.Main) {
-                    val adapter = SearchDemo3Adapter(listUser)
-                    binding.recyclerViewSearchDemo3.layoutManager =
-                        LinearLayoutManager(requireContext())
+                    binding.recyclerViewSearchDemo3.layoutManager = LinearLayoutManager(requireContext())
                     binding.recyclerViewSearchDemo3.adapter = adapter
                 }
             }
