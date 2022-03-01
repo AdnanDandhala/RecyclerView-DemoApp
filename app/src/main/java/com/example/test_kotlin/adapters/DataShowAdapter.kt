@@ -7,7 +7,7 @@ import com.example.test_kotlin.databinding.RecyclerviewDataShowReceiverBinding
 import com.example.test_kotlin.databinding.RecyclerviewDataShowSenderBinding
 import com.example.test_kotlin.models.ModelDataShow
 
-
+//List Adapter And It's Usage
 class DataShowAdapter(
     list: ArrayList<ModelDataShow>
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
