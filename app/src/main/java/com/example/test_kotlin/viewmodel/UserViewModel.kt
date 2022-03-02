@@ -45,4 +45,33 @@ class UserViewModel : ViewModel() {
     fun getDetails(context: Context): LiveData<List<Users>> {
         return UserRepository.getDetails(context)
     }
+
+    fun getRequested(context: Context, ID: Int): LiveData<List<Users>> {
+        return UserRepository.getRequested(context, ID)
+    }
+
+    fun updateData(
+        context: Context, username: String,
+        mobileNo: String,
+        emailAddress: String,
+        password: String,
+        address: String,
+        pinCode: String,
+        city: String
+    ) {
+        UserRepository.updateData(
+            context,
+            username,
+            mobileNo,
+            emailAddress,
+            password,
+            address,
+            pinCode,
+            city
+        )
+    }
+
+    fun deleteUser(context: Context, users: Users) {
+        UserRepository.deleteUser(context, users)
+    }
 }

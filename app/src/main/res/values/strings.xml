@@ -43,4 +43,10 @@
     <string name="tv_text_after_login">User Login Successfully</string>
     <string name="tv_text_valid_email">Please Enter Valid Email Address</string>
     <string name="tv_text_valid_password">Minimum length of password is six characters></string>
+    <string name="btn_txt_bottom_sheet">Update</string>
+    <string name="tv_txt_bottomSheet">Edit User And Update It</string>
+    <string name="tv_text_alert_delete_up">Are You Sure?</string>
+    <string name="tv_text_alert_delete_down">You want to delete this user !</string>
+    <string name="btn_text_alert_positive">Yes</string>
+    <string name="btn_text_alert_negative">Cancel</string>
 </resources>

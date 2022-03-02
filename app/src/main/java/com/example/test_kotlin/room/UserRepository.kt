@@ -46,5 +46,43 @@ class UserRepository {
             return usersDatabase!!.userDao().getDetails()
         }
 
+        fun getRequested(context: Context, ID: Int): LiveData<List<Users>> {
+            usersDatabase = initializeDB(context)
+            return usersDatabase!!.userDao().getRequested(ID)
+        }
+
+        fun updateData(
+            context: Context,
+            username: String,
+            mobileNo: String,
+            emailAddress: String,
+            password: String,
+            address: String,
+            pinCode: String,
+            city: String
+        ) {
+            usersDatabase = initializeDB(context)
+            CoroutineScope(IO).launch {
+                usersDatabase!!.userDao().updateData(
+                    Users(
+                        username,
+                        mobileNo,
+                        emailAddress,
+                        password,
+                        address,
+                        pinCode,
+                        city
+                    )
+                )
+            }
+        }
+
+        fun deleteUser(context: Context, users: Users) {
+            usersDatabase = initializeDB(context)
+            CoroutineScope(IO).launch {
+                usersDatabase!!.userDao().deleteUser(users)
+            }
+        }
+
     }
 }

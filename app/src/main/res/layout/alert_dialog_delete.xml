@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_margin="5dp"
+    android:background="@color/white"
+    android:layout_height="wrap_content"
+    android:padding="5dp">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/img_alert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/alert_delete" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_alert_delete_up"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/tv_text_alert_delete_up"
+        android:textAlignment="center"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_alert" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_alert_delete_down"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/tv_text_alert_delete_down"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_alert_delete_up" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_positive"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/alert_dialog_btn_round_corner"
+        android:text="@string/btn_text_alert_positive"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="@+id/tv_alert_delete_down"
+        app:layout_constraintTop_toBottomOf="@+id/tv_alert_delete_down" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_negative"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/alert_dialog_btn_round_corner"
+        android:text="@string/btn_text_alert_negative"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/tv_alert_delete_down"
+        app:layout_constraintTop_toBottomOf="@+id/tv_alert_delete_down" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

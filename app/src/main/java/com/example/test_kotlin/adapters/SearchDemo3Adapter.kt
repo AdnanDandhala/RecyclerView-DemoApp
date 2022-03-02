@@ -31,6 +31,9 @@ class SearchDemo3Adapter(var list: List<Users>) :
         holder.bind(position)
     }
 
+    fun getUsersAtPosition(position: Int): Users {
+        return list[position]
+    }
 
     override fun getItemCount(): Int {
         return list.size

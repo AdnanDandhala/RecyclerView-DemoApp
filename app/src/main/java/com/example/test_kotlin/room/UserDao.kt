@@ -1,10 +1,7 @@
 package com.example.test_kotlin.room
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 
 @Dao
 interface UserDao {
@@ -19,4 +16,13 @@ interface UserDao {
 
     @Query("SELECT * FROM user_data_tb")
     fun getDetails(): LiveData<List<Users>>
+
+    @Query("SELECT * FROM user_data_tb WHERE id=:ID")
+    fun getRequested(ID: Int): LiveData<List<Users>>
+
+    @Update
+    suspend fun updateData(users: Users)
+
+    @Delete
+    fun deleteUser(users: Users)
 }

@@ -13,6 +13,8 @@
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/drawable-v24/ic_outline_person_pin2_circle_24.xml" value="0.1255" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/drawable-v24/ic_outline_phone_iphone2_24.xml" value="0.1255" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/drawable-v24/ic_outline_remove_red_eye2_24.xml" value="0.1255" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/drawable/alert_dialog_btn_border.xml" value="0.188" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/drawable/alert_dialog_btn_round_corner.xml" value="0.188" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/drawable/btn_background_first_screen.xml" value="0.119" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/drawable/btn_border.xml" value="0.25" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/drawable/demo2_child_layout_border.xml" value="0.141" />
@@ -49,6 +51,7 @@
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/drawable/ic_outline_add_location_alt_24.xml" value="0.1" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/drawable/ic_outline_arrow_drop_down_circle_24.xml" value="0.155" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/drawable/ic_outline_assignment_ind_24.xml" value="0.1015" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/drawable/ic_outline_linear_scale_24.xml" value="0.2625" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/drawable/ic_outline_mail_outline_24.xml" value="0.1365" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/drawable/ic_outline_person_pin_circle_24.xml" value="0.1015" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/drawable/ic_outline_phone_iphone_24.xml" value="0.1015" />
@@ -66,6 +69,8 @@
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/drawable/tab_layout_border.xml" value="0.13" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/font/asul.xml" value="0.1927710843373494" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/layout/alert_dialog_delete.xml" value="0.5" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/layout/bootom_sheet_dailog.xml" value="0.5014727540500736" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/layout/fragment_data_show.xml" value="0.18" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/layout/fragment_demo2.xml" value="0.23274974253347064" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/layout/fragment_demo3.xml" value="0.1259259259259259" />

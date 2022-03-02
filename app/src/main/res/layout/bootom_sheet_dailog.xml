@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.example.test_kotlin.room.Users" />
+
+        <variable
+            name="post_bottom_sheet_register"
+            type="com.example.test_kotlin.room.Users" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".fragments.FragmentLoginDemo3">
+
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scroll_view_signup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/parent_layout_register"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="visible">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/appCompatImageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="10dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_outline_linear_scale_24" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_bottom_sheet_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="@string/tv_txt_bottomSheet"
+                    android:textAlignment="center"
+                    android:textColor="@color/DarkViolet"
+                    android:textSize="25sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/appCompatImageView" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/et_username_bottom_sheet"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:background="@drawable/demo3_et_shape"
+                    android:drawableEnd="@drawable/et_icon_username_signup"
+                    android:drawablePadding="10dp"
+                    android:hint="@string/et_hint_username_signup"
+                    android:inputType="text"
+                    android:padding="18dp"
+                    android:text="@{post_bottom_sheet_register.userName}"
+                    android:textColorHint="#757575"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_bottom_sheet_text"
+                    tools:ignore="TextContrastCheck,TextContrastCheck" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/et_number_bottom_sheet"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/demo3_et_shape"
+                    android:drawableEnd="@drawable/et_icon_mobile_signup"
+                    android:drawablePadding="10dp"
+                    android:hint="@string/et_hint_mobile_number_signup"
+                    android:inputType="number"
+                    android:padding="18dp"
+                    android:singleLine="true"
+                    android:text="@{post_bottom_sheet_register.mobileNo}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/et_username_bottom_sheet"
+                    tools:ignore="TextContrastCheck" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/et_email_bottom_sheet"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:background="@drawable/demo3_et_shape"
+                    android:drawableEnd="@drawable/et_icon_mail_login"
+                    android:drawablePadding="10dp"
+                    android:hint="@string/et_hint_email_login"
+                    android:inputType="textEmailAddress"
+                    android:padding="18dp"
+                    android:singleLine="true"
+                    android:text="@{post_bottom_sheet_register.emailAddress}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/et_number_bottom_sheet" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/et_password_bottom_sheet"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:background="@drawable/demo3_et_shape"
+                    android:drawableEnd="@drawable/et_icon_password_login"
+                    android:drawablePadding="10dp"
+                    android:hint="@string/et_hint_password_login"
+                    android:inputType="textPassword"
+                    android:padding="18dp"
+                    android:singleLine="true"
+                    android:text="@{post_bottom_sheet_register.password}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/et_email_bottom_sheet"
+                    tools:ignore="TextContrastCheck" />
+
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/et_address_bottom_sheet"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:background="@drawable/demo3_et_shape"
+                    android:drawableEnd="@drawable/et_icon_address_signup"
+                    android:drawablePadding="10dp"
+                    android:hint="@string/et_hint_address_signup"
+                    android:inputType="text"
+                    android:padding="18dp"
+                    android:singleLine="true"
+                    android:text="@{post_bottom_sheet_register.address}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/et_password_bottom_sheet"
+                    tools:ignore="TextContrastCheck" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/et_pin_code_bottom_sheet"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:background="@drawable/demo3_et_shape"
+                    android:drawableEnd="@drawable/et_icon_pin_code_signup"
+                    android:drawablePadding="10dp"
+                    android:hint="@string/et_hint_pin_code_signup"
+                    android:inputType="number"
+                    android:padding="18dp"
+                    android:singleLine="true"
+                    android:text="@{post_bottom_sheet_register.pincode}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/et_address_bottom_sheet"
+                    tools:ignore="TextContrastCheck,TextContrastCheck" />
+
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/city_drop_down_bottom_sheet"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:background="@drawable/gradient_spinner"
+                    android:drawablePadding="10dp"
+                    android:spinnerMode="dropdown"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/et_pin_code_bottom_sheet"
+                    tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_update_bottom_sheet"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:background="@drawable/demo3_btn_border"
+                    android:text="@string/btn_txt_bottom_sheet"
+                    android:textColor="@color/white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/city_drop_down_bottom_sheet" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
