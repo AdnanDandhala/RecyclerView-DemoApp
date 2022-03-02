@@ -21,6 +21,7 @@ import com.example.test_kotlin.R
 import com.example.test_kotlin.SwipeItemTouchHelper
 import com.example.test_kotlin.adapters.SearchDemo3Adapter
 import com.example.test_kotlin.databinding.FragmentSearchDemo3Binding
+import com.example.test_kotlin.room.Users
 import com.example.test_kotlin.viewmodel.UserViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import kotlinx.coroutines.Dispatchers
@@ -45,18 +46,17 @@ class FragmentSearchDemo3 : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         userViewModel = ViewModelProvider(this)[UserViewModel::class.java]
         refreshRecyclerView()
-        recyclerViewSwipeFunctionality()
     }
 
-    private fun recyclerViewSwipeFunctionality() {
+    private fun recyclerViewSwipeFunctionality(list: List<Users>) {
         val swipeToDeleteCallBack = object : SwipeItemTouchHelper() {
             @SuppressLint("InflateParams")
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val position = viewHolder.adapterPosition
+                val finalP = list[position].id
                 if (direction == ItemTouchHelper.LEFT) {
                     refreshRecyclerView()
-                    getRequestedData(viewHolder.adapterPosition)
-                    Log.i("TAG", viewHolder.adapterPosition.toString())
+                    finalP?.let { getRequestedData(it) }
                     val dialog = BottomSheetDialog(requireContext())
                     val view = layoutInflater.inflate(R.layout.bootom_sheet_dailog, null)
                     val btnUpdate = view.findViewById<Button>(R.id.btn_update_bottom_sheet)
@@ -73,15 +73,14 @@ class FragmentSearchDemo3 : Fragment() {
                     dialogDelete.setContentView(viewDelete)
                     dialogDelete.window?.setBackgroundDrawable(ColorDrawable(0))
                     dialogDelete.show()
+                    dialogDelete.window?.setLayout(1000, 500)
                     viewDelete?.findViewById<Button>(R.id.btn_positive)?.setOnClickListener {
-                        Log.i("TAG Adapter", position.toString())
                         val user = adapter.getUsersAtPosition(position)
                         userViewModel.deleteUser(requireContext(), user)
                         Toast.makeText(requireContext(), "User Deleted", Toast.LENGTH_SHORT).show()
                         dialogDelete.dismiss()
                     }
                     viewDelete?.findViewById<Button>(R.id.btn_negative)?.setOnClickListener {
-                        Toast.makeText(requireContext(), "Cancel", Toast.LENGTH_SHORT).show()
                         dialogDelete.dismiss()
                     }
                 }
@@ -91,7 +90,13 @@ class FragmentSearchDemo3 : Fragment() {
         itemTouchHelper.attachToRecyclerView(binding.recyclerViewSearchDemo3)
     }
 
-    private fun getRequestedData(adapterPosition: Int) {
+    private fun getRequestedData(position: Int) {
+        Log.i("TAG", "$position")
+        userViewModel.getRequested(requireContext(), position).observe(requireActivity()) {
+            lifecycleScope.launch(Dispatchers.Main) {
+                Log.i("TAG", it.UserName)
+            }
+        }
 
     }
 
@@ -99,20 +104,27 @@ class FragmentSearchDemo3 : Fragment() {
     @SuppressLint("NotifyDataSetChanged")
     private fun refreshRecyclerView() {
         userViewModel.getDetails(requireContext()).observe(requireActivity()) {
-            if (it != null) {
-                lifecycleScope.launch {
-                    withContext(Dispatchers.IO) {
-                        adapter = SearchDemo3Adapter(it)
-                        withContext(Dispatchers.Main) {
-                            binding.recyclerViewSearchDemo3.layoutManager =
-                                LinearLayoutManager(requireContext())
-                            binding.recyclerViewSearchDemo3.adapter = adapter
-                            adapter.notifyDataSetChanged()
-                            (binding.recyclerViewSearchDemo3.itemAnimator as SimpleItemAnimator).supportsChangeAnimations =
-                                false
-                        }
+            if (it.isNotEmpty()) {
+                binding.imageViewNoDataPresentGallery.visibility = View.GONE
+                binding.tvNoDataPresent.visibility = View.GONE
+                binding.recyclerViewSearchDemo3.visibility = View.VISIBLE
+                lifecycleScope.launch(Dispatchers.IO) {
+                    adapter = SearchDemo3Adapter(it)
+                    withContext(Dispatchers.Main) {
+                        binding.recyclerViewSearchDemo3.layoutManager =
+                            LinearLayoutManager(requireContext())
+                        binding.recyclerViewSearchDemo3.adapter = adapter
+                        adapter.notifyDataSetChanged()
+                        (binding.recyclerViewSearchDemo3.itemAnimator as SimpleItemAnimator).supportsChangeAnimations =
+                            false
+                        recyclerViewSwipeFunctionality(it)
                     }
                 }
+            } else {
+                Log.i("TAG", it?.size.toString())
+                binding.recyclerViewSearchDemo3.visibility = View.GONE
+                binding.imageViewNoDataPresentGallery.visibility = View.VISIBLE
+                binding.tvNoDataPresent.visibility = View.VISIBLE
             }
         }
 

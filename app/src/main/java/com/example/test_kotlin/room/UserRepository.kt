@@ -46,7 +46,7 @@ class UserRepository {
             return usersDatabase!!.userDao().getDetails()
         }
 
-        fun getRequested(context: Context, ID: Int): LiveData<List<Users>> {
+        fun getRequested(context: Context, ID: Int): LiveData<Users> {
             usersDatabase = initializeDB(context)
             return usersDatabase!!.userDao().getRequested(ID)
         }

@@ -46,7 +46,7 @@ class UserViewModel : ViewModel() {
         return UserRepository.getDetails(context)
     }
 
-    fun getRequested(context: Context, ID: Int): LiveData<List<Users>> {
+    fun getRequested(context: Context, ID: Int): LiveData<Users> {
         return UserRepository.getRequested(context, ID)
     }
 

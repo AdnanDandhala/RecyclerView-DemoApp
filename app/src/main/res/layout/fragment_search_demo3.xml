@@ -6,10 +6,32 @@
     android:layout_height="match_parent"
     tools:context=".fragments.FragmentLoginDemo3">
 
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/image_view_noDataPresent_gallery"
+        android:layout_width="match_parent"
+        android:layout_height="175dp"
+        android:src="@drawable/ic_baseline_no_data_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_no_data_present"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/tv_no_data_present_search_demo"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image_view_noDataPresent_gallery" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView_search_demo3"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

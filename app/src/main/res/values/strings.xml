@@ -49,4 +49,5 @@
     <string name="tv_text_alert_delete_down">You want to delete this user !</string>
     <string name="btn_text_alert_positive">Yes</string>
     <string name="btn_text_alert_negative">Cancel</string>
+    <string name="tv_no_data_present_search_demo">No Data Present</string>
 </resources>

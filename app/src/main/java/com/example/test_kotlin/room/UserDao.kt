@@ -2,6 +2,7 @@ package com.example.test_kotlin.room
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import androidx.sqlite.db.SupportSQLiteQuery
 
 @Dao
 interface UserDao {
@@ -18,11 +19,14 @@ interface UserDao {
     fun getDetails(): LiveData<List<Users>>
 
     @Query("SELECT * FROM user_data_tb WHERE id=:ID")
-    fun getRequested(ID: Int): LiveData<List<Users>>
+    fun getRequested(ID: Int): LiveData<Users>
 
     @Update
     suspend fun updateData(users: Users)
 
     @Delete
     fun deleteUser(users: Users)
+
+    @RawQuery
+    fun vacuumDb(supportSQLiteQuery: SupportSQLiteQuery): Int
 }
