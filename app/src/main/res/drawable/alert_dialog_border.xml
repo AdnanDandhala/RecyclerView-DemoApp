@@ -10,6 +10,10 @@
         android:color="@color/toolbar_color" />
 
     <!-- Round Corners -->
-    <corners android:radius="10dp" />
+    <corners
+        android:bottomLeftRadius="15dp"
+        android:bottomRightRadius="15dp"
+        android:topLeftRadius="15dp"
+        android:topRightRadius="15dp" />
 
 </shape>

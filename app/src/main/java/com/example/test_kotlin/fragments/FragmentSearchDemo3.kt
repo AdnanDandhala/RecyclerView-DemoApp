@@ -68,7 +68,6 @@ class FragmentSearchDemo3 : Fragment() {
                     dialogDelete.setContentView(viewDelete)
                     dialogDelete.window?.setBackgroundDrawable(ColorDrawable(0))
                     dialogDelete.show()
-                    dialogDelete.window?.setLayout(1000, 650)
                     demo3Adapter.notifyDataSetChanged()
                     viewDelete?.findViewById<Button>(R.id.btn_positive)?.setOnClickListener {
                         user?.let {
@@ -152,6 +151,7 @@ class FragmentSearchDemo3 : Fragment() {
                     user?.id
                 )
             userViewModel.updateData(requireContext(), updatedUser)
+            demo3Adapter.notifyDataSetChanged()
             dialog.dismiss()
         }
     }
@@ -162,6 +162,7 @@ class FragmentSearchDemo3 : Fragment() {
             if (it.isNotEmpty()) {
                 binding.imageViewNoDataPresentGallery.visibility = View.GONE
                 binding.tvNoDataPresent.visibility = View.GONE
+                binding.etSearchUsers.visibility = View.VISIBLE
                 binding.recyclerViewSearchDemo3.visibility = View.VISIBLE
                 lifecycleScope.launch(Dispatchers.IO) {
                     demo3Adapter = SearchDemo3Adapter(it)
@@ -177,6 +178,7 @@ class FragmentSearchDemo3 : Fragment() {
                 }
             } else {
                 Log.i("TAG", it?.size.toString())
+                binding.etSearchUsers.visibility = View.GONE
                 binding.recyclerViewSearchDemo3.visibility = View.GONE
                 binding.imageViewNoDataPresentGallery.visibility = View.VISIBLE
                 binding.tvNoDataPresent.visibility = View.VISIBLE
