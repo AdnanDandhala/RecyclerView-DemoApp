@@ -19,9 +19,9 @@ data class Users(
     @ColumnInfo(name = "pincode")
     var Pincode: String,
     @ColumnInfo(name = "city")
-    var City: String
-) {
+    var City: String,
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
     var id: Int? = null
-}
+)
+

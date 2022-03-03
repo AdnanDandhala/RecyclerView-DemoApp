@@ -22,7 +22,6 @@ import com.example.test_kotlin.viewmodel.UserViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-
 val spinnerItems = arrayOf(
     "Select City",
     "Ahmedabad",
@@ -32,9 +31,9 @@ val spinnerItems = arrayOf(
     "America",
     "London"
 )
-
 @Suppress("NAME_SHADOWING", "DEPRECATION")
 class FragmentRegisterDemo3 : Fragment(), View.OnClickListener {
+
     private lateinit var binding: FragmentRegistorDemo3Binding
     private lateinit var userViewModel: UserViewModel
     private lateinit var viewPager2: ViewPager2
