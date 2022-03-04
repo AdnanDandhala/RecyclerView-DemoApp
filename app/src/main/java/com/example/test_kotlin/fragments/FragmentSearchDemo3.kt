@@ -1,10 +1,13 @@
 package com.example.test_kotlin.fragments
 
 import android.annotation.SuppressLint
+import android.app.ActionBar
 import android.app.Dialog
 import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.InsetDrawable
 import android.os.Bundle
-import android.util.Log
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -52,6 +55,17 @@ class FragmentSearchDemo3 : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         userViewModel = ViewModelProvider(this)[UserViewModel::class.java]
         initObserver()
+        binding.etSearchUsers.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                demo3Adapter.filter.filter(p0)
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+            }
+        })
     }
 
     private fun recyclerViewSwipeFunctionality(list: List<Users>) {
@@ -67,6 +81,17 @@ class FragmentSearchDemo3 : Fragment() {
                     val viewDelete = layoutInflater.inflate(R.layout.alert_dialog_delete, null)
                     dialogDelete.setContentView(viewDelete)
                     dialogDelete.window?.setBackgroundDrawable(ColorDrawable(0))
+                    dialogDelete.window?.setLayout(
+                        ActionBar.LayoutParams.MATCH_PARENT,
+                        ActionBar.LayoutParams.WRAP_CONTENT
+                    )
+                    dialogDelete.window?.setBackgroundDrawable(
+                        InsetDrawable(
+                            ColorDrawable(
+                                resources.getColor(R.color.transparent, null)
+                            ), 32, 0, 32, 0
+                        )
+                    )
                     dialogDelete.show()
                     demo3Adapter.notifyDataSetChanged()
                     viewDelete?.findViewById<Button>(R.id.btn_positive)?.setOnClickListener {
@@ -156,16 +181,17 @@ class FragmentSearchDemo3 : Fragment() {
         }
     }
 
-
     private fun initObserver() {
         userViewModel.getDetails(requireContext()).observe(requireActivity()) {
             if (it.isNotEmpty()) {
+                binding.toolbarSearchDemo3.visibility = View.GONE
+                binding.parentLayoutSearch.visibility = View.VISIBLE
                 binding.imageViewNoDataPresentGallery.visibility = View.GONE
                 binding.tvNoDataPresent.visibility = View.GONE
                 binding.etSearchUsers.visibility = View.VISIBLE
                 binding.recyclerViewSearchDemo3.visibility = View.VISIBLE
                 lifecycleScope.launch(Dispatchers.IO) {
-                    demo3Adapter = SearchDemo3Adapter(it)
+                    demo3Adapter = SearchDemo3Adapter(ArrayList(it))
                     withContext(Dispatchers.Main) {
                         binding.recyclerViewSearchDemo3.layoutManager =
                             LinearLayoutManager(requireContext())
@@ -177,8 +203,8 @@ class FragmentSearchDemo3 : Fragment() {
                     }
                 }
             } else {
-                Log.i("TAG", it?.size.toString())
-                binding.etSearchUsers.visibility = View.GONE
+                binding.toolbarSearchDemo3.visibility = View.VISIBLE
+                binding.parentLayoutSearch.visibility = View.GONE
                 binding.recyclerViewSearchDemo3.visibility = View.GONE
                 binding.imageViewNoDataPresentGallery.visibility = View.VISIBLE
                 binding.tvNoDataPresent.visibility = View.VISIBLE

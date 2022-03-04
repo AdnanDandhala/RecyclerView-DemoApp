@@ -2,7 +2,6 @@ package com.example.test_kotlin.room
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import androidx.sqlite.db.SupportSQLiteQuery
 
 @Dao
 interface UserDao {
@@ -26,7 +25,4 @@ interface UserDao {
 
     @Delete
     fun deleteUser(users: Users)
-
-    @RawQuery
-    fun vacuumDb(supportSQLiteQuery: SupportSQLiteQuery): Int
 }

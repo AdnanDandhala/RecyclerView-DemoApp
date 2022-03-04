@@ -1,7 +1,6 @@
 package com.example.test_kotlin.room
 
 import android.content.Context
-import android.util.Log
 import androidx.lifecycle.LiveData
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
@@ -54,14 +53,6 @@ class UserRepository {
 
         fun updateData(context: Context, users: Users) {
             usersDatabase = initializeDB(context)
-            Log.i("AllDetails","The Data From Repository")
-            Log.i("AllDetails", users.UserName)
-            Log.i("AllDetails", users.MobileNo)
-            Log.i("AllDetails", users.EmailAddress)
-            Log.i("AllDetails", users.Password)
-            Log.i("AllDetails", users.Address)
-            Log.i("AllDetails", users.Pincode)
-            Log.i("AllDetails", users.City)
             CoroutineScope(IO).launch {
                 usersDatabase!!.userDao().updateData(users)
             }

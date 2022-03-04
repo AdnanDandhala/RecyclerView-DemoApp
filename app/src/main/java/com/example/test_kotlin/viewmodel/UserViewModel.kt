@@ -1,7 +1,6 @@
 package com.example.test_kotlin.viewmodel
 
 import android.content.Context
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.example.test_kotlin.room.UserRepository
@@ -51,18 +50,12 @@ class UserViewModel : ViewModel() {
     }
 
     fun updateData(context: Context, users: Users) {
-        Log.i("AllDetails", "The Data From ViewModel")
-        Log.i("AllDetails", users.UserName)
-        Log.i("AllDetails", users.MobileNo)
-        Log.i("AllDetails", users.EmailAddress)
-        Log.i("AllDetails", users.Password)
-        Log.i("AllDetails", users.Address)
-        Log.i("AllDetails", users.Pincode)
-        Log.i("AllDetails", users.City)
+
         UserRepository.updateData(context, users)
     }
 
     fun deleteUser(context: Context, users: Users) {
         UserRepository.deleteUser(context, users)
     }
+
 }

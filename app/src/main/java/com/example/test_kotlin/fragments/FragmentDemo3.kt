@@ -4,12 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.get
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.example.test_kotlin.R
 import com.example.test_kotlin.adapters.TabViewPagerAdapter
 import com.example.test_kotlin.databinding.FragmentDemo3Binding
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
 import com.google.android.material.tabs.TabLayoutMediator
 
 val TabNames = arrayOf(
@@ -23,6 +24,7 @@ val tabIcons = arrayOf(
     R.drawable.ic_baseline_search_24
 )
 
+@Suppress("DEPRECATION")
 class FragmentDemo3 : Fragment() {
     private lateinit var binding: FragmentDemo3Binding
 
@@ -37,12 +39,41 @@ class FragmentDemo3 : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.demo3Toolbar.title = "Login"
         val adapter = TabViewPagerAdapter(requireActivity().supportFragmentManager, lifecycle)
         binding.demo3ViewPager.adapter = adapter
         TabLayoutMediator(binding.demo3TabLayout, binding.demo3ViewPager) { tab, position ->
             tab.text = TabNames[position]
         }.attach()
-            binding.demo3ViewPager.isUserInputEnabled = false
+        binding.demo3TabLayout.setOnTabSelectedListener(object : OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab) {
+                when (tab.position) {
+                    0 -> {
+                        if (!binding.demo3Toolbar.isVisible) {
+                            binding.demo3Toolbar.visibility = View.VISIBLE
+                        }
+                        binding.demo3Toolbar.title = "Login"
+                    }
+                    1 -> {
+                        if (!binding.demo3Toolbar.isVisible) {
+                            binding.demo3Toolbar.visibility = View.VISIBLE
+                        }
+                        binding.demo3Toolbar.title = "Register"
+                    }
+                    2 -> {
+                        binding.demo3Toolbar.visibility = View.GONE
+                    }
+                }
+
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+            }
+
+            override fun onTabReselected(tab: TabLayout.Tab?) {
+            }
+        })
+        binding.demo3ViewPager.isUserInputEnabled = false
         setTabIcon()
     }
 

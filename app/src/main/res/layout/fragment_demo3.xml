@@ -7,6 +7,19 @@
     tools:context=".MainActivity">
 
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/demo3_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/toolbar_color"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:titleTextColor="@color/white">
+
+    </androidx.appcompat.widget.Toolbar>
+
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/demo3_tabLayout"
         android:layout_width="match_parent"
@@ -27,5 +40,5 @@
         app:layout_constraintBottom_toTopOf="@+id/demo3_tabLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/demo3_toolbar" />
 </androidx.constraintlayout.widget.ConstraintLayout>
