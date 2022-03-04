@@ -96,7 +96,7 @@ class FragmentSearchDemo3 : Fragment() {
                     demo3Adapter.notifyDataSetChanged()
                     viewDelete?.findViewById<Button>(R.id.btn_positive)?.setOnClickListener {
                         user?.let {
-                            userViewModel.deleteUser(requireContext(), it)
+                            userViewModel.deleteUser(it)
                         }
                         Toast.makeText(requireContext(), "User Deleted", Toast.LENGTH_SHORT).show()
                         dialogDelete.dismiss()
@@ -143,7 +143,7 @@ class FragmentSearchDemo3 : Fragment() {
             }
         }
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        userViewModel.getRequested(requireContext(), id).observe(requireActivity()) {
+        userViewModel.getRequested(id).observe(requireActivity()) {
             if (adapter != null) {
                 binding.cityDropDownBottomSheet.adapter = adapter
                 binding.postBottomSheetRegister = it
@@ -175,14 +175,14 @@ class FragmentSearchDemo3 : Fragment() {
                     updatedCity,
                     user?.id
                 )
-            userViewModel.updateData(requireContext(), updatedUser)
+            userViewModel.updateData(updatedUser)
             demo3Adapter.notifyDataSetChanged()
             dialog.dismiss()
         }
     }
 
     private fun initObserver() {
-        userViewModel.getDetails(requireContext()).observe(requireActivity()) {
+        userViewModel.getDetails().observe(requireActivity()) {
             if (it.isNotEmpty()) {
                 binding.toolbarSearchDemo3.visibility = View.GONE
                 binding.parentLayoutSearch.visibility = View.VISIBLE

@@ -18,10 +18,12 @@ import androidx.lifecycle.lifecycleScope
 import androidx.viewpager2.widget.ViewPager2
 import com.example.test_kotlin.R
 import com.example.test_kotlin.databinding.FragmentRegistorDemo3Binding
+import com.example.test_kotlin.room.Users
 import com.example.test_kotlin.viewmodel.UserViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+
 val spinnerItems = arrayOf(
     "Select City",
     "Ahmedabad",
@@ -31,6 +33,7 @@ val spinnerItems = arrayOf(
     "America",
     "London"
 )
+
 @Suppress("NAME_SHADOWING", "DEPRECATION")
 class FragmentRegisterDemo3 : Fragment(), View.OnClickListener {
 
@@ -109,7 +112,7 @@ class FragmentRegisterDemo3 : Fragment(), View.OnClickListener {
                     val city = binding.cityDropDown.selectedItem.toString()
                     lifecycleScope.launch {
                         withContext(Dispatchers.IO) {
-                            val isPresent = userViewModel.checkEmail(requireContext(), emailAddress)
+                            val isPresent = userViewModel.checkEmail(emailAddress)
                             withContext(Dispatchers.Main) {
                                 if (isPresent) {
                                     Toast.makeText(
@@ -118,15 +121,16 @@ class FragmentRegisterDemo3 : Fragment(), View.OnClickListener {
                                         Toast.LENGTH_SHORT
                                     ).show()
                                 } else {
-                                    userViewModel.insertData(
-                                        requireContext(),
-                                        userName,
-                                        mobileNo,
-                                        emailAddress,
-                                        password,
-                                        address,
-                                        pinCode,
-                                        city
+                                    userViewModel.addUser(
+                                        Users(
+                                            userName,
+                                            mobileNo,
+                                            emailAddress,
+                                            password,
+                                            address,
+                                            pinCode,
+                                            city
+                                        )
                                     )
                                     p0.hideKeyboard()
                                     Toast.makeText(

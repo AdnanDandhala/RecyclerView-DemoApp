@@ -1,69 +1,42 @@
 package com.example.test_kotlin.room
 
-import android.content.Context
 import androidx.lifecycle.LiveData
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 
-class UserRepository {
-    companion object {
-        private var usersDatabase: UsersDatabase? = null
-        private fun initializeDB(context: Context): UsersDatabase {
-            return UsersDatabase.getDatabaseObj(context)
-        }
+class UserRepository(private val userDao: UserDao) {
+    val readAllData: LiveData<List<Users>> = userDao.getDetails()
 
-        fun insertData(
-            context: Context,
-            username: String,
-            mobileNo: String,
-            emailAddress: String,
-            password: String,
-            address: String,
-            pinCode: String,
-            city: String
-        ) {
-            usersDatabase = initializeDB(context)
-            CoroutineScope(IO).launch {
-                val userDetails =
-                    Users(username, mobileNo, emailAddress, password, address, pinCode, city)
-                usersDatabase!!.userDao().insertUser(userDetails)
-            }
-        }
+    suspend fun addUser(users: Users) {
+        userDao.insertUser(users)
+    }
 
-        fun checkEmail(context: Context, emailAddress: String): Boolean {
-            usersDatabase = initializeDB(context)
-            return usersDatabase!!.userDao().checkEmail(emailAddress)
-        }
+    fun checkEmail(emailAddress: String): Boolean {
+        return userDao.checkEmail(emailAddress)
+    }
 
-        fun checkUser(context: Context, emailAddress: String, password: String): Boolean {
-            usersDatabase = initializeDB(context)
-            return usersDatabase!!.userDao().checkUser(emailAddress, password)
-        }
+    fun checkUser(emailAddress: String, password: String): Boolean {
+        return userDao.checkUser(emailAddress, password)
+    }
 
-        fun getDetails(context: Context): LiveData<List<Users>> {
-            usersDatabase = initializeDB(context)
-            return usersDatabase!!.userDao().getDetails()
-        }
+    fun getDetails(): LiveData<List<Users>> {
+        return userDao.getDetails()
+    }
 
-        fun getRequested(context: Context, ID: Int): LiveData<Users> {
-            usersDatabase = initializeDB(context)
-            return usersDatabase!!.userDao().getRequested(ID)
-        }
+    fun getRequested(ID: Int): LiveData<Users> {
+        return userDao.getRequested(ID)
+    }
 
-        fun updateData(context: Context, users: Users) {
-            usersDatabase = initializeDB(context)
-            CoroutineScope(IO).launch {
-                usersDatabase!!.userDao().updateData(users)
-            }
+    fun updateData(users: Users) {
+        CoroutineScope(IO).launch {
+            userDao.updateData(users)
         }
+    }
 
-        fun deleteUser(context: Context, users: Users) {
-            usersDatabase = initializeDB(context)
-            CoroutineScope(IO).launch {
-                usersDatabase!!.userDao().deleteUser(users)
-            }
+    fun deleteUser(users: Users) {
+        CoroutineScope(IO).launch {
+            userDao.deleteUser(users)
         }
-
     }
 }

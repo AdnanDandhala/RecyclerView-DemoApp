@@ -1,61 +1,61 @@
 package com.example.test_kotlin.viewmodel
 
-import android.content.Context
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.test_kotlin.room.UserRepository
 import com.example.test_kotlin.room.Users
+import com.example.test_kotlin.room.UsersDatabase
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
-class UserViewModel : ViewModel() {
+class UserViewModel(application: Application) : AndroidViewModel(application) {
+    private val readAllData: LiveData<List<Users>>
+    private val repository: UserRepository
 
-    fun insertData(
-        context: Context, username: String,
-        mobileNo: String,
-        emailAddress: String,
-        password: String,
-        address: String,
-        pinCode: String,
-        city: String
-    ) {
-        UserRepository.insertData(
-            context,
-            username,
-            mobileNo,
-            emailAddress,
-            password,
-            address,
-            pinCode,
-            city
-        )
+    init {
+        val userDao = UsersDatabase.getDatabaseObj(application).userDao()
+        repository = UserRepository(userDao)
+        readAllData = repository.readAllData
     }
 
-    fun checkEmail(context: Context, emailAddress: String): Boolean {
-        return UserRepository.checkEmail(context, emailAddress)
+    fun addUser(users: Users) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.addUser(users)
+        }
+
+    }
+
+    fun checkEmail(emailAddress: String): Boolean {
+        return repository.checkEmail(emailAddress)
     }
 
     fun checkUser(
-        context: Context,
         emailAddress: String,
         password: String
     ): Boolean {
-        return UserRepository.checkUser(context, emailAddress, password)
+        return repository.checkUser(emailAddress, password)
     }
 
-    fun getDetails(context: Context): LiveData<List<Users>> {
-        return UserRepository.getDetails(context)
+    fun getDetails(): LiveData<List<Users>> {
+        return repository.getDetails()
     }
 
-    fun getRequested(context: Context, ID: Int): LiveData<Users> {
-        return UserRepository.getRequested(context, ID)
+    fun getRequested(ID: Int): LiveData<Users> {
+        return repository.getRequested(ID)
     }
 
-    fun updateData(context: Context, users: Users) {
-
-        UserRepository.updateData(context, users)
+    fun updateData(users: Users) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.updateData(users)
+        }
     }
 
-    fun deleteUser(context: Context, users: Users) {
-        UserRepository.deleteUser(context, users)
+    fun deleteUser(users: Users) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.deleteUser(users)
+        }
     }
 
 }

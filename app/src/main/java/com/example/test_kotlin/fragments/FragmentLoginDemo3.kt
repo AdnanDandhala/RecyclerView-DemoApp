@@ -66,7 +66,6 @@ class FragmentLoginDemo3 : Fragment(), View.OnClickListener {
                         withContext(Dispatchers.IO) {
                             val isTrue =
                                 userViewModel.checkUser(
-                                    requireContext(),
                                     txtEtEmail.toString(),
                                     txtEtPassword.toString()
                                 )
