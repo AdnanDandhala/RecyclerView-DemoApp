@@ -6,19 +6,33 @@
     android:layout_height="match_parent"
     tools:context=".fragments.FragmentLoginDemo3">
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/et_search_users"
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/parent_layout_search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/et_border_search_user"
-        android:hint="@string/hint_text_et_search_user"
-        android:padding="10dp"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
-        android:visibility="visible"
+        android:background="@color/toolbar_color"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/et_search_users"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/et_border_search_user"
+            android:drawableEnd="@drawable/ic_outline_search_24"
+            android:hint="@string/hint_text_et_search_user"
+            android:padding="8dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/image_view_noDataPresent_gallery"
@@ -29,7 +43,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_search_users" />
+        app:layout_constraintTop_toBottomOf="@+id/parent_layout_search" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_no_data_present"
@@ -51,7 +65,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_search_users"
+        app:layout_constraintTop_toBottomOf="@+id/parent_layout_search"
         tools:listitem="@layout/recyclerview_layout_search_demo3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

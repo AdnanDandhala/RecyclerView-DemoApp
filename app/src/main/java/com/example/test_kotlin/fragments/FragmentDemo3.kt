@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.get
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.example.test_kotlin.R
 import com.example.test_kotlin.adapters.TabViewPagerAdapter
@@ -21,9 +23,9 @@ val tabIcons = arrayOf(
     R.drawable.ic_baseline_search_24
 )
 
-
 class FragmentDemo3 : Fragment() {
     private lateinit var binding: FragmentDemo3Binding
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -40,7 +42,7 @@ class FragmentDemo3 : Fragment() {
         TabLayoutMediator(binding.demo3TabLayout, binding.demo3ViewPager) { tab, position ->
             tab.text = TabNames[position]
         }.attach()
-        binding.demo3ViewPager.isUserInputEnabled = false
+            binding.demo3ViewPager.isUserInputEnabled = false
         setTabIcon()
     }
 
