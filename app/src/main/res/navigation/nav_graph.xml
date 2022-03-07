@@ -18,6 +18,9 @@
         <action
             android:id="@+id/action_fragmentFirstScreen2_to_fragmentDemo3"
             app:destination="@id/fragmentDemo3" />
+        <action
+            android:id="@+id/action_fragmentFirstScreen2_to_fragmentDemo4"
+            app:destination="@id/fragmentDemo4" />
     </fragment>
     <fragment
         android:id="@+id/fragmentDemo2"
@@ -55,4 +58,9 @@
             android:id="@+id/action_fragmentDemo3_to_fragmentFirstScreen2"
             app:destination="@id/fragmentFirstScreen2" />
     </fragment>
+    <fragment
+        android:id="@+id/fragmentDemo4"
+        android:name="com.example.test_kotlin.fragments.FragmentDemo4"
+        android:label="fragment_demo4"
+        tools:layout="@layout/fragment_demo4" />
 </navigation>

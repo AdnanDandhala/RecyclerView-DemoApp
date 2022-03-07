@@ -24,7 +24,6 @@ class UserViewModel(application: Application) : AndroidViewModel(application) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.addUser(users)
         }
-
     }
 
     fun checkEmail(emailAddress: String): Boolean {
