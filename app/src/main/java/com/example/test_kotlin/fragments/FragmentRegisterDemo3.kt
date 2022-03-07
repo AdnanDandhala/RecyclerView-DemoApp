@@ -19,7 +19,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.test_kotlin.R
 import com.example.test_kotlin.databinding.FragmentRegistorDemo3Binding
 import com.example.test_kotlin.room.Users
-import com.example.test_kotlin.viewmodel.UserViewModel
+import com.example.test_kotlin.viewmodel.MainViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -38,7 +38,7 @@ val spinnerItems = arrayOf(
 class FragmentRegisterDemo3 : Fragment(), View.OnClickListener {
 
     private lateinit var binding: FragmentRegistorDemo3Binding
-    private lateinit var userViewModel: UserViewModel
+    private lateinit var userViewModel: MainViewModel
     private lateinit var viewPager2: ViewPager2
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -51,7 +51,7 @@ class FragmentRegisterDemo3 : Fragment(), View.OnClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        userViewModel = ViewModelProvider(this)[UserViewModel::class.java]
+        userViewModel = ViewModelProvider(this)[MainViewModel::class.java]
         binding.btnSignup.setOnClickListener(this)
         viewPager2 = activity?.findViewById(R.id.demo3_viewPager)!!
         val adapter = object : ArrayAdapter<String>(

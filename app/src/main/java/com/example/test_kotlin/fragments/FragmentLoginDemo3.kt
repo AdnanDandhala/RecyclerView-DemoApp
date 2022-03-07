@@ -13,7 +13,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.test_kotlin.databinding.FragmentLoginDemo3Binding
-import com.example.test_kotlin.viewmodel.UserViewModel
+import com.example.test_kotlin.viewmodel.MainViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -21,7 +21,7 @@ import kotlinx.coroutines.withContext
 
 class FragmentLoginDemo3 : Fragment(), View.OnClickListener {
     private lateinit var binding: FragmentLoginDemo3Binding
-    private lateinit var userViewModel: UserViewModel
+    private lateinit var userViewModel: MainViewModel
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -33,7 +33,7 @@ class FragmentLoginDemo3 : Fragment(), View.OnClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        userViewModel = ViewModelProvider(this)[UserViewModel::class.java]
+        userViewModel = ViewModelProvider(this)[MainViewModel::class.java]
         if (binding.tvUserLogin.isVisible || binding.btnLogout.isVisible) {
             binding.tvUserLogin.visibility = View.GONE
             binding.btnLogout.visibility = View.GONE

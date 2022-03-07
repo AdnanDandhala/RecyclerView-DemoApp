@@ -8,6 +8,7 @@ import android.graphics.drawable.InsetDrawable
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,8 +29,9 @@ import com.example.test_kotlin.adapters.SearchDemo3Adapter
 import com.example.test_kotlin.databinding.BottomSheetDailogBinding
 import com.example.test_kotlin.databinding.FragmentSearchDemo3Binding
 import com.example.test_kotlin.room.Users
-import com.example.test_kotlin.viewmodel.UserViewModel
+import com.example.test_kotlin.viewmodel.MainViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.gson.Gson
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -38,7 +40,7 @@ import kotlinx.coroutines.withContext
 @SuppressLint("NotifyDataSetChanged", "InflateParams")
 class FragmentSearchDemo3 : Fragment() {
     private lateinit var binding: FragmentSearchDemo3Binding
-    private lateinit var userViewModel: UserViewModel
+    private lateinit var userViewModel: MainViewModel
     private lateinit var dialogDelete: Dialog
     private lateinit var demo3Adapter: SearchDemo3Adapter
     private var user: Users? = null
@@ -53,7 +55,7 @@ class FragmentSearchDemo3 : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        userViewModel = ViewModelProvider(this)[UserViewModel::class.java]
+        userViewModel = ViewModelProvider(this)[MainViewModel::class.java]
         initObserver()
         binding.etSearchUsers.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
@@ -68,14 +70,16 @@ class FragmentSearchDemo3 : Fragment() {
         })
     }
 
-    private fun recyclerViewSwipeFunctionality(list: List<Users>) {
+    private fun recyclerViewSwipeFunctionality() {
         val swipeToDeleteCallBack = object : SwipeItemTouchHelper() {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 user = demo3Adapter.getUsersAtPosition(viewHolder.adapterPosition)
-                val position = viewHolder.adapterPosition
-                val finalId = list[position].id
+                val finalId = user!!.id
                 if (direction == ItemTouchHelper.LEFT) {
-                    finalId?.let { createBottomSheet(it) }
+                    if (finalId != null) {
+                        createBottomSheet(finalId)
+                    }
+
                 } else if (direction == ItemTouchHelper.RIGHT) {
                     dialogDelete = Dialog(requireContext())
                     val viewDelete = layoutInflater.inflate(R.layout.alert_dialog_delete, null)
@@ -97,12 +101,15 @@ class FragmentSearchDemo3 : Fragment() {
                     viewDelete?.findViewById<Button>(R.id.btn_positive)?.setOnClickListener {
                         user?.let {
                             userViewModel.deleteUser(it)
+                            Log.i("TAA", "The User Is ${Gson().toJson(it)}")
                         }
                         Toast.makeText(requireContext(), "User Deleted", Toast.LENGTH_SHORT).show()
                         dialogDelete.dismiss()
+                        demo3Adapter.notifyDataSetChanged()
                     }
                     viewDelete?.findViewById<Button>(R.id.btn_negative)?.setOnClickListener {
                         dialogDelete.dismiss()
+                        demo3Adapter.notifyDataSetChanged()
                     }
                 }
             }
@@ -131,7 +138,7 @@ class FragmentSearchDemo3 : Fragment() {
             customSpinnerItems
         ) {
             override fun isEnabled(position: Int): Boolean {
-                return position != 0
+                return true
             }
 
             override fun getDropDownView(
@@ -144,16 +151,14 @@ class FragmentSearchDemo3 : Fragment() {
         }
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         userViewModel.getRequested(id).observe(requireActivity()) {
-            if (adapter != null) {
+            if (it != null) {
+                Log.i("Tag", "The User Is ${Gson().toJson(it)}")
                 binding.cityDropDownBottomSheet.adapter = adapter
                 binding.postBottomSheetRegister = it
+                val index: Int = customSpinnerItems.indexOf(it.City)
+                binding.cityDropDownBottomSheet.setSelection(index)
             }
-            val index: Int
-            if (customSpinnerItems.contains(it.City)) {
-                index = customSpinnerItems.indexOf(it.City)
-                customSpinnerItems.removeAt(index)
-            }
-            customSpinnerItems.add(0, it.City)
+            adapter.notifyDataSetChanged()
             demo3Adapter.notifyDataSetChanged()
         }
         binding.btnUpdateBottomSheet.setOnClickListener {
@@ -199,7 +204,7 @@ class FragmentSearchDemo3 : Fragment() {
                         demo3Adapter.notifyDataSetChanged()
                         (binding.recyclerViewSearchDemo3.itemAnimator as SimpleItemAnimator).supportsChangeAnimations =
                             false
-                        recyclerViewSwipeFunctionality(it)
+                        recyclerViewSwipeFunctionality()
                     }
                 }
             } else {

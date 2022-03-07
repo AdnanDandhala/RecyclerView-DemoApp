@@ -52,4 +52,5 @@
     <string name="tv_no_data_present_search_demo">No Data Present</string>
     <string name="hint_text_et_search_user">Enter User</string>
     <string name="tittle_text_search_toolbar">Search</string>
+    <string name="demo4_tb_tittle_text">Retrofit API</string>
 </resources>
