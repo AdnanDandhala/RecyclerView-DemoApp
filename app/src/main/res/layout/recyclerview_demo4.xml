@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="userData"
+            type="com.example.test_kotlin.api.UsersItem" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_main_recyclerview_demo4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="2dp"
+        android:background="@drawable/recyclerview_demo4_border"
+        android:padding="2dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_parent_recyclerview_demo4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/layout_main_recyclerview_demo4">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_name_recyclerview_demo4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{userData.name}"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/layout_parent_recyclerview_demo4" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_username_recyclerview_demo4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{userData.username}"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_name_recyclerview_demo4" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_email_recyclerview_demo4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{userData.email}"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_username_recyclerview_demo4" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_address_recyclerview_demo4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_txt_address"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toStartOf="@+id/img_drop_down_address_recyclerview_demo4"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_email_recyclerview_demo4" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/img_drop_down_address_recyclerview_demo4"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_address_recyclerview_demo4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_address_recyclerview_demo4"
+                app:srcCompat="@drawable/ic_baseline_keyboard_arrow_down_24" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/img_drop_up_address_recyclerview_demo4"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_address_recyclerview_demo4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_address_recyclerview_demo4"
+                app:srcCompat="@drawable/ic_outline_keyboard_arrow_up_24" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_address_expandable_recyclerview_demo4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/my_custom_gray"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_address_recyclerview_demo4">
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_street_recyclerview_demo4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:text="@{userData.address.street}"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="@id/layout_address_expandable_recyclerview_demo4"
+                    app:layout_constraintStart_toStartOf="@id/layout_address_expandable_recyclerview_demo4"
+                    app:layout_constraintTop_toTopOf="@id/layout_address_expandable_recyclerview_demo4" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_suite_recyclerview_demo4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:text="@{userData.address.suite}"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="@id/layout_address_expandable_recyclerview_demo4"
+                    app:layout_constraintStart_toStartOf="@id/layout_address_expandable_recyclerview_demo4"
+                    app:layout_constraintTop_toBottomOf="@id/tv_street_recyclerview_demo4" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_city_recyclerview_demo4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:text="@{userData.address.city}"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="@id/layout_address_expandable_recyclerview_demo4"
+                    app:layout_constraintStart_toStartOf="@id/layout_address_expandable_recyclerview_demo4"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_suite_recyclerview_demo4" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_zipcode_recyclerview_demo4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:text="@{userData.address.zipcode}"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="@id/layout_address_expandable_recyclerview_demo4"
+                    app:layout_constraintStart_toStartOf="@id/layout_address_expandable_recyclerview_demo4"
+                    app:layout_constraintTop_toBottomOf="@id/tv_city_recyclerview_demo4" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_geo_recyclerview_demo4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tv_geo_txt"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toStartOf="@id/img_drop_down_geo_recyclerview_demo4"
+                    app:layout_constraintStart_toStartOf="@id/layout_address_expandable_recyclerview_demo4"
+                    app:layout_constraintTop_toBottomOf="@id/tv_zipcode_recyclerview_demo4" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/img_drop_down_geo_recyclerview_demo4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:visibility="visible"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_geo_recyclerview_demo4"
+                    app:layout_constraintEnd_toEndOf="@id/layout_address_expandable_recyclerview_demo4"
+                    app:layout_constraintTop_toTopOf="@id/tv_geo_recyclerview_demo4"
+                    app:srcCompat="@drawable/ic_baseline_keyboard_arrow_down_24" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/img_drop_geo_up_recyclerview_demo4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_geo_recyclerview_demo4"
+                    app:layout_constraintEnd_toEndOf="@id/layout_address_expandable_recyclerview_demo4"
+                    app:layout_constraintTop_toTopOf="@id/tv_geo_recyclerview_demo4"
+                    app:srcCompat="@drawable/ic_outline_keyboard_arrow_up_24" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layout_geo_expandable_recyclerview_demo4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="@id/layout_address_expandable_recyclerview_demo4"
+                    app:layout_constraintStart_toStartOf="@id/layout_address_expandable_recyclerview_demo4"
+                    app:layout_constraintTop_toBottomOf="@id/tv_geo_recyclerview_demo4">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_latitude_recyclerview_demo4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{userData.address.geo.lat}"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        app:layout_constraintStart_toStartOf="@id/layout_geo_expandable_recyclerview_demo4"
+                        app:layout_constraintTop_toTopOf="@id/layout_geo_expandable_recyclerview_demo4" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{userData.address.geo.lng}"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        app:layout_constraintStart_toStartOf="@id/layout_geo_expandable_recyclerview_demo4"
+                        app:layout_constraintTop_toBottomOf="@id/tv_latitude_recyclerview_demo4" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_phone_recyclerview_demo4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{userData.phone}"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="@id/layout_parent_recyclerview_demo4"
+                app:layout_constraintStart_toStartOf="@id/layout_parent_recyclerview_demo4"
+                app:layout_constraintTop_toBottomOf="@+id/layout_address_expandable_recyclerview_demo4" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_website_recyclerview_demo4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{userData.website}"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="@id/layout_parent_recyclerview_demo4"
+                app:layout_constraintStart_toStartOf="@id/layout_parent_recyclerview_demo4"
+                app:layout_constraintTop_toBottomOf="@id/tv_phone_recyclerview_demo4" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_company_recyclerview_demo4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_company_txt"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toStartOf="@id/img_drop_down_company_recyclerview_demo4"
+                app:layout_constraintStart_toStartOf="@id/layout_parent_recyclerview_demo4"
+                app:layout_constraintTop_toBottomOf="@id/tv_website_recyclerview_demo4" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/img_drop_down_company_recyclerview_demo4"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@id/tv_company_recyclerview_demo4"
+                app:layout_constraintEnd_toEndOf="@id/layout_parent_recyclerview_demo4"
+                app:layout_constraintTop_toTopOf="@id/tv_company_recyclerview_demo4"
+                app:srcCompat="@drawable/ic_baseline_keyboard_arrow_down_24" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/img_drop_up_company_recyclerview_demo4"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="@id/tv_company_recyclerview_demo4"
+                app:layout_constraintEnd_toEndOf="@id/layout_parent_recyclerview_demo4"
+                app:layout_constraintTop_toTopOf="@id/tv_company_recyclerview_demo4"
+                app:srcCompat="@drawable/ic_baseline_keyboard_arrow_down_24" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_company_expandable_recyclerview_demo4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30sp"
+                android:background="@color/my_custom_gray"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/layout_parent_recyclerview_demo4"
+                app:layout_constraintStart_toStartOf="@id/layout_parent_recyclerview_demo4"
+                app:layout_constraintTop_toBottomOf="@id/tv_company_recyclerview_demo4">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_company_name_recyclerview_demo4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@{userData.company.name}"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="@id/layout_company_expandable_recyclerview_demo4"
+                    app:layout_constraintStart_toStartOf="@id/layout_company_expandable_recyclerview_demo4"
+                    app:layout_constraintTop_toTopOf="@id/layout_company_expandable_recyclerview_demo4" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_company_CatchPhrase_recyclerview_demo4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@{userData.company.catchPhrase}"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="@id/layout_company_expandable_recyclerview_demo4"
+                    app:layout_constraintStart_toStartOf="@id/layout_company_expandable_recyclerview_demo4"
+                    app:layout_constraintTop_toBottomOf="@id/tv_company_name_recyclerview_demo4" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_company_bs_recyclerview_demo4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@{userData.company.bs}"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="@id/layout_company_expandable_recyclerview_demo4"
+                    app:layout_constraintStart_toStartOf="@id/layout_company_expandable_recyclerview_demo4"
+                    app:layout_constraintTop_toBottomOf="@id/tv_company_CatchPhrase_recyclerview_demo4" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
