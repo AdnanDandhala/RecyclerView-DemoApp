@@ -14,11 +14,13 @@
     <color name="pink">#FF1493</color>
     <color name="yellow">#FDD835</color>
     <color name="gray">#808080</color>
+    <color name="gray_dark">#B3B3B3</color>
 
     //My Custom Colours
     <color name="my_custom_gray">#55ffffff</color>
     <color name="recyclerview_layout_bg">#F8F6F2</color>
     <color name="toolbar_color">#4A38D2</color>
+    <color name="custom_toolbar_color">#563D67</color>
     <color name="recyclerview_background">#FFFFFF</color>
     <color name="text_background">#000000</color>
     <color name="text_color_time">#827A7A</color>

@@ -26,6 +26,7 @@ class Demo4Adapter(myList: ArrayList<UsersItem>) :
             binding.imgDropDownGeoRecyclerviewDemo4.setOnClickListener(this)
             binding.imgDropGeoUpRecyclerviewDemo4.setOnClickListener(this)
             binding.imgDropUpCompanyRecyclerviewDemo4.setOnClickListener(this)
+            binding.imgDropDownCompanyRecyclerviewDemo4.setOnClickListener(this)
         }
 
         override fun onClick(p0: View?) {
@@ -66,18 +67,22 @@ class Demo4Adapter(myList: ArrayList<UsersItem>) :
                     binding.layoutGeoExpandableRecyclerviewDemo4.visibility = View.GONE
                     binding.imgDropGeoUpRecyclerviewDemo4.visibility = View.GONE
                     binding.imgDropDownGeoRecyclerviewDemo4.visibility = View.VISIBLE
-
                 }
                 binding.imgDropUpCompanyRecyclerviewDemo4.id -> {
                     if (binding.layoutCompanyExpandableRecyclerviewDemo4.visibility == View.GONE) {
-                        binding.imgDropDownCompanyRecyclerviewDemo4.visibility = View.GONE
-                        binding.imgDropUpCompanyRecyclerviewDemo4.visibility = View.VISIBLE
+                        binding.imgDropDownCompanyRecyclerviewDemo4.visibility = View.VISIBLE
+                        binding.imgDropUpCompanyRecyclerviewDemo4.visibility = View.GONE
                         binding.layoutCompanyExpandableRecyclerviewDemo4.visibility = View.VISIBLE
                     } else {
                         binding.imgDropDownCompanyRecyclerviewDemo4.visibility = View.VISIBLE
                         binding.imgDropUpCompanyRecyclerviewDemo4.visibility = View.GONE
-                        binding.layoutCompanyExpandableRecyclerviewDemo4.visibility = View.GONE
+                        binding.layoutCompanyExpandableRecyclerviewDemo4.visibility = View.VISIBLE
                     }
+                }
+                binding.imgDropDownCompanyRecyclerviewDemo4.id -> {
+                    binding.imgDropDownCompanyRecyclerviewDemo4.visibility = View.GONE
+                    binding.layoutCompanyExpandableRecyclerviewDemo4.visibility = View.GONE
+                    binding.imgDropUpCompanyRecyclerviewDemo4.visibility = View.VISIBLE
                 }
             }
         }
@@ -94,7 +99,7 @@ class Demo4Adapter(myList: ArrayList<UsersItem>) :
     }
 
     override fun onBindViewHolder(holder: Demo4ItemViewHolder, position: Int) {
-        holder.bind(position)
+        holder.bind(holder.adapterPosition)
     }
 
     override fun getItemCount(): Int {
