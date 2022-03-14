@@ -1,7 +1,6 @@
 package com.example.test_kotlin.fragments
 
 import android.content.Context
-import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Color
 import android.net.ConnectivityManager
@@ -30,6 +29,7 @@ import kotlinx.coroutines.withContext
 
 const val BASE_URL = "https://jsonplaceholder.typicode.com/"
 
+@Suppress("DEPRECATION")
 class FragmentDemo4 : Fragment() {
     private lateinit var binding: FragmentDemo4Binding
 
@@ -42,42 +42,51 @@ class FragmentDemo4 : Fragment() {
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onStart() {
+        super.onStart()
         if (isNetworkAvailable(requireContext())) {
             initializeData()
         } else {
-            AlertDialog.Builder(requireContext()).setTitle("!No Internet")
-                .setMessage("Internet Connection Required To Load Data")
-                .setPositiveButton(android.R.string.yes, object : DialogInterface.OnClickListener {
-                    override fun onClick(p0: DialogInterface?, p1: Int) {
-                        findNavController().navigate(R.id.fragmentFirstScreen2)
-                        findNavController().popBackStack(R.id.fragmentDemo4, true)
-                    }
-                })
-                .setNegativeButton(android.R.string.no, object : DialogInterface.OnClickListener {
-                    override fun onClick(p0: DialogInterface?, p1: Int) {
-                        val intent = Intent(Intent.ACTION_MAIN)
-                        intent.setClassName(
-                            "com.android.settings",
-                            "com.android.settings.Settings\$DataUsageSummaryActivity"
-                        )
-                        startActivity(intent)
-                    }
-                })
-                .show()
+            createDialog()
         }
+    }
+
+    private fun createDialog() {
+        val dialog =
+            AlertDialog.Builder(requireContext())
+        dialog.setTitle("! No Internet")
+            .setMessage(R.string.dialog_message)
+            .setPositiveButton(
+                R.string.dialog_text_yes
+            ) { _, _ ->
+                dialog.show().dismiss()
+                findNavController().navigate(R.id.fragmentFirstScreen2)
+                findNavController().popBackStack(R.id.fragmentDemo4, true)
+            }
+            .setNegativeButton(
+                R.string.dialog_text_no
+            ) { _, _ ->
+                val intent = Intent(Intent.ACTION_MAIN)
+                intent.setClassName(
+                    "com.android.settings",
+                    "com.android.settings.Settings\$DataUsageSummaryActivity"
+                )
+                dialog.show().dismiss()
+                startActivity(intent)
+            }
+            .show()
     }
 
 
     private fun isNetworkAvailable(context: Context): Boolean {
         val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        var activeNetworkInfo: NetworkInfo? = null
-        activeNetworkInfo = cm.activeNetworkInfo
+        val activeNetworkInfo: NetworkInfo? = cm.activeNetworkInfo
         return activeNetworkInfo != null && activeNetworkInfo.isConnectedOrConnecting
     }
 
+
     private fun initializeData() {
+        binding.layoutPbDemo4.visibility = View.VISIBLE
         val viewModel = ViewModelProvider(
             this,
             ApiViewModelFactory(ApiRepository(UserApiInterface.getInstance()))
@@ -93,6 +102,7 @@ class FragmentDemo4 : Fragment() {
                     binding.mainRecyclerViewDemo4.setItemViewCacheSize(100)
                     binding.mainRecyclerViewDemo4.adapter = adapter
                     binding.layoutMainFragmentDemo4.setBackgroundColor(Color.parseColor("#FFFFFF"))
+                    binding.layoutPbDemo4.visibility = View.GONE
                 }
             }
         }
