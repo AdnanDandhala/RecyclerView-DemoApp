@@ -60,4 +60,5 @@
     <string name="dialog_text_no"><font color="#4A38D2">Go To Setting</font></string>
     <string name="dialog_message">Internet Connection Required To Load Data</string>
     <string name="tv_progress_text_loading"><font color="#4A38D2">Loading....</font></string>
+    <string name="google_map_key">AIzaSyAn7mEeKHM8UIfBPwtEJcXAQpvpNEBQExw</string>
 </resources>

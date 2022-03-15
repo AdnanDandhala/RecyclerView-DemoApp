@@ -214,6 +214,7 @@
                         app:layout_constraintTop_toTopOf="@id/layout_geo_expandable_recyclerview_demo4" />
 
                     <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_longitude_recyclerview_demo4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="More Fonts..."
