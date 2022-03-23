@@ -57,4 +57,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_demo3"
         tools:ignore="TouchTargetSizeCheck" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_demo5"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_margin="20dp"
+        android:background="@drawable/btn_background_first_screen"
+        android:foreground="@drawable/send_img_ripple"
+        android:text="@string/btn_txt_demo5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_demo4"
+        tools:ignore="TouchTargetSizeCheck" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,7 +8,8 @@
     <fragment
         android:id="@+id/fragmentFirstScreen2"
         android:name="com.example.test_kotlin.fragments.FragmentFirstScreen"
-        android:label="FragmentFirstScreen">
+        android:label="FragmentFirstScreen"
+        tools:layout="@layout/fragment_first_screen">
         <action
             android:id="@+id/action_fragmentFirstScreen2_to_frontDataFragment"
             app:destination="@id/frontDataFragment" />
@@ -21,11 +22,15 @@
         <action
             android:id="@+id/action_fragmentFirstScreen2_to_fragmentDemo4"
             app:destination="@id/fragmentDemo4" />
+        <action
+            android:id="@+id/action_fragmentFirstScreen2_to_fragmentDemo5"
+            app:destination="@id/fragmentDemo5" />
     </fragment>
     <fragment
         android:id="@+id/fragmentDemo2"
         android:name="com.example.test_kotlin.fragments.FragmentDemo2"
-        android:label="FragmentDemo2">
+        android:label="FragmentDemo2"
+        tools:layout="@layout/fragment_demo2">
         <action
             android:id="@+id/action_fragmentDemo22_to_fragmentFirstScreen2"
             app:destination="@id/fragmentFirstScreen2" />
@@ -33,7 +38,8 @@
     <fragment
         android:id="@+id/frontDataFragment"
         android:name="com.example.test_kotlin.fragments.FrontDataFragment"
-        android:label="FrontDataFragment">
+        android:label="FrontDataFragment"
+        tools:layout="@layout/fragment_recyclerview_data">
         <action
             android:id="@+id/action_frontDataFragment_to_dataShowFragment"
             app:destination="@id/dataShowFragment" />
@@ -53,7 +59,8 @@
     <fragment
         android:id="@+id/fragmentDemo3"
         android:name="com.example.test_kotlin.fragments.FragmentDemo3"
-        android:label="FragmentDemo3">
+        android:label="FragmentDemo3"
+        tools:layout="@layout/fragment_demo3">
         <action
             android:id="@+id/action_fragmentDemo3_to_fragmentFirstScreen2"
             app:destination="@id/fragmentFirstScreen2" />
@@ -62,5 +69,43 @@
         android:id="@+id/fragmentDemo4"
         android:name="com.example.test_kotlin.fragments.FragmentDemo4"
         android:label="fragment_demo4"
-        tools:layout="@layout/fragment_demo4" />
+        tools:layout="@layout/fragment_demo4" >
+        <action
+            android:id="@+id/action_fragmentDemo4_to_mapsFragment"
+            app:destination="@id/mapsFragment" />
+        <action
+            android:id="@+id/action_fragmentDemo4_to_webViewFragment"
+            app:destination="@id/webViewFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mapsFragment"
+        android:name="com.example.test_kotlin.fragments.MapsFragment"
+        android:label="fragment_maps"
+        tools:layout="@layout/fragment_maps" >
+        <argument
+            android:name="latitude"
+            app:argType="float" />
+        <action
+            android:id="@+id/action_mapsFragment_to_fragmentDemo4"
+            app:destination="@id/fragmentDemo4" />
+        <argument android:name="longitude"
+            app:argType="float" />
+    </fragment>
+    <fragment
+        android:id="@+id/webViewFragment"
+        android:name="com.example.test_kotlin.fragments.WebViewFragment"
+        android:label="fragment_web_view"
+        tools:layout="@layout/fragment_web_view" >
+        <action
+            android:id="@+id/action_webViewFragment_to_fragmentDemo4"
+            app:destination="@id/fragmentDemo4" />
+        <argument
+            android:name="url"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentDemo5"
+        android:name="com.example.test_kotlin.fragments.FragmentDemo5"
+        android:label="fragment_demo5"
+        tools:layout="@layout/fragment_demo5" />
 </navigation>

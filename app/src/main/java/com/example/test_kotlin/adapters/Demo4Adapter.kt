@@ -1,20 +1,18 @@
 package com.example.test_kotlin.adapters
 
-import android.app.Dialog
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.Window
+import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
-import com.example.test_kotlin.R
 import com.example.test_kotlin.api.UsersItem
 import com.example.test_kotlin.databinding.RecyclerviewDemo4Binding
+import com.example.test_kotlin.fragments.FragmentDemo4Directions
 
-class Demo4Adapter(myList: ArrayList<UsersItem>) :
+class Demo4Adapter(myList: ArrayList<UsersItem>, private val navController: NavController) :
     RecyclerView.Adapter<Demo4Adapter.Demo4ItemViewHolder>() {
     private val tempList = myList
-
 
     inner class Demo4ItemViewHolder(private val binding: RecyclerviewDemo4Binding) :
         RecyclerView.ViewHolder(binding.root), View.OnClickListener {
@@ -33,6 +31,7 @@ class Demo4Adapter(myList: ArrayList<UsersItem>) :
             binding.imgDropUpCompanyRecyclerviewDemo4.setOnClickListener(this)
             binding.imgDropDownCompanyRecyclerviewDemo4.setOnClickListener(this)
             binding.tvGeoRecyclerviewDemo4.setOnClickListener(this)
+            binding.tvWebsiteRecyclerviewDemo4.setOnClickListener(this)
         }
 
         override fun onClick(p0: View?) {
@@ -91,14 +90,22 @@ class Demo4Adapter(myList: ArrayList<UsersItem>) :
                     binding.imgDropUpCompanyRecyclerviewDemo4.visibility = View.VISIBLE
                 }
                 binding.tvGeoRecyclerviewDemo4.id -> {
-                    val latitude = binding.tvLatitudeRecyclerviewDemo4.text
-                    val longitude = binding.tvLongitudeRecyclerviewDemo4.text
-                    Log.i("TAG", longitude.toString())
-                    Log.i("TAG", latitude.toString())
-                    val dialogMapView = Dialog(p0.context)
-                    dialogMapView.requestWindowFeature(Window.FEATURE_NO_TITLE)
-                    dialogMapView.setContentView(R.layout.map_view_dialog_demo4)
-                    dialogMapView.show()
+                    val textLatitude =
+                        binding.tvLatitudeRecyclerviewDemo4.text.toString().toFloat()
+                    val textLongitude =
+                        binding.tvLongitudeRecyclerviewDemo4.text.toString().toFloat()
+                    Log.i("MAP", textLatitude.toString())
+                    Log.i("MAP", textLongitude.toString())
+                    val action = FragmentDemo4Directions.actionFragmentDemo4ToMapsFragment(
+                        latitude = textLatitude,
+                        longitude = textLongitude
+                    )
+                    navController.navigate(action)
+                }
+                binding.tvWebsiteRecyclerviewDemo4.id -> {
+                    val url = binding.tvWebsiteRecyclerviewDemo4.text.toString()
+                    val action = FragmentDemo4Directions.actionFragmentDemo4ToWebViewFragment(url)
+                    navController.navigate(action)
                 }
             }
         }

@@ -22,6 +22,7 @@ import com.example.test_kotlin.api.ApiViewModel
 import com.example.test_kotlin.api.ApiViewModelFactory
 import com.example.test_kotlin.api.UserApiInterface
 import com.example.test_kotlin.databinding.FragmentDemo4Binding
+import com.google.android.gms.maps.OnMapReadyCallback
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -33,6 +34,7 @@ const val BASE_URL = "https://jsonplaceholder.typicode.com/"
 class FragmentDemo4 : Fragment() {
     private lateinit var binding: FragmentDemo4Binding
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -42,8 +44,8 @@ class FragmentDemo4 : Fragment() {
         return binding.root
     }
 
-    override fun onStart() {
-        super.onStart()
+    override fun onResume() {
+        super.onResume()
         if (isNetworkAvailable(requireContext())) {
             initializeData()
         } else {
@@ -77,7 +79,6 @@ class FragmentDemo4 : Fragment() {
             .show()
     }
 
-
     private fun isNetworkAvailable(context: Context): Boolean {
         val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val activeNetworkInfo: NetworkInfo? = cm.activeNetworkInfo
@@ -94,7 +95,7 @@ class FragmentDemo4 : Fragment() {
         viewModel.getAllUsers()
         viewModel.usersList.observe(requireActivity()) {
             lifecycleScope.launch(Dispatchers.IO) {
-                val adapter = Demo4Adapter(it)
+                val adapter = Demo4Adapter(it,findNavController())
                 withContext(Dispatchers.Main) {
                     binding.mainRecyclerViewDemo4.layoutManager =
                         LinearLayoutManager(requireContext())

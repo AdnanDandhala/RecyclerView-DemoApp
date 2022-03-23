@@ -14,6 +14,7 @@
     <string name="btn_txt_demo2">Demo 2</string>
     <string name="btn_txt_demo3">Demo 3</string>
     <string name="btn_txt_demo4">Demo 4</string>
+    <string name="btn_txt_demo5">Demo 5</string>
     <string name="recyclerview_demo_toolbar_text"><font color="#FFFFFF">Recyclerview Demo</font></string>
     <string name="total_2000">Total = 2000</string>
     <string name="tv_text_demo2">Width</string>

@@ -41,6 +41,7 @@
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.1225" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/drawable/ic_baseline_add_white_24.xml" value="0.1435" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/drawable/ic_baseline_arrow_drop_down_circle_24.xml" value="0.155" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/drawable/ic_baseline_close_24.xml" value="0.1625" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/drawable/ic_baseline_emoji_emotions_24.xml" value="0.1" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/drawable/ic_baseline_info_24.xml" value="0.153" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/drawable/ic_baseline_keyboard_arrow_down_24.xml" value="0.1135" />
@@ -81,13 +82,17 @@
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/layout/fragment_data_show.xml" value="0.18" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/layout/fragment_demo2.xml" value="0.23274974253347064" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/layout/fragment_demo3.xml" value="0.25" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/layout/fragment_demo4.xml" value="0.33" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/layout/fragment_demo4.xml" value="0.21629213483146068" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/layout/fragment_demo5.xml" value="0.2911500641299701" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/layout/fragment_first_screen.xml" value="0.33" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/layout/fragment_login__demo3.xml" value="0.22" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/layout/fragment_map.xml" value="0.2911500641299701" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/layout/fragment_maps.xml" value="0.2911500641299701" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/layout/fragment_recyclerview_data.xml" value="0.2609375" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/layout/fragment_registor_demo3.xml" value="0.2" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/layout/fragment_search_demo3.xml" value="0.247451343836886" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/layout/fragment_splash_screen.xml" value="0.21419410004275333" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/layout/fragment_web_view.xml" value="0.2911500641299701" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/layout/map_view_dialog_demo4.xml" value="0.12882298424467098" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/layout/recycler_api_data_display.xml" value="0.33" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/layout/recycler_view_layout.xml" value="0.29322916666666665" />
@@ -95,7 +100,7 @@
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/layout/recyclerview_data_show_receiver.xml" value="0.25" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/layout/recyclerview_data_show_sender.xml" value="0.21419410004275333" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/layout/recyclerview_demo2.xml" value="0.33" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/layout/recyclerview_demo4.xml" value="0.33" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/layout/recyclerview_demo4.xml" value="0.22647058823529412" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/layout/recyclerview_layout_bottom.xml" value="0.29322916666666665" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/layout/recyclerview_layout_middle.xml" value="0.25" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Constraint-Task2/app/src/main/res/layout/recyclerview_layout_search_demo3.xml" value="0.22" />

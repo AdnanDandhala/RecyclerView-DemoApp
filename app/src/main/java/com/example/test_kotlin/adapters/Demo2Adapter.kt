@@ -34,15 +34,17 @@ class Demo2Adapter(val list: ArrayList<ModelDemo2>, var calculateTotal: Calculat
                 }
 
                 override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                    if (TextUtils.isEmpty(binding.etNumber.text)) {
-                        binding.etNumber.setText("0")
-                        binding.etNumber.setSelection(1)
-                    } else {
-                        var total = 0
+                    var total = 0
+                    if (!TextUtils.isEmpty(binding.etNumber.text)) {
+//                        binding.etNumber.setText("0")
+//                        binding.etNumber.setSelection(1)
+
                         list[position].num = p0.toString()
                         binding.etNumber.setSelection(binding.etNumber.text!!.length)
                         for (i in 0 until list.size) {
-                            total += list[i].num.toInt()
+                            if (list[i].num.isNotEmpty()) {
+                                total += list[i].num.toInt()
+                            }
                         }
                         checkNumber(list[position].num)
                         calculateTotal.setTotal(total)
@@ -122,7 +124,7 @@ class Demo2Adapter(val list: ArrayList<ModelDemo2>, var calculateTotal: Calculat
                             binding.etNumber.setText(resultText)
                         }
                     } else {
-                        binding.etNumber.setText("0")
+//                        binding.etNumber.setText("0")
                     }
                 }
                 binding.imgBtnAdd.id -> {
@@ -131,7 +133,7 @@ class Demo2Adapter(val list: ArrayList<ModelDemo2>, var calculateTotal: Calculat
                         val resultText: String = (num + 1).toString()
                         binding.etNumber.setText(resultText)
                     } else {
-                        binding.etNumber.setText("0")
+//                        binding.etNumber.setText("0")
                     }
                 }
             }
