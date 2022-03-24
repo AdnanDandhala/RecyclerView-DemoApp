@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="com.example.test_kotlin.FirebaseHelper" />
+
+        <variable
+            name="firebase_time"
+            type="FirebaseHelper" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@drawable/recyclerview_demo4_border">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_parent_recyclerview_demo5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_text_firebase_time"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="@{firebase_time.key}"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toStartOf="@id/img_time_drop_down"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/img_time_drop_down"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="@id/tv_text_firebase_time"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_text_firebase_time"
+                app:srcCompat="@drawable/ic_baseline_keyboard_arrow_down_24" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/img_time_drop_up"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@id/tv_text_firebase_time"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_text_firebase_time"
+                app:srcCompat="@drawable/ic_outline_keyboard_arrow_up_24" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_firebase_expandable_recyclerview_demo5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/layout_parent_recyclerview_demo5"
+                app:layout_constraintEnd_toEndOf="@+id/layout_parent_recyclerview_demo5"
+                app:layout_constraintStart_toStartOf="@+id/layout_parent_recyclerview_demo5"
+                app:layout_constraintTop_toBottomOf="@id/tv_text_firebase_time">
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_firebase_time_recyclerview_demo5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="30dp"
+                    android:fontFamily="@font/averia_libre"
+                    android:text="@{firebase_time.date}"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="@id/layout_firebase_expandable_recyclerview_demo5"
+                    app:layout_constraintStart_toStartOf="@id/layout_firebase_expandable_recyclerview_demo5"
+                    app:layout_constraintTop_toTopOf="@id/layout_firebase_expandable_recyclerview_demo5" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
