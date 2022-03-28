@@ -22,7 +22,6 @@ import com.example.test_kotlin.api.ApiViewModel
 import com.example.test_kotlin.api.ApiViewModelFactory
 import com.example.test_kotlin.api.UserApiInterface
 import com.example.test_kotlin.databinding.FragmentDemo4Binding
-import com.google.android.gms.maps.OnMapReadyCallback
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -95,7 +94,7 @@ class FragmentDemo4 : Fragment() {
         viewModel.getAllUsers()
         viewModel.usersList.observe(requireActivity()) {
             lifecycleScope.launch(Dispatchers.IO) {
-                val adapter = Demo4Adapter(it,findNavController())
+                val adapter = Demo4Adapter(it, findNavController())
                 withContext(Dispatchers.Main) {
                     binding.mainRecyclerViewDemo4.layoutManager =
                         LinearLayoutManager(requireContext())

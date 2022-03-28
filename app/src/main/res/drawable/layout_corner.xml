@@ -3,9 +3,8 @@
 
     <!-- Background Color -->
     <solid android:color="@color/toolbar_color" />
-
-
     <!-- Round Corners -->
+
     <corners
         android:bottomLeftRadius="25dp"
         android:bottomRightRadius="25dp"

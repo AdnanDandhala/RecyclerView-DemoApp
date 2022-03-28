@@ -6,6 +6,30 @@
     android:layout_height="match_parent"
     tools:context=".fragments.FragmentDemo5">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_demo5_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/toolbar_color"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_demo5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="2dp"
+            android:background="@drawable/layout_corner"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navigationIcon="@drawable/ic_baseline_keyboard_backspace_24"
+            app:title="@string/text_firebase_demo"
+            app:titleTextColor="@color/white" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <androidx.core.widget.ContentLoadingProgressBar
         android:id="@+id/pb_load_data_demo5"
         style="?android:attr/progressBarStyle"
@@ -19,26 +43,27 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_text_pb_loading"
+        android:id="@+id/tv_progress_text_demo5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text="@string/tv_progress_text_loading"
-        android:textAlignment="center"
         android:textSize="18sp"
         android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="@id/pb_load_data_demo5"
-        app:layout_constraintStart_toStartOf="@id/pb_load_data_demo5"
-        app:layout_constraintTop_toBottomOf="@id/pb_load_data_demo5" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pb_load_data_demo5" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_demo5"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginBottom="2dp"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout_demo5_toolbar"
         tools:listitem="@layout/recyclerview_demo5" />
 
 

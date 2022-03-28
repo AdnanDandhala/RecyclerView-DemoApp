@@ -44,7 +44,7 @@ class WebViewFragment : Fragment() {
             }
         }
 //        binding.webView.loadUrl("https://www.justcodenow.com/")
-        binding.webView.loadUrl(args.url)
+        binding.webView.loadUrl("https://tracker.toptal.com/app/my-activities?start=2022-02-23&end=2022-03-25&projects=521444")
     }
 }
 
