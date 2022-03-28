@@ -43,6 +43,14 @@ class FragmentDemo4 : Fragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.toolbar.setNavigationOnClickListener {
+            findNavController().navigate(R.id.fragmentFirstScreen2)
+            findNavController().popBackStack(R.id.fragmentDemo4, true)
+        }
+    }
+
     override fun onResume() {
         super.onResume()
         if (isNetworkAvailable(requireContext())) {

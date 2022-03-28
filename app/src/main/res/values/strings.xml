@@ -15,6 +15,7 @@
     <string name="btn_txt_demo3">Demo 3</string>
     <string name="btn_txt_demo4">Demo 4</string>
     <string name="btn_txt_demo5">Demo 5</string>
+    <string name="btn_txt_demo6">Demo 6</string>
     <string name="recyclerview_demo_toolbar_text"><font color="#FFFFFF">Recyclerview Demo</font></string>
     <string name="total_2000">Total = 2000</string>
     <string name="tv_text_demo2">Width</string>
@@ -64,4 +65,5 @@
     <string name="google_map_key">AIzaSyAn7mEeKHM8UIfBPwtEJcXAQpvpNEBQExw</string>
     <string name="text_time">Time</string>
     <string name="text_firebase_demo">Firebase Demo</string>
+    <string name="tv_text_fire_store">Firestore</string>
 </resources>

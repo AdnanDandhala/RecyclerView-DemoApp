@@ -28,6 +28,8 @@ import java.util.concurrent.TimeUnit
 class FragmentDemo5 : Fragment() {
     lateinit var binding: FragmentDemo5Binding
     private lateinit var adapter: Demo5Adapter
+
+
     val list = ArrayList<FirebaseHelper>()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

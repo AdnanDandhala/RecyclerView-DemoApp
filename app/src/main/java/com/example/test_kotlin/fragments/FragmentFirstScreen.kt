@@ -28,6 +28,7 @@ class FragmentFirstScreen : Fragment(), View.OnClickListener {
         binding.btnDemo3.setOnClickListener(this)
         binding.btnDemo4.setOnClickListener(this)
         binding.btnDemo5.setOnClickListener(this)
+        binding.btnDemo6.setOnClickListener(this)
     }
 
     override fun onClick(p0: View?) {
@@ -46,6 +47,9 @@ class FragmentFirstScreen : Fragment(), View.OnClickListener {
             }
             binding.btnDemo5.id -> {
                 findNavController().navigate(R.id.fragmentDemo5)
+            }
+            binding.btnDemo6.id -> {
+                findNavController().navigate(R.id.fragmentDemo6)
             }
         }
     }

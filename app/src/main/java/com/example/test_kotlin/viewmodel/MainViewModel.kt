@@ -11,11 +11,18 @@ import com.example.test_kotlin.FirebaseHelper
 import com.example.test_kotlin.R
 import com.example.test_kotlin.adapters.LayoutHolderAdapter
 import com.example.test_kotlin.models.ModelDemo2
+import com.example.test_kotlin.models.ModelDemo6
 import com.example.test_kotlin.models.ModelLayoutHolder
 import com.example.test_kotlin.room.UserRepository
 import com.example.test_kotlin.room.Users
 import com.example.test_kotlin.room.UsersDatabase
 import com.google.firebase.database.*
+import com.google.firebase.firestore.DocumentChange
+import com.google.firebase.firestore.EventListener
+import com.google.firebase.firestore.FirebaseFirestoreException
+import com.google.firebase.firestore.QuerySnapshot
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -26,11 +33,41 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     private val repository: UserRepository
     private var tempList: ArrayList<FirebaseHelper> = ArrayList()
     private val firebaseData: MutableLiveData<ArrayList<FirebaseHelper>> = MutableLiveData()
+    private val fireStoreData: MutableLiveData<ArrayList<ModelDemo6>> = MutableLiveData()
 
     init {
         val userDao = UsersDatabase.getDatabaseObj(application).userDao()
         repository = UserRepository(userDao)
         readAllData = repository.readAllData
+    }
+
+    fun getDataFireStore(): MutableLiveData<ArrayList<ModelDemo6>> {
+        val tempList: ArrayList<ModelDemo6> = ArrayList()
+        val db = Firebase.firestore
+//        val userReference = db.collection("11.34 AM").document()
+//        db.collection("11.34 AM").get().addOnSuccessListener { result ->
+//            for (document in result) {
+//                Log.i("Final", "${document.id}=>${document.data}")
+//                tempList.add(document.toObject(ModelDemo6::class.java))
+//            }
+//        }.addOnFailureListener {
+//            Log.d("Final", "get failed with ", it)
+//        }
+        db.collection("users").addSnapshotListener(object : EventListener<QuerySnapshot> {
+            override fun onEvent(value: QuerySnapshot?, error: FirebaseFirestoreException?) {
+                if (error != null) {
+                    Log.e("Firestore Error", error.message.toString())
+                    return
+                }
+                for (dc: DocumentChange in value?.documentChanges!!) {
+                    if (dc.type == DocumentChange.Type.ADDED) {
+                        tempList.add(dc.document.toObject(ModelDemo6::class.java))
+                    }
+                }
+                fireStoreData.value = tempList
+            }
+        })
+        return fireStoreData
     }
 
     fun getDataFirebase(): MutableLiveData<ArrayList<FirebaseHelper>> {
