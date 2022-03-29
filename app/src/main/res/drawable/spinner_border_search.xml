@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <layer-list>
+            <item>
+                <shape>
+                    <corners android:radius="30dp"/>
+                    <padding android:bottom="0dp" android:left="0dp" android:right="17dp" android:top="0dp" />
+                    <stroke android:width="1dp" android:color="@color/white" />
+                </shape>
+            </item>
+            <item
+                android:drawable="@drawable/ic_outline_expand_circle_down_24" android:gravity="center|right" />
+        </layer-list>
+    </item>
+</selector>

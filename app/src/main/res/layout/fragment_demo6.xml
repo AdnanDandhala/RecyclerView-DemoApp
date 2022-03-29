@@ -16,25 +16,56 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.appcompat.widget.AppCompatMultiAutoCompleteTextView
-            android:id="@+id/et_search_data_fire_store"
+        <Spinner
+            android:id="@+id/spinner_search_data_day_fire_store"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="25dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/et_border_search_user"
-            android:drawableEnd="@drawable/ic_outline_search_24"
-            android:hint="@string/hint_text_et_search_user"
-            android:padding="8dp"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/spinner_border_search"
+            android:spinnerMode="dropdown"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Spinner
+            android:id="@+id/spinner_search_data_year_fire_store"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="25dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/spinner_border_search"
+            android:spinnerMode="dropdown"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <Spinner
+            android:id="@+id/spinner_search_data_month_fire_store"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="25dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/spinner_border_search"
+            android:spinnerMode="dropdown"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_fire_store"
@@ -44,9 +75,158 @@
             android:text="@string/tv_text_fire_store"
             android:textColor="@color/white"
             android:textSize="20sp"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/et_end_date_search"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/demo2_et_corner"
+            android:hint="@string/et_end_date_hint"
+            android:maxLength="12"
+            android:maxLines="1"
+            android:padding="8dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/et_start_date_filter"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TouchTargetSizeCheck,TextContrastCheck,DuplicateSpeakableTextCheck" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/et_start_date_filter"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/demo2_et_corner"
+            android:hint="@string/et_start_date_hint"
+            android:maxLength="12"
+            android:maxLines="1"
+            android:padding="8dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/et_end_date_search"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/child_layout_demo6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/parent_layout_demo6">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_filter_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tv_text_week"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toStartOf="@+id/tv_filter_month"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/tv_filter_day"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_dash_week"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="@+id/tv_filter_time"
+            app:layout_constraintStart_toStartOf="@+id/tv_filter_time"
+            app:layout_constraintTop_toBottomOf="@+id/tv_filter_time"
+            app:srcCompat="@drawable/ic_dash_filter_2" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_filter_month"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tv_text_month_filter"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toStartOf="@+id/tv_filter_year"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/tv_filter_time"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_dash_month"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="@+id/tv_filter_month"
+            app:layout_constraintStart_toStartOf="@+id/tv_filter_month"
+            app:layout_constraintTop_toBottomOf="@+id/tv_filter_month"
+            app:srcCompat="@drawable/ic_dash_filter_2" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_filter_year"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tv_text_year_filter"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/tv_filter_month"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_dash_year"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="@+id/tv_filter_year"
+            app:layout_constraintStart_toStartOf="@+id/tv_filter_year"
+            app:layout_constraintTop_toBottomOf="@+id/tv_filter_year"
+            app:srcCompat="@drawable/ic_dash_filter_2" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_filter_day"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tv_text_day_filter"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toStartOf="@+id/tv_filter_time"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_dash_day"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="@+id/tv_filter_day"
+            app:layout_constraintStart_toStartOf="@+id/tv_filter_day"
+            app:layout_constraintTop_toBottomOf="@+id/tv_filter_day"
+            app:srcCompat="@drawable/ic_dash_filter1"
+            tools:ignore="ImageContrastCheck" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -60,7 +240,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/child_layout_demo6" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_progress_text_demo6"
@@ -78,11 +258,11 @@
         android:id="@+id/recycler_view_demo6"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:visibility="gone"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/parent_layout_demo6"
+        app:layout_constraintTop_toBottomOf="@id/child_layout_demo6"
         tools:listitem="@layout/recyclerview_demo6" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

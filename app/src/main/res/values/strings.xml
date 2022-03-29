@@ -66,4 +66,10 @@
     <string name="text_time">Time</string>
     <string name="text_firebase_demo">Firebase Demo</string>
     <string name="tv_text_fire_store">Firestore</string>
+    <string name="tv_text_week">WEEK</string>
+    <string name="tv_text_month_filter">MONTH</string>
+    <string name="tv_text_year_filter">YEAR</string>
+    <string name="tv_text_day_filter">DAY</string>
+    <string name="et_start_date_hint">Start Date</string>
+    <string name="et_end_date_hint">End Date</string>
 </resources>

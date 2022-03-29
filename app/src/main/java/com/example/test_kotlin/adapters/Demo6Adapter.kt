@@ -18,6 +18,7 @@ class Demo6Adapter(val listData: ArrayList<ModelDemo6>) :
         fun bind(position: Int) {
             val data = tempList[position]
             binding.fireStoreData = data
+            Log.i("TIME", tempList[position].date.toString())
             Log.i("ListSize", tempList.size.toString())
         }
     }
@@ -50,7 +51,7 @@ class Demo6Adapter(val listData: ArrayList<ModelDemo6>) :
                 } else {
                     val filteredList = ArrayList<ModelDemo6>()
                     listData.filter {
-                        it.time!!.lowercase().contains(charString.lowercase())
+                        it.date!!.lowercase().contains(charString.lowercase())
                     }.forEach { filteredList.add((it)) }
                     filteredList
                 }
