@@ -62,7 +62,7 @@ class Demo6 : Fragment(), View.OnClickListener {
         val subStr: String = currentDate.substring(0, 2)
         Log.i("CURRENT_DATE", currentDate)
         Log.i("CURRENT_DATE", subStr)
-        searchUserByDay("30 Mar 2022, 19:31")
+        searchUserByDay(subStr)
     }
 
     private val dateSetListenerMonth =
@@ -101,7 +101,7 @@ class Demo6 : Fragment(), View.OnClickListener {
         binding.tvFilterMonth.setOnClickListener(this)
         binding.tvFilterYear.setOnClickListener(this)
         Log.i("Time", date.toString())
-        addUser()
+//        addUser()
         fetchData()
     }
 
@@ -174,15 +174,8 @@ class Demo6 : Fragment(), View.OnClickListener {
                             "TAGLIST",
                             " ${document.getString("date")} : ${document.getString("day")}"
                         )
-                        binding.recyclerViewDemo6.visibility = View.VISIBLE
-                        binding.imageViewNoDataPresentGalleryDemo6.visibility = View.GONE
-                        binding.tvNoDataPresentDemo6.visibility = View.GONE
                         val demo6 = document.toObject(ModelDemo6::class.java)
                         list.add(demo6)
-                    } else {
-                        binding.recyclerViewDemo6.visibility = View.GONE
-                        binding.imageViewNoDataPresentGalleryDemo6.visibility = View.VISIBLE
-                        binding.tvNoDataPresentDemo6.visibility = View.VISIBLE
                     }
                 }
                 Log.i("Main", list.size.toString())
@@ -223,7 +216,6 @@ class Demo6 : Fragment(), View.OnClickListener {
                 binding.recyclerViewDemo6.visibility = View.GONE
             } else if (it.isNotEmpty()) {
                 binding.recyclerViewDemo6.visibility = View.VISIBLE
-//                binding.tvFireStore.visibility = View.GONE
                 demo6Adapter = Demo6Adapter(it)
                 binding.recyclerViewDemo6.adapter = demo6Adapter
                 binding.recyclerViewDemo6.setHasFixedSize(true)
@@ -248,7 +240,6 @@ class Demo6 : Fragment(), View.OnClickListener {
                 DatePickerDialog(
                     requireContext(),
                     dateSetListenerDay,
-                    // set DatePickerDialog to point to today's date when it loads up
                     cal.get(Calendar.YEAR),
                     cal.get(Calendar.MONTH),
                     cal.get(Calendar.DAY_OF_MONTH)
@@ -274,7 +265,6 @@ class Demo6 : Fragment(), View.OnClickListener {
                 DatePickerDialog(
                     requireContext(),
                     dateSetListenerMonth,
-                    // set DatePickerDialog to point to today's date when it loads up
                     cal.get(Calendar.YEAR),
                     cal.get(Calendar.MONTH),
                     cal.get(Calendar.DAY_OF_MONTH)
@@ -292,7 +282,6 @@ class Demo6 : Fragment(), View.OnClickListener {
                 DatePickerDialog(
                     requireContext(),
                     dateSetListenerYear,
-                    // set DatePickerDialog to point to today's date when it loads up
                     cal.get(Calendar.YEAR),
                     cal.get(Calendar.MONTH),
                     cal.get(Calendar.DAY_OF_MONTH)
@@ -305,8 +294,6 @@ class Demo6 : Fragment(), View.OnClickListener {
     private fun searchUserByYear(year: String) {
         val list = ArrayList<ModelDemo6>()
         val ref = db.collection("users")
-        val query = ref.whereEqualTo("date", "20 Mar 2020, 12:00")
-        //    val query = ref.whereIn("date", listOf("Jan"))
         ref.get().addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 for (document: QueryDocumentSnapshot in task.result) {
@@ -318,12 +305,7 @@ class Demo6 : Fragment(), View.OnClickListener {
                         )
                         val demo6 = document.toObject(ModelDemo6::class.java)
                         list.add(demo6)
-//                        val demo6 = document.toObject(ModelDemo6::class.java)
-//                        list.add(demo6)
                     }
-//                    list.add(demo6)
-//                    Log.i("Main", list.size.toString())
-//                    Log.i("Main", document.getString("tittle").toString())
                 }
                 Log.i("Main", list.size.toString())
                 binding.recyclerViewDemo6.adapter = Demo6Adapter(list)
@@ -340,8 +322,6 @@ class Demo6 : Fragment(), View.OnClickListener {
     private fun searchUserByMonth(month: String) {
         val list = ArrayList<ModelDemo6>()
         val ref = db.collection("users")
-        val query = ref.whereEqualTo("date", "20 Mar 2020, 12:00")
-        //    val query = ref.whereIn("date", listOf("Jan"))
         ref.get().addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 for (document: QueryDocumentSnapshot in task.result) {
@@ -353,12 +333,7 @@ class Demo6 : Fragment(), View.OnClickListener {
                         )
                         val demo6 = document.toObject(ModelDemo6::class.java)
                         list.add(demo6)
-//                        val demo6 = document.toObject(ModelDemo6::class.java)
-//                        list.add(demo6)
                     }
-//                    list.add(demo6)
-//                    Log.i("Main", list.size.toString())
-//                    Log.i("Main", document.getString("tittle").toString())
                 }
                 Log.i("Main", list.size.toString())
                 binding.recyclerViewDemo6.adapter = Demo6Adapter(list)
