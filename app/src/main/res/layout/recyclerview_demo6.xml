@@ -32,7 +32,7 @@
                 android:layout_margin="10dp"
                 android:paddingStart="2dp"
                 android:paddingEnd="0dp"
-                android:text="@{fire_store_data.tittle}"
+                android:text="@{`Tittle: `+fire_store_data.tittle}"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -46,16 +46,32 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="10dp"
+                android:paddingStart="2dp"
+                android:paddingEnd="0dp"
+                android:text="@{`Date: ` +fire_store_data.date}"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_born_fireStore" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_first_fire_store_day"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
                 android:paddingStart="2dp"
                 android:paddingEnd="0dp"
-                android:text="@{fire_store_data.date}"
+                android:text="@{`Day: `+fire_store_data.day}"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_born_fireStore" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_first_fire_store" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

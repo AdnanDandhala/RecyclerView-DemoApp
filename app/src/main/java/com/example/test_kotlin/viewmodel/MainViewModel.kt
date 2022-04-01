@@ -61,7 +61,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
                 }
                 for (dc: DocumentChange in value?.documentChanges!!) {
                     if (dc.type == DocumentChange.Type.ADDED) {
-                        tempList.add(dc.document.toObject(ModelDemo6::class.java))
+//                        tempList.add(dc.document.toObject(ModelDemo6::class.java))
                     }
                 }
                 fireStoreData.value = tempList

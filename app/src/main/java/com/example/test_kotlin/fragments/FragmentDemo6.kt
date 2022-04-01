@@ -47,7 +47,7 @@ class Demo6 : Fragment(), View.OnClickListener {
         binding.tvFilterMonth.setOnClickListener(this)
         binding.tvFilterYear.setOnClickListener(this)
         Log.i("Time", date.toString())
-        addUser()
+//        addUser()
         fetchData()
     }
 
@@ -248,27 +248,29 @@ class Demo6 : Fragment(), View.OnClickListener {
     }
 
     private fun searchUserByWeek(dayOfMonth: String) {
-        Log.i("CALENDER_WEEK", "The Selected Date Is $dayOfMonth")
+        /*Log.i("CALENDER_WEEK", "The Selected Date Is $dayOfMonth")
         if (dayOfMonth.toInt() <= 30 || dayOfMonth.toInt() < 31) {
             Toast.makeText(requireContext(), "The Input Date Is Last Date", Toast.LENGTH_SHORT)
                 .show()
         } else {
             Log.i("CALENDER_WEEK", "The Week Date Is ${dayOfMonth.toInt() + 7} Last Date")
-        }
+        }*/
         val list = ArrayList<ModelDemo6>()
-        val ref = db.collection("users").orderBy("date").startAfter(dayOfMonth)
+        val ref =
+            db.collection("users")
+                .whereGreaterThanOrEqualTo("date", "April 1, 2022 at 6:27:15 AM UTC+5:30")
         ref.get().addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 for (document: QueryDocumentSnapshot in task.result) {
-                    val allDate: String? = document.getString("date")
-                    if (allDate!!.contains(dayOfMonth)) {
-                        Log.i(
-                            "TAG_LIST",
-                            " ${document.getString("date")} : ${document.getString("day")}"
-                        )
-                        val demo6 = document.toObject(ModelDemo6::class.java)
-                        list.add(demo6)
-                    }
+//                    val allDate: String? = document.getString("date")
+//                    if (allDate!!.contains(dayOfMonth)) {
+//                        Log.i(
+//                            "TAG_LIST",
+//                            " ${document.getString("date")} : ${document.getString("day")}"
+//                        )
+                    val demo6 = document.toObject(ModelDemo6::class.java)
+                    list.add(demo6)
+//                    }
                 }
                 Log.i("Main", list.size.toString())
                 binding.recyclerViewDemo6.adapter = Demo6Adapter(list)
@@ -282,23 +284,22 @@ class Demo6 : Fragment(), View.OnClickListener {
         }
     }
 
-
     private fun addUser() {
-//         val user = hashMapOf(
-//            "date" to date.toString(),
-//            "tittle" to "It has survived not only five centuries, but also the leap into electronic"
-//        )
-//        val userReference1 = db.collection("users").document("1").set(user)
-//        db.collection("users").document("0").set(user)
-//        userReference1.addOnSuccessListener { document ->
-//            if (document != null) {
-//                Log.d("DataFirestore", "DocumentSnapshot data: $document")
-//            } else {
-//                Log.d("DataFirestore", "No such document")
-//            }
-//        }.addOnFailureListener { exception ->
-//            Log.d("DataFirestore", "get failed with ", exception)
-//        }
+        val user = hashMapOf(
+            "date" to Date(),
+            "tittle" to "It has survived not only five centuries, but also the leap into electronic"
+        )
+        val userReference1 = db.collection("users").document("1").set(user)
+        db.collection("users").document("12").set(user)
+        userReference1.addOnSuccessListener { document ->
+            if (document != null) {
+                Log.d("DataFirestore", "DocumentSnapshot data: $document")
+            } else {
+                Log.d("DataFirestore", "No such document")
+            }
+        }.addOnFailureListener { exception ->
+            Log.d("DataFirestore", "get failed with ", exception)
+        }
     }
 
     private fun fetchData() {
