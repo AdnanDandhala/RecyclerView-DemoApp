@@ -30,49 +30,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/et_end_date_search"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/demo2_et_corner"
-            android:hint="@string/et_end_date_hint"
-            android:maxLength="12"
-            android:maxLines="1"
-            android:padding="8dp"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/et_start_date_filter"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="TouchTargetSizeCheck,TextContrastCheck,DuplicateSpeakableTextCheck" />
-
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/et_start_date_filter"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/demo2_et_corner"
-            android:hint="@string/et_start_date_hint"
-            android:maxLength="12"
-            android:maxLines="1"
-            android:padding="8dp"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/et_end_date_search"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -84,7 +41,7 @@
         app:layout_constraintTop_toBottomOf="@+id/parent_layout_demo6">
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_filter_time"
+            android:id="@+id/tv_filter_week"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/tv_text_week"
@@ -101,9 +58,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="@+id/tv_filter_time"
-            app:layout_constraintStart_toStartOf="@+id/tv_filter_time"
-            app:layout_constraintTop_toBottomOf="@+id/tv_filter_time"
+            app:layout_constraintEnd_toEndOf="@+id/tv_filter_week"
+            app:layout_constraintStart_toStartOf="@+id/tv_filter_week"
+            app:layout_constraintTop_toBottomOf="@+id/tv_filter_week"
             app:srcCompat="@drawable/ic_dash_filter_2" />
 
 
@@ -116,7 +73,7 @@
             android:textSize="20sp"
             app:layout_constraintEnd_toStartOf="@+id/tv_filter_year"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/tv_filter_time"
+            app:layout_constraintStart_toEndOf="@+id/tv_filter_week"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatImageView
@@ -161,7 +118,7 @@
             android:text="@string/tv_text_day_filter"
             android:textColor="@color/black"
             android:textSize="20sp"
-            app:layout_constraintEnd_toStartOf="@+id/tv_filter_time"
+            app:layout_constraintEnd_toStartOf="@+id/tv_filter_week"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
