@@ -8,4 +8,8 @@ data class ModelDemo6(
     @ServerTimestamp
     val date: Date? = null,
     val day: String = ""
-)
+) {
+    fun convertDate(): String {
+        return date.toString()
+    }
+}

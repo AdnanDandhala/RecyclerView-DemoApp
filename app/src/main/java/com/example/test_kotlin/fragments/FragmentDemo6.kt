@@ -10,7 +10,9 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.test_kotlin.R
 import com.example.test_kotlin.adapters.Demo6Adapter
 import com.example.test_kotlin.databinding.FragmentDemo6Binding
 import com.example.test_kotlin.models.ModelDemo6
@@ -20,6 +22,7 @@ import com.google.firebase.ktx.Firebase
 import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
+
 
 @SuppressLint("SimpleDateFormat")
 class Demo6 : Fragment(), View.OnClickListener {
@@ -49,6 +52,10 @@ class Demo6 : Fragment(), View.OnClickListener {
         Log.i("Time", date.toString())
 //        addUser()
         fetchData()
+        binding.toolbarDemo6.setNavigationOnClickListener {
+            findNavController().navigate(R.id.fragmentFirstScreen2)
+            findNavController().popBackStack(R.id.fragmentDemo6, inclusive = true)
+        }
     }
 
     private val dateSetListenerDay =
@@ -68,24 +75,24 @@ class Demo6 : Fragment(), View.OnClickListener {
         val subStr: String = currentDate.substring(0, 2)
         Log.i("CURRENT_DATE", currentDate)
         Log.i("CURRENT_DATE", subStr)
-        searchUserByDay(subStr)
+        val dateFormat = SimpleDateFormat("EEE", Locale.US)
+        val asWeek = dateFormat.format(dayOfMonth)
+        Log.i("CURRENT_DATE", " The Day Is $asWeek")
+        cal.time = Date()
+        val day = cal[Calendar.DAY_OF_MONTH]
+        Log.i("CURRENT_DATE", day.toString())
+        searchUserByDay(asWeek)
     }
 
     private fun searchUserByDay(day: String) {
         val list = ArrayList<ModelDemo6>()
+        Log.i("ALL_FIELD", "The Passed Day Is $day")
         val ref = db.collection("users")
-        ref.get().addOnCompleteListener { task ->
+        ref.whereEqualTo("day", "Monday").get().addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 for (document: QueryDocumentSnapshot in task.result) {
-                    val allDate: String? = document.getString("date")
-                    if (allDate!!.contains(day)) {
-                        Log.i(
-                            "TAG_LIST",
-                            " ${document.getString("date")} : ${document.getString("day")}"
-                        )
-                        val demo6 = document.toObject(ModelDemo6::class.java)
-                        list.add(demo6)
-                    }
+                    val demo6 = document.toObject(ModelDemo6::class.java)
+                    list.add(demo6)
                 }
                 Log.i("Main", list.size.toString())
                 binding.recyclerViewDemo6.adapter = Demo6Adapter(list)
@@ -96,6 +103,7 @@ class Demo6 : Fragment(), View.OnClickListener {
                     Toast.LENGTH_SHORT
                 ).show()
             }
+
         }
     }
 
@@ -114,19 +122,19 @@ class Demo6 : Fragment(), View.OnClickListener {
         when (monthOfYear + 1) {
             1 -> {
                 Log.i("Calender", "Jan")
-                searchUserByMonth("Jan")
+                searchUserByMonth("January")
             }
             2 -> {
                 Log.i("Calender", "Feb")
-                searchUserByMonth("Feb")
+                searchUserByMonth("February")
             }
             3 -> {
                 Log.i("Calender", "Mar")
-                searchUserByMonth("Mar")
+                searchUserByMonth("March")
             }
             4 -> {
                 Log.i("Calender", "Apr")
-                searchUserByMonth("Apr")
+                searchUserByMonth("April")
             }
             5 -> {
                 Log.i("Calender", "May")
@@ -134,31 +142,31 @@ class Demo6 : Fragment(), View.OnClickListener {
             }
             6 -> {
                 Log.i("Calender", "Jun")
-                searchUserByMonth("Jun")
+                searchUserByMonth("June")
             }
             7 -> {
-                Log.i("Calender", "Jul")
-                searchUserByMonth("Jul")
+                Log.i("Calender", "July")
+                searchUserByMonth("July")
             }
             8 -> {
                 Log.i("Calender", "Aug")
-                searchUserByMonth("Aug")
+                searchUserByMonth("August")
             }
             9 -> {
                 Log.i("Calender", "Sep")
-                searchUserByMonth("Sep")
+                searchUserByMonth("September")
             }
             10 -> {
                 Log.i("Calender", "Oct")
-                searchUserByMonth("Oct")
+                searchUserByMonth("October")
             }
             11 -> {
                 Log.i("Calender", "Nov")
-                searchUserByMonth("Nov")
+                searchUserByMonth("November")
             }
             12 -> {
                 Log.i("Calender", "Dec")
-                searchUserByMonth("Dec")
+                searchUserByMonth("December")
             }
         }
         binding.recyclerViewDemo6.visibility = View.VISIBLE
@@ -166,19 +174,16 @@ class Demo6 : Fragment(), View.OnClickListener {
 
     private fun searchUserByMonth(month: String) {
         val list = ArrayList<ModelDemo6>()
-        val ref = db.collection("users")
+        Log.i("ALL_FIELD", "The Passed Month Is $month")
+        var passedMonth = db.collection("users").document("date")
+        val ref =
+            db.collection("users")
+                .whereLessThanOrEqualTo("date", searchUser())
         ref.get().addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 for (document: QueryDocumentSnapshot in task.result) {
-                    val allDate: String? = document.getString("date")
-                    if (allDate!!.contains(month)) {
-                        Log.i(
-                            "TAG_LIST",
-                            " ${document.getString("date")} : ${document.getString("day")}"
-                        )
-                        val demo6 = document.toObject(ModelDemo6::class.java)
-                        list.add(demo6)
-                    }
+                    val demo6 = document.toObject(ModelDemo6::class.java)
+                    list.add(demo6)
                 }
                 Log.i("Main", list.size.toString())
                 binding.recyclerViewDemo6.adapter = Demo6Adapter(list)
@@ -191,6 +196,22 @@ class Demo6 : Fragment(), View.OnClickListener {
             }
         }
     }
+
+    private fun searchUser(): Date {
+        var certainDate = Date()
+        val rootRef = db.collection("users")
+        val usersRef = rootRef.document("date")
+        usersRef.get().addOnCompleteListener { task ->
+            val document = task.result
+            if (document.exists()) {
+                certainDate = document.getDate("date")!!
+                //Do what you need to do with your Date object
+            }
+        }
+        Log.i("ALL_FIELD","The TimeStamp Date Is $certainDate")
+        return certainDate
+    }
+
 
     private val dateSetListenerYear =
         DatePickerDialog.OnDateSetListener { _, year, monthOfYear, dayOfMonth ->
@@ -210,29 +231,49 @@ class Demo6 : Fragment(), View.OnClickListener {
     private fun searchUserByYear(year: String) {
         val list = ArrayList<ModelDemo6>()
         val ref = db.collection("users")
-        ref.get().addOnCompleteListener { task ->
-            if (task.isSuccessful) {
-                for (document: QueryDocumentSnapshot in task.result) {
-                    val allDate: String? = document.getString("date")
-                    if (allDate!!.contains(year)) {
-                        Log.i(
-                            "TAG_LIST",
-                            " ${document.getString("date")} : ${document.getString("day")}"
-                        )
+        Log.i("ALL_FIELD", "The Passed Year Is $year")
+        ref.whereEqualTo("date", year)
+            .get().addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    for (document: QueryDocumentSnapshot in task.result) {
+                        Log.i("TAG_YEAR", document.toString())
                         val demo6 = document.toObject(ModelDemo6::class.java)
                         list.add(demo6)
                     }
+                    Log.i("TAG_YEAR", list.size.toString())
+                    binding.recyclerViewDemo6.adapter = Demo6Adapter(list)
+                } else {
+                    Toast.makeText(
+                        requireContext(),
+                        "Query Failed. Check Logs",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
-                Log.i("Main", list.size.toString())
-                binding.recyclerViewDemo6.adapter = Demo6Adapter(list)
-            } else {
-                Toast.makeText(
-                    requireContext(),
-                    "Query Failed. Check Logs",
-                    Toast.LENGTH_SHORT
-                ).show()
             }
-        }
+
+//        ref.get().addOnCompleteListener { task ->
+//            if (task.isSuccessful) {
+//                for (document: QueryDocumentSnapshot in task.result) {
+//                    val allDate: String? = document.getString("date")
+//                    if (allDate!!.contains("April 3,2020 at 1:20:13 PM UTC+5:30")) {
+//                        Log.i(
+//                            "TAG_LIST",
+//                            " ${document.getString("date")} : ${document.getString("day")}"
+//                        )
+//                        val demo6 = document.toObject(ModelDemo6::class.java)
+//                        list.add(demo6)
+//                    }
+//                }
+//                Log.i("Main", list.size.toString())
+//                binding.recyclerViewDemo6.adapter = Demo6Adapter(list)
+//            } else {
+//                Toast.makeText(
+//                    requireContext(),
+//                    "Query Failed. Check Logs",
+//                    Toast.LENGTH_SHORT
+//                ).show()
+//            }
+//        }
     }
 
     private val dateSetListenerWeek =
@@ -248,29 +289,15 @@ class Demo6 : Fragment(), View.OnClickListener {
     }
 
     private fun searchUserByWeek(dayOfMonth: String) {
-        /*Log.i("CALENDER_WEEK", "The Selected Date Is $dayOfMonth")
-        if (dayOfMonth.toInt() <= 30 || dayOfMonth.toInt() < 31) {
-            Toast.makeText(requireContext(), "The Input Date Is Last Date", Toast.LENGTH_SHORT)
-                .show()
-        } else {
-            Log.i("CALENDER_WEEK", "The Week Date Is ${dayOfMonth.toInt() + 7} Last Date")
-        }*/
         val list = ArrayList<ModelDemo6>()
         val ref =
             db.collection("users")
-                .whereGreaterThanOrEqualTo("date", "April 1, 2022 at 6:27:15 AM UTC+5:30")
+                .whereLessThanOrEqualTo("date", dayOfMonth)
         ref.get().addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 for (document: QueryDocumentSnapshot in task.result) {
-//                    val allDate: String? = document.getString("date")
-//                    if (allDate!!.contains(dayOfMonth)) {
-//                        Log.i(
-//                            "TAG_LIST",
-//                            " ${document.getString("date")} : ${document.getString("day")}"
-//                        )
                     val demo6 = document.toObject(ModelDemo6::class.java)
                     list.add(demo6)
-//                    }
                 }
                 Log.i("Main", list.size.toString())
                 binding.recyclerViewDemo6.adapter = Demo6Adapter(list)
@@ -290,7 +317,14 @@ class Demo6 : Fragment(), View.OnClickListener {
             "tittle" to "It has survived not only five centuries, but also the leap into electronic"
         )
         val userReference1 = db.collection("users").document("1").set(user)
-        db.collection("users").document("12").set(user)
+        db.collection("users").document("2").set(user)
+        db.collection("users").document("3").set(user)
+        db.collection("users").document("4").set(user)
+        db.collection("users").document("5").set(user)
+        db.collection("users").document("6").set(user)
+        db.collection("users").document("7").set(user)
+        db.collection("users").document("8").set(user)
+        db.collection("users").document("9").set(user)
         userReference1.addOnSuccessListener { document ->
             if (document != null) {
                 Log.d("DataFirestore", "DocumentSnapshot data: $document")
@@ -310,7 +344,6 @@ class Demo6 : Fragment(), View.OnClickListener {
         myViewModel.getDataFireStore().observe(requireActivity()) {
             Log.i("TAG", it.size.toString())
             if (it.isEmpty()) {
-                binding.tvFireStore.visibility = View.VISIBLE
                 binding.recyclerViewDemo6.visibility = View.GONE
             } else if (it.isNotEmpty()) {
                 binding.recyclerViewDemo6.visibility = View.VISIBLE
@@ -332,7 +365,6 @@ class Demo6 : Fragment(), View.OnClickListener {
                 binding.imgDashWeek.visibility = View.GONE
                 binding.imgDashMonth.visibility = View.GONE
                 binding.imgDashYear.visibility = View.GONE
-                binding.tvFireStore.visibility = View.VISIBLE
                 binding.recyclerViewDemo6.visibility = View.VISIBLE
                 DatePickerDialog(
                     requireContext(),
@@ -348,7 +380,6 @@ class Demo6 : Fragment(), View.OnClickListener {
                 binding.imgDashDay.visibility = View.GONE
                 binding.imgDashMonth.visibility = View.GONE
                 binding.imgDashYear.visibility = View.GONE
-                binding.tvFireStore.visibility = View.VISIBLE
                 DatePickerDialog(
                     requireContext(),
                     dateSetListenerWeek,

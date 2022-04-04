@@ -48,7 +48,7 @@
                 android:layout_marginEnd="10dp"
                 android:paddingStart="2dp"
                 android:paddingEnd="0dp"
-                android:text="@{`Date: ` +fire_store_data.date}"
+                android:text="@{`Date: ` +fire_store_data.convertDate()}"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
