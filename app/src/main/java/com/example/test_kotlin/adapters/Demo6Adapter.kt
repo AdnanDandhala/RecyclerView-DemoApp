@@ -2,22 +2,47 @@ package com.example.test_kotlin.adapters
 
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.test_kotlin.databinding.RecyclerviewDemo6Binding
-import com.example.test_kotlin.models.ModelDemo6
+import com.example.test_kotlin.models.FirestoreModel
 
-class Demo6Adapter(val listData: ArrayList<ModelDemo6>) :
+class Demo6Adapter(listData: ArrayList<FirestoreModel>) :
     RecyclerView.Adapter<Demo6Adapter.Demo6ViewHolder>() {
-    var tempList: ArrayList<ModelDemo6> = listData
+    var tempList: ArrayList<FirestoreModel> = listData
 
     inner class Demo6ViewHolder(val binding: RecyclerviewDemo6Binding) :
-        RecyclerView.ViewHolder(binding.root) {
+        RecyclerView.ViewHolder(binding.root), View.OnClickListener {
         fun bind(position: Int) {
             val data = tempList[position]
             binding.fireStoreData = data
-            Log.i("TIME", tempList[position].date.toString())
+            Log.i("TIME", tempList[position].firebaseModelUserItems.date.toString())
             Log.i("ListSize", tempList.size.toString())
+            binding.imgDropdownArrowDemo6.setOnClickListener(this)
+            binding.imgDropUpArrowDemo6.setOnClickListener(this)
+        }
+
+        override fun onClick(p0: View?) {
+            when (p0?.id) {
+                binding.imgDropdownArrowDemo6.id -> {
+                    binding.imgDropdownArrowDemo6.visibility = View.GONE
+                    binding.imgDropUpArrowDemo6.visibility = View.VISIBLE
+                    binding.tvDateFireStore.visibility = View.VISIBLE
+                    binding.tvDayFireStoreDay.visibility = View.VISIBLE
+                    binding.tvFirstFireStoreTittle.visibility = View.VISIBLE
+                    binding.tvFirstFireStoreUserId.visibility = View.VISIBLE
+                }
+                binding.imgDropUpArrowDemo6.id -> {
+                    binding.imgDropdownArrowDemo6.visibility = View.VISIBLE
+                    binding.imgDropUpArrowDemo6.visibility = View.GONE
+                    binding.tvDateFireStore.visibility = View.GONE
+                    binding.tvDayFireStoreDay.visibility = View.GONE
+                    binding.tvFirstFireStoreTittle.visibility = View.GONE
+                    binding.tvFirstFireStoreUserId.visibility = View.GONE
+                }
+            }
+
         }
     }
 
