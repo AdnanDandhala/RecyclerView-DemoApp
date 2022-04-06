@@ -6,7 +6,7 @@
 
         <variable
             name="fire_store_data"
-            type="com.example.test_kotlin.models.FirestoreModel" />
+            type="com.example.test_kotlin.models.FirestoreModelItems" />
 
     </data>
 
@@ -26,42 +26,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv_user_fireStore"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:paddingStart="2dp"
-                android:paddingEnd="0dp"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toStartOf="@+id/img_dropdown_arrow_demo6"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/img_dropdown_arrow_demo6"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:visibility="visible"
-                app:layout_constraintBottom_toBottomOf="@+id/tv_user_fireStore"
-                app:layout_constraintEnd_toEndOf="@id/parent_layout_recycler_view_demo6"
-                app:layout_constraintTop_toTopOf="@+id/tv_user_fireStore"
-                app:srcCompat="@drawable/ic_baseline_keyboard_arrow_down_24" />
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/img_dropUp_arrow_demo6"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="@+id/tv_user_fireStore"
-                app:layout_constraintEnd_toEndOf="@id/parent_layout_recycler_view_demo6"
-                app:layout_constraintTop_toTopOf="@+id/tv_user_fireStore"
-                app:srcCompat="@drawable/ic_outline_keyboard_arrow_up_24" />
-
-
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/child_layout_recyclerview_demo6"
                 android:layout_width="match_parent"
@@ -69,11 +33,10 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="20dp"
-                android:visibility="gone"
+                android:visibility="visible"
                 app:layout_constraintBottom_toBottomOf="@id/parent_layout_recycler_view_demo6"
                 app:layout_constraintEnd_toEndOf="@id/parent_layout_recycler_view_demo6"
-                app:layout_constraintStart_toStartOf="@id/parent_layout_recycler_view_demo6"
-                app:layout_constraintTop_toBottomOf="@+id/tv_user_fireStore">
+                app:layout_constraintStart_toStartOf="@id/parent_layout_recycler_view_demo6">
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tv_date_fire_store"
@@ -82,7 +45,7 @@
                     android:layout_marginTop="3dp"
                     android:paddingStart="2dp"
                     android:paddingEnd="0dp"
-                    android:text="@{`Tittle: `+fire_store_data.firebaseModelUserItems.convertDate()}"
+                    android:text="@{`Date: `+fire_store_data.convertDate()}"
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -96,7 +59,7 @@
                     android:layout_marginTop="3dp"
                     android:paddingStart="2dp"
                     android:paddingEnd="0dp"
-                    android:text="@{`Day: `+fire_store_data.firebaseModelUserItems.day}"
+                    android:text="@{`Tittle: `+fire_store_data.tittle}"
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -110,7 +73,7 @@
                     android:layout_marginTop="3dp"
                     android:paddingStart="2dp"
                     android:paddingEnd="0dp"
-                    android:text="@{`Day: `+fire_store_data.firebaseModelUserItems.tittle}"
+                    android:text="@{`Day: `+fire_store_data.day}"
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -125,7 +88,7 @@
                     android:layout_marginBottom="10dp"
                     android:paddingStart="2dp"
                     android:paddingEnd="0dp"
-                    android:text="@{`Day: `+fire_store_data.firebaseModelUserItems.userId}"
+                    android:text="@{`UserId: `+fire_store_data.convertId()}"
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     app:layout_constraintBottom_toBottomOf="parent"

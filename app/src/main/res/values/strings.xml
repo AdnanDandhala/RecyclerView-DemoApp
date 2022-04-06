@@ -72,4 +72,6 @@
     <string name="tv_text_day_filter">DAY</string>
     <string name="et_start_date_hint">Start Date</string>
     <string name="et_end_date_hint">End Date</string>
+    <string name="tittle_et_hint_demo6">Enter Tittle</string>
+    <string name="add_data_btn_text_demo6">Add Data</string>
 </resources>

@@ -28,7 +28,29 @@
             app:layout_constraintTop_toTopOf="parent"
             app:navigationIcon="@drawable/ic_baseline_keyboard_backspace_24"
             app:title="@string/text_firebase_demo"
-            app:titleTextColor="@color/white" />
+            app:titleTextColor="@color/white">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/img_add_new"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="150dp"
+                android:padding="2dp"
+                android:visibility="gone"
+                app:srcCompat="@drawable/ic_baseline_add_white_24" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/img_load_data"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="150dp"
+                android:layout_marginTop="15dp"
+                android:padding="2dp"
+                android:visibility="visible"
+                app:srcCompat="@drawable/ic_baseline_data_saver_off_24" />
+
+
+        </androidx.appcompat.widget.Toolbar>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -36,6 +58,7 @@
         android:id="@+id/child_layout_demo6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/parent_layout_demo6">
@@ -189,11 +212,52 @@
         android:id="@+id/recycler_view_demo6"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:visibility="visible"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/child_layout_demo6"
         tools:listitem="@layout/recyclerview_demo6" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/child_et_add_data_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/et_tittle_demo6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/demo3_et_shape"
+            android:hint="@string/tittle_et_hint_demo6"
+            android:padding="18dp"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_add_data_fire_store"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/btn_background_demo6"
+            android:text="@string/add_data_btn_text_demo6"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_tittle_demo6" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
