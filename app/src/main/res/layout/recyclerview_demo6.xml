@@ -45,7 +45,7 @@
                     android:layout_marginTop="3dp"
                     android:paddingStart="2dp"
                     android:paddingEnd="0dp"
-                    android:text="@{`Date: `+fire_store_data.convertDate()}"
+                    android:text="@{`Date: `+fire_store_data.date}"
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -79,22 +79,6 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_day_fire_store_day" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tv_first_fire_store_userId"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="3dp"
-                    android:layout_marginBottom="10dp"
-                    android:paddingStart="2dp"
-                    android:paddingEnd="0dp"
-                    android:text="@{`UserId: `+fire_store_data.convertId()}"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_first_fire_store_tittle" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
