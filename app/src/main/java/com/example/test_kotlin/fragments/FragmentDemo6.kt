@@ -16,9 +16,7 @@ import com.example.test_kotlin.R
 import com.example.test_kotlin.adapters.Demo6Adapter
 import com.example.test_kotlin.databinding.FragmentDemo6Binding
 import com.example.test_kotlin.models.FirestoreModelItems
-import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.material.datepicker.MaterialDatePicker
-import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import java.text.DateFormat
@@ -217,7 +215,7 @@ class Demo6 : Fragment(), View.OnClickListener {
         val dayRef = db.collection("data").document("date")
         tempList.clear()
 
-        dayRef.get().addOnCompleteListener(OnCompleteListener<DocumentSnapshot?> { task ->
+        dayRef.get().addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 val document = task.result
                 if (document != null) {
@@ -230,7 +228,7 @@ class Demo6 : Fragment(), View.OnClickListener {
             } else {
                 Log.d("LOGGER", "get failed with ", task.exception)
             }
-        })
+        }
 
 
 //        dayRef.whereEqualTo("date", year).get().addOnSuccessListener { documents ->
