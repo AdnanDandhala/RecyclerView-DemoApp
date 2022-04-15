@@ -20,6 +20,7 @@ import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import java.text.DateFormat
+import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -45,8 +46,8 @@ class Demo6 : Fragment(), View.OnClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.tvFilterDay.setOnClickListener(this)
-        binding.tvFilterWeek.setOnClickListener(this)
-        binding.tvFilterMonth.setOnClickListener(this)
+//        binding.tvFilterWeek.setOnClickListener(this)
+//        binding.tvFilterMonth.setOnClickListener(this)
         binding.tvFilterYear.setOnClickListener(this)
         Log.i("Time", date.toString())
         binding.imgLoadData.setOnClickListener {
@@ -77,7 +78,6 @@ class Demo6 : Fragment(), View.OnClickListener {
             } else {
                 Toast.makeText(requireContext(), "Enter Tittle", Toast.LENGTH_SHORT).show()
             }
-
         }
         binding.toolbarDemo6.setNavigationOnClickListener {
             findNavController().navigate(R.id.fragmentFirstScreen2)
@@ -88,9 +88,16 @@ class Demo6 : Fragment(), View.OnClickListener {
     private fun addUser(tittle: String) {
         val dateTime = calendar.time
         val day = SimpleDateFormat("EEEE", Locale.ENGLISH).format(dateTime.time)
+        val d = Date()
+        val date = SimpleDateFormat("mm-d-yyyy")
+        val da = date.format(d).toLong()
+//        val dateString = "30/09/2014"
+//        val sdf = SimpleDateFormat("dd/MM/yyyy")
+//        val date = sdf.parse(dateString)
+//        val startDate = date.time
         db.collection("data").add(
             FirestoreModelItems(
-                date.toString(),
+                da,
                 tittle,
                 day,
             )
@@ -111,31 +118,18 @@ class Demo6 : Fragment(), View.OnClickListener {
         datePicker.addOnPositiveButtonClickListener {
             Log.i("DATE_PICKER", "Positive Button Was Clicked ${datePicker.headerText}")
             Log.i("DATE_PICKER", "PositiveButton Was Clicked ${datePicker.selection.toString()}")
-            Log.i("DATE_PICKER", "The Day Is ${daysNameOfWeek(datePicker.headerText)}")
-            searchUserByDay(datePicker.headerText)
+            searchUserByDay(getDayName(datePicker.headerText, "MMM dd,yyyy", "EEEE"))
         }
         datePicker.addOnNegativeButtonClickListener {
             Log.i("DATE_PICKER", "Negative Button Was Clicked ${datePicker.selection}")
         }
     }
 
-    private fun daysNameOfWeek(inputDate: String): String? {
-        val day: DateFormat = SimpleDateFormat("EEEE")
-        try {
-            Log.i("DATE_PICKER", "The Day Is(From Method) $day")
-            return day.format(inputDate)
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
-        return ""
-    }
-
-    private fun searchUserByDay(headerText: String) {
+    private fun searchUserByDay(day: String) {
         val tempList: ArrayList<FirestoreModelItems> = ArrayList()
-        Log.i("SearchData", headerText)
         val dayRef = db.collection("data")
         tempList.clear()
-        dayRef.whereEqualTo("day", "Wednesday").get().addOnSuccessListener { documents ->
+        dayRef.whereEqualTo("day", day).get().addOnSuccessListener { documents ->
             for (document in documents) {
                 Log.d("SearchData", "${document.id} => ${document.data}")
                 val data = documents.toObjects(FirestoreModelItems::class.java)
@@ -166,7 +160,6 @@ class Demo6 : Fragment(), View.OnClickListener {
         datePicker.addOnPositiveButtonClickListener {
             Log.i("DATE_PICKER", "Positive Button Was Clicked ${datePicker.headerText}")
             Log.i("DATE_PICKER", "Positive Button Was Clicked ${datePicker.selection.toString()}")
-
         }
         datePicker.addOnNegativeButtonClickListener {
             Log.i("DATE_PICKER", "Negative Button Was Clicked ${datePicker.selection}")
@@ -177,151 +170,64 @@ class Demo6 : Fragment(), View.OnClickListener {
         val datePicker = MaterialDatePicker.Builder.datePicker().build()
         activity?.supportFragmentManager?.let { datePicker.show(it, "DataPicker") }
         datePicker.addOnPositiveButtonClickListener {
-            getDayYear(datePicker.headerText)
+            searchUserByYear(getDayName(datePicker.headerText, "MMM dd,yyyy", "yyyy"))
         }
         datePicker.addOnNegativeButtonClickListener {
             Log.i("DATE_PICKER", "Negative Button Was Clicked ${datePicker.selection}")
         }
     }
 
-    private fun getDayYear(headerText: String) {
-        var monthDate = ""
-        var year = ""
-        val monthName = headerText.subSequence(0, 3)
-        if (headerText.length == 12) {
-            monthDate = headerText.subSequence(4, 6).toString()
-            year = headerText.subSequence(8, 12).toString()
-        } else if (headerText.length == 11) {
-            monthDate = headerText.subSequence(4, 5).toString()
-            year = headerText.subSequence(7, 11).toString()
-        }
-        val builder = StringBuilder()
-        builder.append(monthDate)
-            .append("/")
-            .append(getMonthIndex(monthName.toString()))
-            .append("/")
-            .append(year)
-        Log.i("DATE_PICKER", "The Main Text Of Dialog Is  $headerText")
-        Log.i("DATE_PICKER", "The Name Of Month Is  $monthName")
-        Log.i("DATE_PICKER", "The Date Of Month $monthDate")
-        Log.i("DATE_PICKER", "The Year Is  $year")
-        Log.i("DATE_PICKER", "The Final Date Is $builder")
-        searchUserByYear(year)
-    }
-
     private fun searchUserByYear(year: String) {
         val tempList: ArrayList<FirestoreModelItems> = ArrayList()
         Log.i("SearchData", year)
-        val dayRef = db.collection("data").document("date")
-        tempList.clear()
-
-        dayRef.get().addOnCompleteListener { task ->
-            if (task.isSuccessful) {
-                val document = task.result
-                if (document != null) {
-                    Log.i("LOGGER", "First " + document.getString("date"))
-                    val result = document.getString("date")
-                    result?.contains(year)
-                } else {
-                    Log.d("LOGGER", "No such document")
+        val dayRef = db.collection("data")
+        dayRef.get().addOnSuccessListener { documents ->
+            for (document in documents) {
+                Log.d("SearchData", "${document.id} => ${document.data}")
+                val allDate = document.getString("date")
+                if (allDate != null) {
+                    if (allDate.contains(year)) {
+                        Log.i(
+                            "YEAR_DATA",
+                            "${document.getString("date")!!} ${document.getString("day")} ${
+                                document.getString("tittle")
+                            } ${document.id}"
+                        )
+                        val data = document.toObject(FirestoreModelItems::class.java)
+                        tempList.add(data)
+                    }
                 }
-            } else {
-                Log.d("LOGGER", "get failed with ", task.exception)
             }
+            binding.recyclerViewDemo6.adapter = Demo6Adapter(tempList)
+        }.addOnFailureListener {
+            Log.w("SearchData", "Error Getting Documents $it")
         }
-
-
-//        dayRef.whereEqualTo("date", year).get().addOnSuccessListener { documents ->
-//            for (document in documents) {
-//                if (document != null) {
-//                    Log.d("SearchData", "${document.id} => ${document.data}")
-//                    document.getString("date")?.contains(year)
-//                    val data = documents.toObjects(FirestoreModelItems::class.java)
-//                    tempList.addAll(data)
-//                }
-//            }
-//            binding.recyclerViewDemo6.adapter = Demo6Adapter(tempList)
-//        }.addOnFailureListener {
-//            Log.w("SearchData", "Error Getting Documents $it")
-//        }
         binding.recyclerViewDemo6.layoutManager = LinearLayoutManager(requireContext())
     }
 
 
-    private fun getDayName(headerText: String) {
-        var monthDate = ""
-        var year = ""
-        val monthName = headerText.subSequence(0, 3)
-        if (headerText.length == 12) {
-            monthDate = headerText.subSequence(4, 6).toString()
-            year = headerText.subSequence(8, 12).toString()
-        } else if (headerText.length == 11) {
-            monthDate = headerText.subSequence(4, 5).toString()
-            year = headerText.subSequence(7, 11).toString()
+    private fun getDayName(headerText: String, inputFormat: String, outputFormat: String): String {
+        Log.e("TAG", " --- $headerText")
+        try {
+            val sdf = SimpleDateFormat("MMM dd,yyyy")
+            val date = sdf.parse(headerText)
+            val startDate = date.time
+            Log.i("TAG_TIME", startDate.toString())
+        } catch (e: ParseException) {
+            e.printStackTrace()
         }
-        val builder = StringBuilder()
-        builder.append(monthDate)
-            .append("/")
-            .append(getMonthIndex(monthName.toString()))
-            .append("/")
-            .append(year)
-        Log.i("DATE_PICKER", "The Main Text Of Dialog Is  $headerText")
-        Log.i("DATE_PICKER", "The Name Of Month Is  $monthName")
-        Log.i("DATE_PICKER", "The Date Of Month $monthDate")
-        Log.i("DATE_PICKER", "The Year Is  $year")
-        Log.i("DATE_PICKER", "The Final Date Is $builder")
-
+        val inFormat = SimpleDateFormat(inputFormat)
+        val date = inFormat.parse(headerText)
+        val outFormat = SimpleDateFormat(outputFormat)
+        val goal = outFormat.format(date!!)
+        Log.e("TAG", "out put --- $date --- $goal")
+        return goal
     }
-
-    private fun getMonthIndex(monthName: String): String {
-        when (monthName) {
-            "Jan" -> {
-                return 1.toString()
-            }
-            "Feb" -> {
-                return 2.toString()
-            }
-            "Mar" -> {
-                return 3.toString()
-            }
-            "Apr" -> {
-                return 4.toString()
-            }
-            "May" -> {
-                return 5.toString()
-            }
-            "Jun" -> {
-                return 6.toString()
-            }
-            "Jul" -> {
-                return 7.toString()
-            }
-            "Aug" -> {
-                return 8.toString()
-            }
-            "Sep" -> {
-                return 9.toString()
-            }
-            "Oct" -> {
-                return 10.toString()
-            }
-            "Nov" -> {
-                return 11.toString()
-            }
-            "Dec" -> {
-                return 12.toString()
-            }
-        }
-        return 0.toString()
-    }
-
 
     private fun fetchData() {
         val myViewModel =
             ViewModelProvider(this)[com.example.test_kotlin.viewmodel.MainViewModel::class.java]
-        myViewModel.getDataFireStore()
-        myViewModel.fireStoreData.observe(requireActivity()) {
-            Log.i("TAG", it.size.toString())
+        myViewModel.getDataFireStore().observe(requireActivity()) {
             if (it.isEmpty()) {
                 binding.recyclerViewDemo6.visibility = View.GONE
                 Log.i("EMPTY", "List Is Empty")
@@ -353,7 +259,7 @@ class Demo6 : Fragment(), View.OnClickListener {
                 binding.imgDashDay.visibility = View.GONE
                 binding.imgDashMonth.visibility = View.GONE
                 binding.imgDashYear.visibility = View.GONE
-                fetchData()
+//                fetchData()
                 addDatePickerWeek()
             }
             binding.tvFilterMonth.id -> {
@@ -361,7 +267,7 @@ class Demo6 : Fragment(), View.OnClickListener {
                 binding.imgDashWeek.visibility = View.GONE
                 binding.imgDashDay.visibility = View.GONE
                 binding.imgDashYear.visibility = View.GONE
-                fetchData()
+//                fetchData()
                 addDatePickerMonth()
             }
             binding.tvFilterYear.id -> {
@@ -369,7 +275,7 @@ class Demo6 : Fragment(), View.OnClickListener {
                 binding.imgDashDay.visibility = View.GONE
                 binding.imgDashMonth.visibility = View.GONE
                 binding.imgDashWeek.visibility = View.GONE
-                fetchData()
+//                fetchData()
                 addDatePickerYear()
             }
         }

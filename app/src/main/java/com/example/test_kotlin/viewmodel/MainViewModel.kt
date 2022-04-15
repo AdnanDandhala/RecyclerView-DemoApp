@@ -29,7 +29,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     private val repository: UserRepository
     private var tempList: ArrayList<FirebaseHelper> = ArrayList()
     private val firebaseData: MutableLiveData<ArrayList<FirebaseHelper>> = MutableLiveData()
-    val fireStoreData: MutableLiveData<ArrayList<FirestoreModelItems>> = MutableLiveData()
+    private val fireStoreData: MutableLiveData<ArrayList<FirestoreModelItems>> = MutableLiveData()
 
     init {
         val userDao = UsersDatabase.getDatabaseObj(application).userDao()
@@ -37,27 +37,22 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         readAllData = repository.readAllData
     }
 
-    fun getDataFireStore() {
+    fun getDataFireStore(): MutableLiveData<ArrayList<FirestoreModelItems>> {
         val tempList: ArrayList<FirestoreModelItems> = ArrayList()
         val db = Firebase.firestore
         tempList.clear()
-        db.collection("data").get()
-            .addOnSuccessListener { result ->
-//                for (document in result) {
-//                    Log.i("Final", "${document.id}=>${document.data}")
-//                    Log.i("Final", "The Data Is ${document.data}")
-//                    Log.i("Final", "The Date Is ${document.data["date"].toString()}")
-//                    val data = document.toObject(FirestoreModelItems::class.java)
-//                    Log.i("MAIN_DATA",data.toString())
-//                    tempList.add(data)
-//                }
-                val data = result.toObjects(FirestoreModelItems::class.java)
-                tempList.addAll(data)
-                Log.i("Final", result.toString())
-                fireStoreData.value = tempList
-            }.addOnFailureListener {
-                Log.d("Final", "get failed with ", it)
-            }
+        viewModelScope.launch {
+            db.collection("data").get()
+                .addOnSuccessListener { result ->
+                    val data = result.toObjects(FirestoreModelItems::class.java)
+                    tempList.addAll(data)
+                    Log.i("Final", result.toString())
+                    fireStoreData.value = tempList
+                }.addOnFailureListener {
+                    Log.d("Final", "get failed with ", it)
+                }
+        }
+        return fireStoreData
     }
 
     fun getDataFirebase(): MutableLiveData<ArrayList<FirebaseHelper>> {
