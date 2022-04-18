@@ -16,6 +16,7 @@ import com.example.test_kotlin.R
 import com.example.test_kotlin.adapters.Demo6Adapter
 import com.example.test_kotlin.databinding.FragmentDemo6Binding
 import com.example.test_kotlin.models.FirestoreModelItems
+import com.example.test_kotlin.viewmodel.MainViewModel
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -46,8 +47,8 @@ class Demo6 : Fragment(), View.OnClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.tvFilterDay.setOnClickListener(this)
-//        binding.tvFilterWeek.setOnClickListener(this)
-//        binding.tvFilterMonth.setOnClickListener(this)
+        binding.tvFilterWeek.setOnClickListener(this)
+        binding.tvFilterMonth.setOnClickListener(this)
         binding.tvFilterYear.setOnClickListener(this)
         Log.i("Time", date.toString())
         binding.imgLoadData.setOnClickListener {
@@ -88,16 +89,10 @@ class Demo6 : Fragment(), View.OnClickListener {
     private fun addUser(tittle: String) {
         val dateTime = calendar.time
         val day = SimpleDateFormat("EEEE", Locale.ENGLISH).format(dateTime.time)
-        val d = Date()
-        val date = SimpleDateFormat("mm-d-yyyy")
-        val da = date.format(d).toLong()
-//        val dateString = "30/09/2014"
-//        val sdf = SimpleDateFormat("dd/MM/yyyy")
-//        val date = sdf.parse(dateString)
-//        val startDate = date.time
+        val millis = System.currentTimeMillis()
         db.collection("data").add(
             FirestoreModelItems(
-                da,
+                millis,
                 tittle,
                 day,
             )
@@ -211,7 +206,7 @@ class Demo6 : Fragment(), View.OnClickListener {
         try {
             val sdf = SimpleDateFormat("MMM dd,yyyy")
             val date = sdf.parse(headerText)
-            val startDate = date.time
+            val startDate = date?.time
             Log.i("TAG_TIME", startDate.toString())
         } catch (e: ParseException) {
             e.printStackTrace()
@@ -226,7 +221,7 @@ class Demo6 : Fragment(), View.OnClickListener {
 
     private fun fetchData() {
         val myViewModel =
-            ViewModelProvider(this)[com.example.test_kotlin.viewmodel.MainViewModel::class.java]
+            ViewModelProvider(this)[MainViewModel::class.java]
         myViewModel.getDataFireStore().observe(requireActivity()) {
             if (it.isEmpty()) {
                 binding.recyclerViewDemo6.visibility = View.GONE
@@ -259,7 +254,7 @@ class Demo6 : Fragment(), View.OnClickListener {
                 binding.imgDashDay.visibility = View.GONE
                 binding.imgDashMonth.visibility = View.GONE
                 binding.imgDashYear.visibility = View.GONE
-//                fetchData()
+                fetchData()
                 addDatePickerWeek()
             }
             binding.tvFilterMonth.id -> {
@@ -267,7 +262,7 @@ class Demo6 : Fragment(), View.OnClickListener {
                 binding.imgDashWeek.visibility = View.GONE
                 binding.imgDashDay.visibility = View.GONE
                 binding.imgDashYear.visibility = View.GONE
-//                fetchData()
+                fetchData()
                 addDatePickerMonth()
             }
             binding.tvFilterYear.id -> {
@@ -275,7 +270,7 @@ class Demo6 : Fragment(), View.OnClickListener {
                 binding.imgDashDay.visibility = View.GONE
                 binding.imgDashMonth.visibility = View.GONE
                 binding.imgDashWeek.visibility = View.GONE
-//                fetchData()
+                fetchData()
                 addDatePickerYear()
             }
         }
