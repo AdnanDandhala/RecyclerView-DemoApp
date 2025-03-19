@@ -49,7 +49,7 @@ maintainability, and testability.
 ## Screenshots
 
 <div style="background-color: white; padding: 10px;">
-  <img src="screenshots/chronometer_states.jpg" alt="Start state of the chronometer" width="30%" style="background-color: white;">
+  <img src="screenshots/chronometer_states.jpg" alt="Start state of the chronometer">
 </div>
 
 ## Unit Testing
