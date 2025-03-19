@@ -48,18 +48,12 @@ maintainability, and testability.
 
 ## Screenshots
 
-<table>
-  <tr>
-    <td style="background-color: black; padding: 10px;">
-      <img src="screenshots/start_state.png" alt="Start state of the chronometer" width="100%">
-    </td>
-    <td style="background-color: white; padding: 10px;">
-      <img src="screenshots/running_state.png" alt="Running state of the chronometer" width="100%">
-    </td>
-    <td style="background-color: white; padding: 10px;">
-      <img src="screenshots/reset_state.png" alt="Reset state of the chronometer" width="100%">
-    </td>
-  </tr>
+<table align="center" style="background-color: white; border-collapse: collapse; margin: 20px 0;">
+    <tr>
+        <td><img src="screenshots/start_state.png" alt="Start state of the chronometer" width="300"></td>
+        <td><img src="screenshots/running_state.png" alt="Running state of the chronometer" width="300"></td>
+        <td><img src="screenshots/reset_state.png" alt="Reset state of the chronometer" width="300"></td>
+    </tr>
 </table>
 
 ## Unit Testing
