@@ -43,11 +43,11 @@ The app follows **MVVM (Model-View-ViewModel)** and **Clean Architecture** to en
 
 ## Screenshots
 
-<p align="center">
-  <img src="screenshots/start_state.png" alt="Start state of the chronometer" width="30%" style="background-color: white; padding: 10px; border-radius: 8px;">
-  <img src="screenshots/running_state.png" alt="Running state of the chronometer" width="30%" style="background-color: white; padding: 10px; border-radius: 8px;">
-  <img src="screenshots/reset_state.png" alt="Reset state of the chronometer" width="30%" style="background-color: white; padding: 10px; border-radius: 8px;">
-</p>
+<div style="background-color: white; display: inline-block; padding: 10px;">
+  <img src="screenshots/start_state.png" alt="Start state of the chronometer" width="30%" style="background-color: white;">
+  <img src="screenshots/running_state.png" alt="Running state of the chronometer" width="30%" style="background-color: white;">
+  <img src="screenshots/reset_state.png" alt="Reset state of the chronometer" width="30%" style="background-color: white;">
+</div>
 
 ## Unit Testing
 
@@ -61,7 +61,7 @@ E2E tests are written using **Espresso** and **UI Automator** :
 
 - `ChronometerE2ETest.java` (Validates button clicks)
 
-## 🧪️ Dependency Injection (Hilt) - **Coming Soon** 🚀
+## �️ Dependency Injection (Hilt) - **Coming Soon** 🚀
 
 The app will soon integrate **Hilt** for Dependency Injection to improve modularity and testability.
 
