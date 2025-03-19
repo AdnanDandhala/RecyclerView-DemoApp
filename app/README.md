@@ -2,51 +2,56 @@
 
 ## Overview
 
-This project is a **Chronometer App** developed using **MVVM + Clean Architecture**. The chronometer operates in three states:
+This project is a **Chronometer App** developed using **MVVM + Clean Architecture**. The chronometer
+operates in three states:
 
 1. **Start State**: The chronometer is at `0:00:00.0`, not running, and no laps are registered.
 2. **Running State**: The chronometer is running, and the user can register laps.
-3. **Reset State**: The chronometer is not running, and either the display is not at `0:00:00.0` or laps are registered. The user can reset or restart the chronometer.
+3. **Reset State**: The chronometer is not running, and either the display is not at `0:00:00.0` or
+   laps are registered. The user can reset or restart the chronometer.
 
 ## Features
 
 ✅ **Lap Logging Behavior**
+
 - **First Lap**: Logs Lap 1 with the partial and total time equal to the chronometer time.
 - **Subsequent Laps**: Logs Lap `N`, where:
-  - **Partial Time** = Time recorded when pressing the lap button.
-  - **Total Time** = `Partial Time (N) + Total Time (N-1)`.
+    - **Partial Time** = Time recorded when pressing the lap button.
+    - **Total Time** = `Partial Time (N) + Total Time (N-1)`.
 
 ✅ **Analytics Tracking (Firebase Integration)**
+
 - **User Properties**:
-  - **Cohort**: Install date in `YYYYMMDD` format.
-  - **Usage**: Number of times the user transitions from `Start State → Running State`.
+    - **Cohort**: Install date in `YYYYMMDD` format.
+    - **Usage**: Number of times the user transitions from `Start State → Running State`.
 - **Event Tracking**: Logs an event whenever a button is tapped (`Start`, `Lap`, `Stop`, `Resume`).
 
 ## Architecture: MVVM + Clean
 
-The app follows **MVVM (Model-View-ViewModel)** and **Clean Architecture** to ensure scalability, maintainability, and testability.
+The app follows **MVVM (Model-View-ViewModel)** and **Clean Architecture** to ensure scalability,
+maintainability, and testability.
 
 - **Presentation Layer**:
-  - `ChronometerViewModel.java` (Handles UI logic)
-  - `ChronometerActivity.java` (View layer)
-  - `CustomChronometerView.java` (View layer)
-  - `LapsAdapter.java` (RecyclerView Adapter for laps)
+    - `ChronometerViewModel.java` (Handles UI logic)
+    - `ChronometerActivity.java` (View layer)
+    - `CustomChronometerView.java` (View layer)
+    - `LapsAdapter.java` (RecyclerView Adapter for laps)
 
 - **Domain Layer**:
-  - `Lap.java` (Model)
-  - `GetLapsUseCase.java` (Encapsulates business logic)
-  - `IChronometerRepository.java` (Interface for lap data operations)
+    - `Lap.java` (Model)
+    - `GetLapsUseCase.java` (Encapsulates business logic)
+    - `IChronometerRepository.java` (Interface for lap data operations)
 
 - **Data Layer**:
-  - `ChronometerRepository.java` (Implements `IChronometerRepository`)
-  - `FirebaseAnalyticsHelper.java` (Handles Firebase events)
+    - `ChronometerRepository.java` (Implements `IChronometerRepository`)
+    - `FirebaseAnalyticsHelper.java` (Handles Firebase events)
 
 ## Screenshots
 
-<div style="background-color: white; display: inline-block; padding: 10px;">
-  <img src="screenshots/start_state.png" alt="Start state of the chronometer" width="30%" style="background-color: white;">
-  <img src="screenshots/running_state.png" alt="Running state of the chronometer" width="30%" style="background-color: white;">
-  <img src="screenshots/reset_state.png" alt="Reset state of the chronometer" width="30%" style="background-color: white;">
+<div style="background-color: #FFFFFF; padding: 10px;">
+  <img src="screenshots/start_state.png" alt="Start state of the chronometer" width="30%">
+  <img src="screenshots/running_state.png" alt="Running state of the chronometer" width="30%">
+  <img src="screenshots/reset_state.png" alt="Reset state of the chronometer" width="30%">
 </div>
 
 ## Unit Testing
@@ -61,11 +66,12 @@ E2E tests are written using **Espresso** and **UI Automator** :
 
 - `ChronometerE2ETest.java` (Validates button clicks)
 
-## �️ Dependency Injection (Hilt) - **Coming Soon** 🚀
+## 🧪️ Dependency Injection (Hilt) - **Coming Soon** 🚀
 
 The app will soon integrate **Hilt** for Dependency Injection to improve modularity and testability.
 
 ### Benefits of Hilt:
+
 - Reduces boilerplate code.
 - Simplifies dependency injection.
 - Ensures better separation of concerns.
