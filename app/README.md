@@ -50,7 +50,7 @@ maintainability, and testability.
 
 <table>
   <tr>
-    <td style="background-color: white; padding: 10px;">
+    <td style="background-color: black; padding: 10px;">
       <img src="screenshots/start_state.png" alt="Start state of the chronometer" width="100%">
     </td>
     <td style="background-color: white; padding: 10px;">
